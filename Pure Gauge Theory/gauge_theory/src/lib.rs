@@ -1,1 +1,1 @@
-pub mod lattice
+pub mod lattice;
