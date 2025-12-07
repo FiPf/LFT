@@ -1,0 +1,288 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{Monte_carlo}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=e284e4dceb30701acdde990d697fc0ca}{%
+           family={Brereton},
+           familyi={B\bibinitperiod},
+           given={Dr.\bibnamedelimi Tim},
+           giveni={D\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \strng{namehash}{e284e4dceb30701acdde990d697fc0ca}
+      \strng{fullhash}{e284e4dceb30701acdde990d697fc0ca}
+      \strng{fullhashraw}{e284e4dceb30701acdde990d697fc0ca}
+      \strng{bibnamehash}{e284e4dceb30701acdde990d697fc0ca}
+      \strng{authorbibnamehash}{e284e4dceb30701acdde990d697fc0ca}
+      \strng{authornamehash}{e284e4dceb30701acdde990d697fc0ca}
+      \strng{authorfullhash}{e284e4dceb30701acdde990d697fc0ca}
+      \strng{authorfullhashraw}{e284e4dceb30701acdde990d697fc0ca}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.math.ucdavis.edu/~tracy/courses/math135A/UsefullCourseMaterial/lawLargeNo.pdf}}
+      \field{note}{Accessed: 2025-07-11}
+      \field{title}{Methods of Monte Carlo Simulation}
+    \endentry
+    \entry{Duane1987HMC}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=bdebd6ef9e8e1b043aff76bf2f764e33}{%
+           family={Duane},
+           familyi={D\bibinitperiod},
+           given={Simon},
+           giveni={S\bibinitperiod}}}%
+        {{hash=d144582927796ad0d71489fa0bf837b7}{%
+           family={Kennedy},
+           familyi={K\bibinitperiod},
+           given={A.\bibnamedelimi D.},
+           giveni={A\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=3a95a067dfa3acc2cdbe821920bd5561}{%
+           family={Pendleton},
+           familyi={P\bibinitperiod},
+           given={B.\bibnamedelimi J.},
+           giveni={B\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=83b3c924afac6f48a30d03728c5bd377}{%
+           family={Roweth},
+           familyi={R\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{87d02c47c1dd23e727ec407c868c8be0}
+      \strng{fullhash}{f279b2cf0e5bde04256c16a1b917dfc1}
+      \strng{fullhashraw}{f279b2cf0e5bde04256c16a1b917dfc1}
+      \strng{bibnamehash}{87d02c47c1dd23e727ec407c868c8be0}
+      \strng{authorbibnamehash}{87d02c47c1dd23e727ec407c868c8be0}
+      \strng{authornamehash}{87d02c47c1dd23e727ec407c868c8be0}
+      \strng{authorfullhash}{f279b2cf0e5bde04256c16a1b917dfc1}
+      \strng{authorfullhashraw}{f279b2cf0e5bde04256c16a1b917dfc1}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physics Letters B}
+      \field{number}{2}
+      \field{title}{Hybrid Monte Carlo}
+      \field{volume}{195}
+      \field{year}{1987}
+      \field{pages}{216\bibrangedash 222}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1016/0370-2693(87)91197-X
+      \endverb
+    \endentry
+    \entry{GattingerLang}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=ab3acce952ef8402d2dbc5455a71d4be}{%
+           family={Gattringer},
+           familyi={G\bibinitperiod},
+           given={Christof},
+           giveni={C\bibinitperiod}}}%
+        {{hash=1c1aad0ffe801a9183e81d979c5ee285}{%
+           family={Lang},
+           familyi={L\bibinitperiod},
+           given={Christian\bibnamedelima B.},
+           giveni={C\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin / Heidelberg}%
+      }
+      \strng{namehash}{b4fa3b7228db513c35d00236bdc30099}
+      \strng{fullhash}{b4fa3b7228db513c35d00236bdc30099}
+      \strng{fullhashraw}{b4fa3b7228db513c35d00236bdc30099}
+      \strng{bibnamehash}{b4fa3b7228db513c35d00236bdc30099}
+      \strng{authorbibnamehash}{b4fa3b7228db513c35d00236bdc30099}
+      \strng{authornamehash}{b4fa3b7228db513c35d00236bdc30099}
+      \strng{authorfullhash}{b4fa3b7228db513c35d00236bdc30099}
+      \strng{authorfullhashraw}{b4fa3b7228db513c35d00236bdc30099}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-3-642-01849-7}
+      \field{series}{Lecture Notes in Physics, Vol. 788}
+      \field{title}{Quantum Chromodynamics on the Lattice: An Introductory Presentation}
+      \field{year}{2010}
+    \endentry
+    \entry{Omelyan2002Symplectic}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=d85d3c179a58d7b02a89d94883a2e6fb}{%
+           family={Omelyan},
+           familyi={O\bibinitperiod},
+           given={I.\bibnamedelimi P.},
+           giveni={I\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=4799fcfce135631d541f42539b5a02bf}{%
+           family={Mryglod},
+           familyi={M\bibinitperiod},
+           given={I.},
+           giveni={I\bibinitperiod}}}%
+        {{hash=4f1fd3b8c666a084bc6e888a1fb8b7d0}{%
+           family={Folk},
+           familyi={F\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{78218f32ebc729c9800e761c2ec016be}
+      \strng{fullhash}{78218f32ebc729c9800e761c2ec016be}
+      \strng{fullhashraw}{78218f32ebc729c9800e761c2ec016be}
+      \strng{bibnamehash}{78218f32ebc729c9800e761c2ec016be}
+      \strng{authorbibnamehash}{78218f32ebc729c9800e761c2ec016be}
+      \strng{authornamehash}{78218f32ebc729c9800e761c2ec016be}
+      \strng{authorfullhash}{78218f32ebc729c9800e761c2ec016be}
+      \strng{authorfullhashraw}{78218f32ebc729c9800e761c2ec016be}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Computer Physics Communications}
+      \field{number}{3}
+      \field{title}{On the construction of high‑order force‑gradient algorithms for integration of motion in classical and quantum systems}
+      \field{volume}{151}
+      \field{year}{2003}
+      \field{pages}{272\bibrangedash 314}
+      \range{pages}{43}
+      \verb{doi}
+      \verb 10.1016/S0010-4655(02)00754-3
+      \endverb
+    \endentry
+    \entry{SchwartzQFT}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=1e7b6dde56467cb787f369fadc91b2df}{%
+           family={Schwartz},
+           familyi={S\bibinitperiod},
+           given={Matthew\bibnamedelima D.},
+           giveni={M\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{1e7b6dde56467cb787f369fadc91b2df}
+      \strng{fullhash}{1e7b6dde56467cb787f369fadc91b2df}
+      \strng{fullhashraw}{1e7b6dde56467cb787f369fadc91b2df}
+      \strng{bibnamehash}{1e7b6dde56467cb787f369fadc91b2df}
+      \strng{authorbibnamehash}{1e7b6dde56467cb787f369fadc91b2df}
+      \strng{authornamehash}{1e7b6dde56467cb787f369fadc91b2df}
+      \strng{authorfullhash}{1e7b6dde56467cb787f369fadc91b2df}
+      \strng{authorfullhashraw}{1e7b6dde56467cb787f369fadc91b2df}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Quantum Field Theory and the Standard Model}
+      \field{year}{2014}
+      \verb{doi}
+      \verb 10.1017/CBO9780511813456
+      \endverb
+    \endentry
+    \entry{Takaishi2005Symplectic}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=4adc902732c19b0c68a58ef917d88a97}{%
+           family={Takaishi},
+           familyi={T\bibinitperiod},
+           given={Tetsuya},
+           giveni={T\bibinitperiod}}}%
+        {{hash=6e2971fe75707fbc9050bf1ad1fa1846}{%
+           family={Forcrand},
+           familyi={F\bibinitperiod},
+           given={Philippe},
+           giveni={P\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+      }
+      \strng{namehash}{ebb433783cec61c1ed25d8210c192b91}
+      \strng{fullhash}{ebb433783cec61c1ed25d8210c192b91}
+      \strng{fullhashraw}{ebb433783cec61c1ed25d8210c192b91}
+      \strng{bibnamehash}{ebb433783cec61c1ed25d8210c192b91}
+      \strng{authorbibnamehash}{ebb433783cec61c1ed25d8210c192b91}
+      \strng{authornamehash}{ebb433783cec61c1ed25d8210c192b91}
+      \strng{authorfullhash}{ebb433783cec61c1ed25d8210c192b91}
+      \strng{authorfullhashraw}{ebb433783cec61c1ed25d8210c192b91}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{hep-lat}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Phys. Rev. E}
+      \field{title}{Testing and tuning symplectic integrators for Hybrid Monte Carlo algorithm in lattice QCD}
+      \field{volume}{73}
+      \field{year}{2006}
+      \field{pages}{036706}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevE.73.036706
+      \endverb
+      \verb{eprint}
+      \verb hep-lat/0505020
+      \endverb
+    \endentry
+    \entry{WieseThermodynamics}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=801584482294882ba45ba6f5e9aa5456}{%
+           family={Wiese},
+           familyi={W\bibinitperiod},
+           given={Uwe{-}Jens},
+           giveni={U\bibinitperiod}}}%
+      }
+      \strng{namehash}{801584482294882ba45ba6f5e9aa5456}
+      \strng{fullhash}{801584482294882ba45ba6f5e9aa5456}
+      \strng{fullhashraw}{801584482294882ba45ba6f5e9aa5456}
+      \strng{bibnamehash}{801584482294882ba45ba6f5e9aa5456}
+      \strng{authorbibnamehash}{801584482294882ba45ba6f5e9aa5456}
+      \strng{authornamehash}{801584482294882ba45ba6f5e9aa5456}
+      \strng{authorfullhash}{801584482294882ba45ba6f5e9aa5456}
+      \strng{authorfullhashraw}{801584482294882ba45ba6f5e9aa5456}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://wiese.itp.unibe.ch/lectures/thermodyn.pdf}}
+      \field{note}{Lecture Notes, Institute for Theoretical Physics, University of Bern}
+      \field{title}{Statistical Thermodynamics}
+      \field{year}{2010}
+    \endentry
+    \entry{FivePointStencilWiki}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=535bebf06af273c7e2d9ff9d7fc43470}{%
+           family={{Wikipedia Contributors}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{535bebf06af273c7e2d9ff9d7fc43470}
+      \strng{fullhash}{535bebf06af273c7e2d9ff9d7fc43470}
+      \strng{fullhashraw}{535bebf06af273c7e2d9ff9d7fc43470}
+      \strng{bibnamehash}{535bebf06af273c7e2d9ff9d7fc43470}
+      \strng{authorbibnamehash}{535bebf06af273c7e2d9ff9d7fc43470}
+      \strng{authornamehash}{535bebf06af273c7e2d9ff9d7fc43470}
+      \strng{authorfullhash}{535bebf06af273c7e2d9ff9d7fc43470}
+      \strng{authorfullhashraw}{535bebf06af273c7e2d9ff9d7fc43470}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://en.wikipedia.org/wiki/Five-point_stencil}}
+      \field{note}{Accessed: 2025-12-07}
+      \field{title}{Five-point stencil --- {W}ikipedia, The Free Encyclopedia}
+      \field{year}{2025}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

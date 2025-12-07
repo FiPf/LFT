@@ -1,0 +1,96 @@
+\section{The Hybrid Monte Carlo Algorithm (HMC)}\label{sec: HMC}
+The Hybrid Monte Carlo Algorithm (HMC) algorithm was first introduced in this paper: \cite{Duane1987HMC}. The authors solved the major
+computational challenge of involving fermions into lattice field theory. \\\\
+Simulating fermions in a lattice field theory is difficult, since fermions are described by Grassmann numbers, for which Monte Carlo methods
+cannot be applied directly. Integrating over fermions produces very non-local effects in the action, which makes calculations extremely 
+expensive. To solve this problem, the nested Monte Carlo steps are replaced with an equation of motion in a fictitious time variable. These are solved 
+numerically with different techniques. Evolving the entire field configuration simultaneously using a numerical integrator avoids the locality problem 
+but introduces truncation errors from discrete integration. Although these errors can be extrapolated away, they remain undesirable. 
+The paper \cite{Duane1987HMC} introduces the HMC, which addresses the problem with the following steps: 
+\begin{itemize}
+    \item evolve all fields in parallel using a molecular-dynamics-like update, 
+    \item a global Metropolis accept/reject step, which removes the truncation errors. 
+\end{itemize}
+This method combines deterministic molecular dynamics and accept/reject steps, achieving efficiency and exactness. Even though this algorithm 
+was originally developed for lattice field theories, it is nowadays applied in various other fields. 
+\\\\
+The goal is again to calculate the expectation of some operator along with its partition function, as defined in the Equations 
+\ref{eq: partition_function} and \ref{eq: partition_function}. The Metropolis algorithm is a rater inefficient way to do this and we search for 
+a method to choose candidate configurations efficiently. We aim for a high acceptance rate and minimum correlation between successive configurations. 
+For this, we introduce an artificial computer time $\tau$ and a hamiltonian dynamics to describe the developement of the field $\phi(\tau)$. In addition, 
+we will need the conjugate momenta $\pi(\tau)$. This means, instead of sampling the distribution $p(\phi) = \frac{1}{Z} e^{-S(\phi)}$, we sample 
+$p(\phi, \pi) = \frac{1}{Z'} e^{-H[\phi, \pi]}$. The Hamiltonian $H[\phi, \pi]$ is given as follows: 
+\begin{equation}
+    H[\pi, \phi] = \frac{1}{2}\pi^2 + S(\phi), 
+\end{equation}
+where $S(\phi)$ is an arbitrary action. A key point of this algorithm is that the expectation values over $p(\phi)$ are the same as those over $p(\phi, \pi)$ 
+up to some constant, since the integration over $\mathcal{D} \pi$ is a Gaussian integral, which gives rise to a constant. This constant will cancel out in the 
+accept/reject step. \\\\
+Introducing the conjugate momenta translates the numerical evaluation of the path integral into the language of classical Hamiltonian mechanics. The HMC algorithm 
+solves the classical equations of motion for each lattice site $x$: 
+\begin{align}\label{eq: HMC_DGLs}
+    \dot{\phi}_x &= \frac{d \phi_x}{d \tau} = \frac{\partial H}{\partial \pi} = \pi_x \\
+    \dot{\pi}_x &= \frac{d \pi_x}{d \tau} = -\frac{\partial H}{\partial \phi_x} = -\frac{\partial S}{\partial \phi_x} = -F[\phi_x] \qquad \text{"force"}
+\end{align}
+Because of the conservation of energy, the Hamiltonian remains constant. This can be used to check the accuracy of the solutions of the differential equations, 
+which have to be solved numerically. In Chapter \ref{sec: integrators}, there will be a description of different methods to achieve this numerical solution.\\\\
+The procedure for generating a new configuration $\phi'$ is to select some initial momenta $\pi$ from a standard Gaussian distribution (zero mean, unit variance)
+\begin{equation}
+    P_G(\pi) \propto \exp \left( -\frac{\pi^2}{2}\right), 
+\end{equation}
+and then evolve the system through the $(\phi, \pi)$- phase space for a time $\tau_0$ according to Hamilton's equations \ref{eq: HMC_DGLs}. 
+The probability of choosing the configuration $(\phi', \pi')$ is 
+\begin{equation}
+    P_H((\phi, \pi) \rightarrow (\phi', \pi')) = \delta \left[ (\phi', \pi') - (\phi(\tau_0), \pi(\tau_0)) \right]. 
+\end{equation}
+The acceptance probability for this candidate is 
+\begin{equation}
+    P_A((\phi, \pi) \rightarrow (\phi', \pi')) = \min \left( 1, \exp( \delta H) \right), 
+\end{equation}
+where $\delta H = H(\phi', \pi') - H(\phi, \pi)$. \\\\
+In order for the HMC to correctly sample the target distribution $p(\phi) \propto e^{-S(\phi)}$, the transition probability restricted to the field variables $\phi$ alone must 
+satisfy detailed balance. Starting from the full transition probability in $(\phi,\pi)$ space, the 
+transition probability for $\phi \to \phi'$ is obtained by integrating out the momenta:
+\begin{equation}
+    P_M(\phi \to \phi') = \int [d\pi]\,[d\pi']\; P_G(\pi)\, P_H\!\big((\phi,\pi)\to(\phi',\pi')\big)\,P_A\!\big((\phi,\pi)\to(\phi',\pi')\big).
+\end{equation}
+Here $P_G(\pi)$ is the Gaussian distribution used to refresh the momenta, $P_H$ is the deterministic 
+Hamiltonian evolution, and $P_A$ is the Metropolis accept/reject step.\\\\
+The main requirement for detailed balance is that the molecular-dynamics evolution is reversible. 
+This means that evolving $(\phi,\pi)$ forward in fictitious time $\tau$ to $(\phi',\pi')$ is equivalent to evolving $(\phi', -\pi')$ backward to $(\phi,-\pi)$:
+\begin{equation}
+    P_H\!\big((\phi,\pi)\to(\phi',\pi')\big) = P_H\!\big((\phi', -\pi')\to(\phi,-\pi)\big).
+\end{equation}
+This property holds automatically for Hamiltonian dynamics because the flow generated by a Hamiltonian is time-reversal invariant when accompanied by a sign flip of all momenta.
+From the following identity (which we already used to show detailed balance for Metropolis)
+\begin{align}
+    e^{-H(\phi,\pi)}\min(1, e^{-\Delta H}) &= \min\!\left(e^{-H(\phi,\pi)}, e^{-H(\phi',\pi')} \right) \\
+    &= e^{-H(\phi',\pi')} \min(1, e^{+\Delta H}),
+\end{align}
+the fact that the Hamiltonian $H(\phi,\pi)$ is also invariant under $\pi \to -\pi$ and $P_s(\phi) P_G(\pi) \propto \exp (H(\phi, \pi))$, we obtain
+\begin{equation}
+    P_S(\phi)\, P_G(\pi)\,P_A((\phi,\pi)\to(\phi',\pi')) = P_S(\phi')\, P_G(\pi')\,P_A((\phi',\pi')\to(\phi,\pi)).
+\end{equation}
+Multiplying this by the transition probability $P_H$ and integrating over $\pi,\pi'$ gives
+\begin{align}
+    \int[d\pi]\,[d\pi']\;P_S(\phi)\,P_G(\pi)\,P_H((\phi,\pi)\to(\phi',\pi'))\, P_A((\phi,\pi)\to(\phi',\pi')) \\
+    = \int[d\pi]\,[d\pi']\; P_S(\phi')\,P_G(\pi')\, P_H((\phi',\pi')\to(\phi,\pi))\, P_A((\phi',\pi')\to(\phi,\pi)).
+\end{align}
+Because the measure is invariant under momentum reversal,
+\[
+    [d\pi]\,[d\pi'] = [d(-\pi)]\,[d(-\pi')],
+\]
+and using the reversibility condition from above, this reduces precisely to
+\begin{equation}
+    P_S(\phi)\, P_M(\phi \to \phi') = P_S(\phi')\, P_M(\phi' \to \phi),
+\end{equation}
+which is the detailed balance condition for $P_M$.\\\\
+By conservation of energy, we need $H = H'$, meaning $\delta H = 0$ and $P_A = 1$. However, solving differential equations numerically always interoduces errors, hence
+in general, $P_A \leq 1$. We have just proved that the HMC produces $\phi$ configurations with the correct distribution for any $\delta H \neq 0$. Also note that the momenta 
+$\pi$ are not used to compute the observables. They can be disregareded in each step \cite{Duane1987HMC}.\\\\
+Note that the accept/reject step plays a crucial role in the HMC. Hamiltonian evolution exchanges energy between the kinetic term $\tfrac{1}{2}\pi^2$ and the potential term 
+$S(\phi)$ while (ideally) keeping their sum $H = \tfrac{1}{2}\pi^2 + S(\phi)$ constant. The accept/reject step corrects the small energy violations $\delta H \neq 0$ resulting 
+from the numerical integration, as it compares the Hamiltonians and accepts the proposed configuration with probability $P_A$. This enforces the correct equilibrium distribution, 
+as a substantial increase in the energy will be rejected. In addition, the accept/reject step also ensures ergodicity. Pure Hamiltonian evolution is deterministic and reversible, 
+and without momentum refreshment or a mechanism to leave a given energy surface, the algorithm would explore only a single trajectory in phase space. Periodically resampling the 
+momenta from a Gaussian distribution redistributes kinetic energy, allowing the system to have different energies \cite{Duane1987HMC}. 

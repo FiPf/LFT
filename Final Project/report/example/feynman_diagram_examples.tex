@@ -1,0 +1,191 @@
+\section{The Process \texorpdfstring{$e^+ e^- \rightarrow \mu^+ \mu^-$}{e+e- to muon}}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (a) at (0,0);
+      \vertex [above left=of a] (i1) {\(e^{-}\)};
+      \vertex [below left=of a] (i2) {\(e^{+}\)};
+      \vertex [right=2cm of a] (b);
+      \vertex [above right=of b] (f1) {\(\mu^{-}\)};
+      \vertex [below right=of b] (f2) {\(\mu^{+}\)};
+
+      \diagram* {
+        (i1) -- [fermion, edge label'=\(p_1\)] (a) -- [anti fermion, edge label=\(p_2\)] (i2),
+        (a) -- [photon, edge label=\(\gamma\)] (b),
+        (f1) -- [fermion, edge label=\(k_1\)] (b) -- [anti fermion, edge label'=\(k_2\)] (f2),
+      };
+    \end{feynman}
+    \end{tikzpicture}
+    \caption{Tree-level $e^+ e^- \rightarrow \mu^+ \mu^-$ via s-channel photon exchange.}
+\end{figure}
+\section{The Vertex \texorpdfstring{$e^+ e^- \rightarrow \gamma$}{e+e- gamma}}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (a) at (0,0);
+      \vertex [above left=of a] (i1) {\(e^{-}\)};
+      \vertex [below left=of a] (i2) {\(e^{+}\)};
+      \vertex [right=2cm of a] (f1) {\(\gamma\)};
+
+      \diagram* {
+        (i1) -- [fermion] (a) -- [anti fermion] (i2),
+        (a) -- [photon] (f1),
+      };
+    \end{feynman}
+    \end{tikzpicture}
+    \caption{QED vertex: electron-positron coupling to a photon.}
+    \label{fig: electron_positron_vertex}
+\end{figure}
+\section{Comparison of Two Helicity Configurations for \texorpdfstring{$e^+ e^- \rightarrow \mu^+ \mu^-$}{blabla} via Photon Exchange}
+\begin{figure}[H]
+    \centering
+    % --- First helicity config ---
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}
+        \begin{feynman}
+          \vertex (a) at (0,0);
+          \vertex [above left=of a] (i1) {\(e_R^{-}\)};
+          \vertex [below left=of a] (i2) {\(e_R^{+}\)};
+          \vertex [right=2cm of a] (b);
+          \vertex [above right=of b] (f1) {\(\mu_L^{+}\)};
+          \vertex [below right=of b] (f2) {\(\mu_R^{-}\)};
+
+          \diagram* {
+            (i1) -- [fermion, edge label'=\(p_1\)] (a) -- [anti fermion, edge label=\(p_2\)] (i2),
+            (a) -- [photon, edge label=\(\gamma\)] (b),
+            (f1) -- [anti fermion, edge label=\(k_2\)] (b) -- [fermion, edge label'=\(k_1\)] (f2),
+          };
+        \end{feynman}
+        \end{tikzpicture}
+        \caption*{(a) \(e_R^- e_R^+ \to \mu_L^+ \mu_R^-\)}
+    \end{minipage}
+    \hspace{0.05\textwidth}
+    % --- Second helicity config ---
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \begin{tikzpicture}
+        \begin{feynman}
+          \vertex (a) at (0,0);
+          \vertex [above left=of a] (i1) {\(e_L^{-}\)};
+          \vertex [below left=of a] (i2) {\(e_R^{+}\)};
+          \vertex [right=2cm of a] (b);
+          \vertex [above right=of b] (f1) {\(\mu_L^{+}\)};
+          \vertex [below right=of b] (f2) {\(\mu_R^{-}\)};
+
+          \diagram* {
+            (i1) -- [fermion, edge label'=\(p_1\)] (a) -- [anti fermion, edge label=\(p_2\)] (i2),
+            (a) -- [photon, edge label=\(\gamma\)] (b),
+            (f1) -- [anti fermion, edge label=\(k_2\)] (b) -- [fermion, edge label'=\(k_1\)] (f2),
+          };
+        \end{feynman}
+        \end{tikzpicture}
+        \caption*{(b) \(e_L^- e_R^+ \to \mu_L^+ \mu_R^-\)}
+    \end{minipage}
+    \caption{Comparison of two helicity configurations for $e^+ e^- \rightarrow \mu^+ \mu^-$ via photon exchange.}
+\end{figure}
+\section{The Drell-Yan Process}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{feynman}
+      % Vertices
+      \vertex (a) at (0,0);
+      \vertex [above left=of a] (q) {\(q\)};
+      \vertex [below left=of a] (qbar) {\(\bar q\)};
+      \vertex [right=2.5cm of a] (b);
+      \vertex [above right=of b] (lplus) {\(\ell^+\)};
+      \vertex [below right=of b] (lminus) {\(\ell^-\)};
+
+      % Diagram with momenta
+      \diagram* {
+        (q) -- [fermion, edge label'=\(p_1\)] (a) -- [anti fermion, edge label=\(p_2\)] (qbar),
+        (a) -- [photon, edge label=\(\gamma^*/Z\), edge label'=\(q\)] (b),
+        (lplus) -- [anti fermion, edge label=\(k_2\)] (b) -- [fermion, edge label'=\(k_1\)] (lminus),
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  \caption{Leading-order Drell–Yan process with momenta: \(q \bar q \to \gamma^*/Z \to \ell^+ \ell^-\).}
+  \label{fig:drell_yan_momenta}
+\end{figure}
+\section{Electron-Positron Pair Creation with Photon Loop}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+    \begin{feynman}
+      % Main vertices 
+      \vertex (a) at (1.5,0);
+      \vertex [above left=1.5cm of a] (i1) {\(e^{-}\)};
+      \vertex [below left=1.5cm of a] (i2) {\(e^{+}\)};
+      \vertex (b) at (3.5,0);
+      \vertex [above right=1.5cm of b] (f1) {\(e^{-}\)};
+      \vertex [below right=1.5cm of b] (f2) {\(e^{+}\)};
+
+      % Loop vertices
+      \vertex (m1) at (2,0);
+      \vertex (m2) at (3,0);
+
+      % Diagram
+      \diagram* {
+        % External legs
+        (i1) -- [fermion, edge label'=\(p_1\)] (a),
+        (i2) -- [anti fermion, edge label=\(p_2\)] (a),
+        
+        % Plain propagators to/from loop
+        (a) -- [plain] (m1),
+        (m2) -- [plain] (b),
+        
+        % External legs 
+        (b) -- [fermion, edge label=\(k_1\)] (f1),
+        (b) -- [anti fermion, edge label'=\(k_2\)] (f2),
+
+        % Large photon loop
+        (m1) -- [photon, out=60, in=120, looseness=1.8] (m2),
+        (m2) -- [photon, out=-120, in=-60, looseness=1.8] (m1),
+      };
+    \end{feynman}
+    \end{tikzpicture}
+    \caption{Tree-level \(e^+ e^- \to e^+ e^-\) scattering with photon loop vertex correction.}
+\end{figure}
+\section{Loop for scalar \texorpdfstring{$\phi^3$}{phi_hoch_drü} theory}
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[baseline=(current bounding box.center)]
+\begin{feynman}
+  % Define vertices
+  \vertex (in) at (-3,0);
+  \vertex (out) at (3,0);
+  \vertex (left) at (-1,0);
+  \vertex (right) at (1,0);
+  \vertex (top) at (0,1);
+  \vertex (bottom) at (0,-1);
+
+  % Incoming fermion (p)
+  \draw[postaction={decorate}, decoration={
+    markings,
+    mark=at position 0.5 with {\arrow{>}, \node[above] {\(p\)};}
+  }] (in) -- (left);
+
+  % Outgoing fermion (p)
+  \draw[postaction={decorate}, decoration={
+    markings,
+    mark=at position 0.5 with {\arrow{>}, \node[above] {\(p\)};}
+  }] (right) -- (out);
+
+  % Fermion loop (upper half - p+k)
+  \draw[postaction={decorate}, decoration={
+    markings,
+    mark=at position 0.6 with {\arrow{>}, \node[above left] {\(p+k\)};}
+  }] (left) arc (180:0:1cm);
+
+  % Fermion loop (lower half - k)
+  \draw[postaction={decorate}, decoration={
+    markings,
+    mark=at position 0.4 with {\arrow{<}, \node[below left] {\(k\)};}
+  }] (right) arc (0:-180:1cm);
+\end{feynman}
+\end{tikzpicture}
+\caption{Fermion propagator with loop correction}
+\end{figure}

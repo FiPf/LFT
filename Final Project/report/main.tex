@@ -1,0 +1,80 @@
+\documentclass[notitlepage]{report}%{article}
+
+%-- My Definitions
+\usepackage{mydefs}
+
+%-- Math stuff
+\usepackage{mathtools, amsfonts, amsthm, amssymb}
+
+%-- Phsysics and Chemsitry stuff
+\usepackage[version=4]{mhchem}
+\usepackage{braket}
+\usepackage{siunitx}
+\sisetup{input-digits = 0123456789\pi}
+\sisetup{separate-uncertainty=true}
+%to compile Feynman diagrams: uncomment these
+%can take a lot of compile time, set the compiler to LuaLaTex
+%\usepackage[compat=1.1.0]{tikz-feynman}
+%\usepackage{tikz}
+
+%-- Computer science stuff
+\usepackage{algorithm, algpseudocode, minted}
+
+%-- Plotting
+\usepackage{graphicx}
+
+%-- Tables and enumerations
+\usepackage{enumerate}
+\usepackage{booktabs, multirow}
+\usepackage{caption, subcaption}
+
+%-- Bibliography
+\usepackage{csquotes}
+\usepackage{biblatex}
+\addbibresource{bibliography.bib}
+
+
+%-- Numbering
+\numberwithin{equation}{section}
+\numberwithin{algorithm}{section}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+
+
+%-- General Formatting
+\usepackage[top=20mm,bottom=20mm,left=25mm,right=25mm]{geometry}
+\usepackage[english]{babel}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+%\setlength{\parindent}{0pt}
+%\setlength{\parskip}{0.5\baselineskip}
+
+%-----> Document begins here <-----
+\begin{document}
+
+% -- Title page
+
+\title{Specialist Course: Lattice Field Theory \\ Final Project: Comparison of Algorithms}
+\author{Fiona Pärli}
+\date{\today}
+
+\maketitle
+% -- Table of contents
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+% -- The main body
+\chapter{Introduction}
+\chapter{Scalar \texorpdfstring{$\phi^4$}{phi4} Theory}
+\input{phi4theory.tex}
+\chapter{Algorithms}
+\input{metropolis} 
+\input{hmc}
+\chapter{Integrators for HMC}\label{sec: integrators}
+\input{integrators.tex}
+\chapter{Results}
+
+\printbibliography
+
+\end{document}

@@ -1,0 +1,82 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{Monte_carlo}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=e284e4dceb30701acdde990d697fc0ca}{%
+           family={Brereton},
+           familyi={B\bibinitperiod},
+           given={Dr.\bibnamedelimi Tim},
+           giveni={D\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \strng{namehash}{e284e4dceb30701acdde990d697fc0ca}
+      \strng{fullhash}{e284e4dceb30701acdde990d697fc0ca}
+      \strng{fullhashraw}{e284e4dceb30701acdde990d697fc0ca}
+      \strng{bibnamehash}{e284e4dceb30701acdde990d697fc0ca}
+      \strng{authorbibnamehash}{e284e4dceb30701acdde990d697fc0ca}
+      \strng{authornamehash}{e284e4dceb30701acdde990d697fc0ca}
+      \strng{authorfullhash}{e284e4dceb30701acdde990d697fc0ca}
+      \strng{authorfullhashraw}{e284e4dceb30701acdde990d697fc0ca}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.math.ucdavis.edu/~tracy/courses/math135A/UsefullCourseMaterial/lawLargeNo.pdf}}
+      \field{note}{Accessed: 2025-07-11}
+      \field{title}{Methods of Monte Carlo Simulation}
+    \endentry
+    \entry{GattingerLang}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=ab3acce952ef8402d2dbc5455a71d4be}{%
+           family={Gattringer},
+           familyi={G\bibinitperiod},
+           given={Christof},
+           giveni={C\bibinitperiod}}}%
+        {{hash=1c1aad0ffe801a9183e81d979c5ee285}{%
+           family={Lang},
+           familyi={L\bibinitperiod},
+           given={Christian\bibnamedelima B.},
+           giveni={C\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin / Heidelberg}%
+      }
+      \strng{namehash}{b4fa3b7228db513c35d00236bdc30099}
+      \strng{fullhash}{b4fa3b7228db513c35d00236bdc30099}
+      \strng{fullhashraw}{b4fa3b7228db513c35d00236bdc30099}
+      \strng{bibnamehash}{b4fa3b7228db513c35d00236bdc30099}
+      \strng{authorbibnamehash}{b4fa3b7228db513c35d00236bdc30099}
+      \strng{authornamehash}{b4fa3b7228db513c35d00236bdc30099}
+      \strng{authorfullhash}{b4fa3b7228db513c35d00236bdc30099}
+      \strng{authorfullhashraw}{b4fa3b7228db513c35d00236bdc30099}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-3-642-01849-7}
+      \field{series}{Lecture Notes in Physics, Vol. 788}
+      \field{title}{Quantum Chromodynamics on the Lattice: An Introductory Presentation}
+      \field{year}{2010}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

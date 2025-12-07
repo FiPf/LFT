@@ -1,0 +1,75 @@
+Our aim is to solve the Hamiltonian equations of motion \ref{eq: HMC_DGLs}, which are at the heart of the HMC algorithm, numerically. This Chapter 
+describes different methods used for this task. 
+\section{Leapfrog Integration}
+In Section \ref{sec: HMC}, we have discussed that the detailed balance condition for the HMC algorithm imposes the following two 
+requirements on the molecular dynamics trajectory: 
+\begin{itemize}
+    \item Invariance of the integration measure under Hamiltonian evolution in the $(\phi, \pi)$ phase space: 
+    \begin{equation}
+        [\mathcal{D}\phi] [\mathcal{D}\pi] = [\mathcal{D}\phi(\tau)] [\mathcal{D}\pi(\tau)]
+    \end{equation}
+    \item Reversibility of the trajectory, evolving forward in fictitious time $\tau$ and then reversing the momenta exactly retraces the trajectory
+\end{itemize}
+The leapfrog integration method fulfills these requirements, as will be shown in the following. Leapfrog is a second-order method, compared to the very-well known Euler method. 
+\\
+In the leapfrog integration method, the field $\phi$ is 
+evolved in $n$ steps of length $\varepsilon$. The conjugate momenta start with a half-step of $\frac{\varepsilon}{2}$, then $(n-1)$ full steps and finally other half-step. 
+A single such step $(n = 1)$ is denoted as follows: 
+\begin{align}
+    \phi(0) &\rightarrow \phi(\varepsilon) \\
+    \pi(0) &\rightarrow \pi(\frac{\varepsilon}{2}) \rightarrow \pi(\varepsilon). 
+\end{align}
+The simplest integration scheme is second-order accurate: 
+\begin{align}\label{eq: leapfrog_scheme}
+    \phi(0) &\rightarrow \phi(\varepsilon) = \phi(0) + \pi(\frac{\varepsilon}{2}) \varepsilon \\
+    \pi(0) &\rightarrow \pi(\frac{\varepsilon}{2}) = \pi(0) - \frac{\partial S}{\partial \phi}\vert_{\phi(0)}\frac{\varepsilon}{2} \rightarrow \pi(\varepsilon) = \pi(\frac{\varepsilon}{2}) - \frac{\partial S}{\partial \phi} \vert_{\phi(\varepsilon)}\frac{\varepsilon}{2}
+\end{align}
+When dealing with a series of steps of length $n$, we use the abbreviations $\phi(n \varepsilon) = \phi_n$ and $\pi(n \varepsilon) = \pi_n$. 
+\\\\
+The invariance of the integration measure can be shown from the product of Jacobians along the sequence: 
+\begin{equation}
+    \det \left[ \frac{\partial(\pi_1, \phi_1)}{\partial(\pi_0, \phi_0)}\right] = \det \left[ \frac{\partial(\pi_1, \phi_1)}{\partial(\pi_\frac{1}{2}, \phi_1)} \frac{\partial(\pi_\frac{1}{2}, \phi_1)}{\partial(\pi_\frac12, \phi_0)} \frac{\partial(\pi_\frac12, \phi_0)}{\partial(\pi_0, \phi_0)}\right] = 1
+\end{equation}
+This factorizes into a product of three determinants of upper diagonal matrices with $1$ on the diagpnal, hence the result equals $1$ and the integration measure is invariant. 
+\\\\
+For the reversibility property, use the scheme in Equations \ref{eq: leapfrog_scheme} starting from $(\phi_0, \pi_0)$: 
+\begin{align}
+    \phi_1 &= \phi_0 + \pi_0 \varepsilon - \frac{1}{2}\frac{\partial S}{\partial \phi} \vert_{\phi_0} \varepsilon^2 \\
+    \pi_1 &= \pi_0 - \frac{1}{2} \left( \frac{\partial S}{\partial \phi}\vert_{\phi_0} + \frac{\partial S}{\partial \phi} \vert_{\phi_1}\right) \varepsilon
+\end{align}
+To go backwards, we start at $(\phi_1, \pi_1)$ and apply the equations of motion \ref{eq: leapfrog_scheme} with a negative step size $-\varepsilon$. This gives
+\begin{align}
+    \phi(\varepsilon - \varepsilon) &= \phi_1 - \pi_1 \varepsilon - \frac{1}{2}\frac{\partial S}{\partial \phi} \vert_{\phi_1} \varepsilon^2 \\ 
+    &= \phi_1 - \pi_1 \varepsilon + \frac{1}{2}\left( \frac{\partial S}{\partial \phi}\vert_{\phi_0} + \frac{\partial S}{\partial \phi} \vert_{\phi_1} \right)\varepsilon^2 - \frac{1}{2}\frac{\partial S}{\partial \phi}\vert_{\phi_1} \varepsilon^2 \\
+    &= \phi_1 - \pi_1 \varepsilon + \frac{1}{2} \frac{\partial S}{\partial \phi}\vert_{\phi_0} \varepsilon^2 = \phi_0, 
+\end{align}
+\begin{align}
+    \pi(\varepsilon - \varepsilon) &= \pi_0 = \pi_1 + \left( \frac{\partial S}{\partial \phi} \vert_{\phi_1} + \frac{1}{2}\frac{\partial S}{\partial \phi}\vert_{\phi_0}\right) = \pi_0. 
+\end{align}
+So the reversibility is proven. It is possible to combine $n$ leapfrog steps. The discretization error for half-steps is $\mathcal{O}(\varepsilon^2)$, for full steps $\mathcal{O}(\varepsilon^3)$ \cite{GattingerLang}. 
+\section{The Omelyan2 Integrator}
+This integrator is described in great detail in the following papers: \cite{Takaishi2005Symplectic,Omelyan2002Symplectic}. \\\\
+The Omelyan2 integrator is a generalization of the standard leapfrog scheme, designed to improve 
+energy conservation while preserving the two key properties required for HMC: 
+\begin{itemize}
+    \item Invariance of the integration measure in the $(\phi, \pi)$ phase space
+    \item Reversibility of the trajectory under time reversal
+\end{itemize}
+Like leapfrog, Omelyan integration evolves the fields $\phi$ and conjugate momenta $\pi$ in a sequence of small steps. The key difference is that the momentum and position updates are distributed asymmetrically within each step according 
+to a free parameter $\lambda$, which can be tuned to minimize the discretization error of the Hamiltonian. \\
+A single Omelyan step of size $\varepsilon$ can be written as:
+\begin{align}
+    \pi &\rightarrow \pi - \lambda \frac{\varepsilon}{2} \frac{\partial S}{\partial \phi} \\
+    \phi &\rightarrow \phi + \frac{\varepsilon}{2} \pi \\
+    \pi &\rightarrow \pi - (1-2\lambda) \frac{\varepsilon}{2} \frac{\partial S}{\partial \phi} \\
+    \phi &\rightarrow \phi + \frac{\varepsilon}{2} \pi \\
+    \pi &\rightarrow \pi - \lambda \frac{\varepsilon}{2} \frac{\partial S}{\partial \phi}
+\end{align}
+Here, $\lambda$ is a free parameter, and the standard leapfrog scheme is recovered for $\lambda = 0$. In practice, a common 
+choice is $\lambda \approx 0.1931833$, which minimizes the error in the Hamiltonian for harmonic systems \cite{Takaishi2005Symplectic,Omelyan2002Symplectic}.\\\\
+The Omelyan 2 integrator improves on the basic leapfrog scheme in the following ways:
+\begin{itemize}
+    \item Reduced energy drift: By distributing the momentum updates asymmetrically, the integrator achieves better conservation of the Hamiltonian over long trajectories, which increases the acceptance rate in HMC.  
+    \item Preservation of measure and reversibility: Like leapfrog, the Omelyan 2 integrator is reversible, ensuring that detailed balance in HMC is maintained.  
+    \item Higher efficiency: For a given step size $\varepsilon$, Omelyan2 typically allows longer trajectories or fewer steps while achieving the same or better acceptance, reducing computational cost.  
+\end{itemize}

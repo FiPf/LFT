@@ -1,0 +1,66 @@
+Scalar $\phi^4$ theory is the simplest relativistic system in which we can see spontaneous symmetry breaking of discrete symmetries ($\mathbb{Z}_2$ reflection symmetry, $\phi(x) \rightarrow -\phi(x)$). 
+The difference between explicit and spontaneous breaking of a symmetry is that with spontaneous symmetry breaking, the Lagrangian is invariant under the symmetry, but the gorund state is not. In explicit symmetry breaking, the 
+symmetry was never there to begin with. In spontaneous symmetry breaking, a phase transition occurs. For discrete symmetries, spontaneous symmetry breaking looks very similar to explicit symmetry breaking. Breaking of a continous global symmetry (for example a global $U(1)$ phase symmetry) would lead to massless particles (Goldstone theorem) and for gauged symmetries, this could explain the Higgs mechanism. 
+However, this is beyond the scope of this project. This section is provided for completeness and is heavily based on the tutorial of the LFT course and the following book: \cite{SchwartzQFT}.
+\section{The \texorpdfstring{$\phi^4$}{phi4} Theory Action}
+We work in two-dimensional Euclidian space. Then, the $\phi^4$- theory action is described by the following Lagrangian:
+\begin{equation}
+    S[\phi] = \int d^2x \left[ \frac{1}{2}(\partial_\mu \phi) (\partial^\mu \phi) + \frac{1}{2} m^2 \phi^2 + \frac{1}{4!}\lambda \phi^4 \right], 
+\end{equation} 
+where $m^2$ and $\lambda$ are the parameters of the theory. We could regard these parameters as being temperature dependent, then this model could describe a system such as a ferromagnet near its critical temperature.\\
+We assume periodic boundary conditions in all dimensions, hence by integrating by parts, we obtain
+\begin{equation}
+    S[\phi] = \int \mathrm{d}^{2}x \;  \left[ -\frac{1}{2} \phi \left( \partial_{\mu} \partial^{\mu} \phi \right) + \frac{1}{2} m^{2} \phi^{2} + \frac{1}{4!} \lambda \phi^{4} \right].
+\end{equation}
+The total derivative term vanished because of the periodic boundary conditions. This rewriting shows explicitly that the kinetic energy term becomes a nearest neighbour coupling when discretizing the action. 
+\section{Different Masses \texorpdfstring{$m^2$}{m2}}
+The action has the following scalar potential: 
+\begin{equation}
+    V(\phi) = \frac{1}{2}m^2\phi^2 + \frac{1}{4!}\lambda \phi^4. 
+\end{equation}
+The parameter $\lambda$ has the same dimension as a squared mass.
+We assume that $\lambda > 0$, such that the potential is bounded from below. This is required to define a proper distribution, as it ensures that the Boltzmann weight is normalizable. 
+This potential can model a system near a phase transition, such as a ferromagnet near the critical temperature $T_c$. The mass parameter $m^2$ plays a role analogous to the inverse correlation length, its sign determines the phase of the system. 
+We can imagine the mass to be temperature dependent: 
+\begin{equation}
+    m^2(T) = c(T - T_c), 
+\end{equation}
+where $c$ is some constant \cite{SchwartzQFT}. 
+We distinguish for the following two cases for the mass parameter: 
+\begin{itemize}
+    \item If $m^2 \geq 0$ ($T \geq T_c$), the potential has a minimum at $\phi = 0$, which corresponds to a minimum of the action. There is a single vacuum state for which $\braket{\phi} = 0$. 
+    \item If $m^2 < 0$ ($ T < T_c$), $\phi = 0$ is a local maximum and there are two global minima at $\phi = \pm \sqrt{\frac{-6m^2}{\lambda}}$. There are now two vacuum states and $\braket{\phi} = \pm \sqrt{-\frac{6m^2}{\lambda}}$. 
+\end{itemize}
+Since the vacuum expectation value $\langle \phi \rangle = 0$ is invariant under $\phi \to -\phi$, but the two vacua $\langle \phi \rangle = \pm \sqrt{-6 m^{2} / \lambda}$ are not, this is a case of spontaneous symmetry breaking. That means there occurs a phase transition at some critical mass value $m_c^2 < 0$. At this critical point, 
+the correlation length diverges. This is the point where Monte-Carlo simulations become critical-slowing-down limited. 
+\\\\
+In this picture, spontaneous symmetry breaking is associated with a continuous phase transition where the effective mass crosses zero. The order parameter $\braket{\phi}$ changes from zero in the symmetric phase to a nonzero value in the broken phase, analogous to the magnetization of a ferromagnet emerging below the Curie temperature.
+\\\\
+In Euclidian lattice simulations, the temperature does not appear explictly (where for example in the Ising model, it does). Changing $\lambda$ and $m^2$ plays the role of changing extrenal thermodynamical variables. This also shows that the scalar $\phi^4$ theory with its spontaneous $\mathbb{Z}_2$ symmetry breaking mirrors the magnetization transition of the Ising model. For more details about the Ising model, see \cite{WieseThermodynamics}. 
+\section{Discretization of Scalar \texorpdfstring{$\phi^4$}{phi4} Theory}
+This section is based on the tutorial of the LFT course. \\
+We discretize this theory on a two-dimensional spacetime lattice of $L^2$ lattice sites with lattice spacing $a$ and denote the spacetime points as 
+\begin{equation}
+    \vec{x} = a \vec{n} = a(n_1, n_2), \quad 0 \leq n_1, n_2 < L. 
+\end{equation}
+We approximate the integral as a sum over all lattice sites: 
+\begin{equation}
+    \int \mathrm{d}^{2} x \rightarrow a^{2} \sum_{\vec{n}},
+\end{equation}
+For the discretization of the second derivative, we use the five-point stencil discretization (more on that, see \cite{FivePointStencilWiki}): 
+\begin{equation}
+    \begin{aligned}
+        \partial_{\mu}\partial^{\mu} \phi(\vec{x}) & = \left( \frac{\partial^{2}}{\partial x_{1}^{2}} + \frac{\partial^{2}}{\partial x_{2}^{2}} \right) \phi(\vec{x}) \\
+         & \to \frac{\phi(n_{1} + 1, n_{2}) + \phi(n_{1} - 1, n_{2}) + \phi(n_{1}, n_{2} + 1) + \phi(n_{1}, n_{2} - 1) - 4 \phi(\vec{n})}{a^{2}} + \mathcal{O}(a^{2}) \\
+         & = \sum_{\mu \in \{1, 2 \} } \frac{1}{a^{2}} \left[ \phi(\vec{n} + \hat{\mu}) + \phi(\vec{n} - \hat{\mu}) - 2 \phi(\vec{n}) \right] + \mathcal{O}(a^{2}).
+    \end{aligned}
+\end{equation}
+All together, the discretized action reads
+\begin{equation}
+    S[\phi] = a^{2} \sum_{\vec{n}} \left( -\frac{1}{2 a^{2}} \phi(\vec{n}) \sum_{\mu} \left[ \phi(\vec{n} + \hat{\mu}) + \phi(\vec{n} - \hat{\mu}) - 2 \phi(\vec{n}) \right] + \frac{1}{2} m^{2} \phi^{2}(\vec{n}) + \frac{1}{4!} \lambda \phi^{4}(\vec{n}) \right)
+\end{equation}
+or, after some algebra,
+\begin{equation}
+    \boxed{S[\phi] = \sum_{\vec{n}} \left( \left[ 2 + \frac{1}{2} m^{2}\right] \phi^{2}(\vec{n}) + \frac{1}{4!} \lambda \phi^{4}(\vec{n}) -\sum_{\mu} \left[ \phi(\vec{n} + \hat{\mu}) \phi(\vec{n})\right] \right)}
+\end{equation}
+where we have redefined $(am)^{2} \to m^{2}$ and $(a^{2} \lambda) \to \lambda$. The discretized action has a changed mass, $m_{\text{eff}}^2 = 2 + \frac{1}{2}m^2$. 

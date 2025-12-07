@@ -1,0 +1,291 @@
+\chapter{Examples}
+\section{Equations and Math Features}\label{sec:equations}
+
+\subsection{Align* and Equation Environment}
+\begin{align*}
+    a &= b + c \tag{ab} \label{eq:ab} \\
+    d &= e + f \dotag \label{eq:de} \\
+    g &= h + c \dotag \label{eq:gh}
+\end{align*}
+
+Equation \ref{eq:ab} shows the relationship between $a$, $b$, and $c$. Equation \eqref{eq:de} demonstrates another relation. \eqref{eq:gh} is also an equation.\\
+Notice that the \texttt{\textbackslash{dotag}} automatically numbers the equation. This numbering will behave exatly like numbering in the equation environment.
+
+\subsection{\textbackslash[ ... \textbackslash]}\label{subsec:integral}
+\[
+    \int_{a}^{b} f(x) \,dx \dotag \label{eq:integral}
+\]
+
+In Section \ref{sec:equations}, we discussed integrals, such as the one in Equation \eqref{eq:integral}.
+
+\section{Symbols and Operators}\label{sec:symbols}
+
+\subsection{Some symbol shorthands}\label{subsec:arrows}
+
+\begin{minted}{latex}
+    \begin{gather*}
+        \to, \gets, \To, \Gets,\\
+        \Nabla, \checkmark, \xmark,  \dotag \\
+        \Abs{\br{\abs{ABC}}^{\br{EFG}}}^2_2\\
+        \pmat{\1 & 0 \\ 0 & \1} = 
+        \bmat{1 &  & \0 \\  & 1 &  \\ \0 &  &  \1} =
+        \op{Id}
+    \end{gather*}
+\end{minted}
+compiles to:
+
+    \begin{gather*}
+        \to, \gets, \To, \Gets,\\
+        \Nabla, \checkmark, \xmark,  \dotag \\
+        \Abs{\br{\abs{ABC}}^{\br{EFG}}}^2_2\\
+        \pmat{\1 & 0 \\ 0 & \1} = 
+        \bmat{1 &  & \0 \\  & 1 &  \\ \0 &  &  \1} =
+        \op{Id}
+    \end{gather*}
+
+\subsubsection{Underbrace and Overset}
+\[
+    A = \underbrace{B}_{\text{some description}} + \overset{\text{over}}{C}
+\]
+
+\subsubsection{Underset, Overrightarrow and Transpose}
+\[
+    X^\tp = \underset{\text{under}}{Y} + \overrightarrow{Z}
+\]
+
+\subsubsection{Trigonometric and Exponential Functions}
+    \begin{align*}
+        \sin(\theta) &= \frac{a}{b} \\
+        \exp(x) &= e^x
+    \end{align*}
+
+\subsubsection{Matrices and Brackets}
+    \begin{align*}
+        &\text{pmatrix:} \quad \pmat{1 & 2 \\ 3 & 4} \\
+        &\text{bmatrix:} \quad \bmat{a & b \\ c & d} \\
+        &\text{braket:} \quad \Braket{\Psi | \phi} \\
+        &\text{bra-ket:} \quad \bra{\psi} \ket{\phi}
+    \end{align*}
+
+\subsubsection{\textbackslash{left(}, \textbackslash{right)}}
+we can use the \texttt{\textbackslash br\{\dots\}} command as a shorthand for \texttt{\textbackslash left \dots \textbackslash right}
+\[
+    \br{\abs{x^{1.5i}}} = \br{\sin\br{\frac{a}{b}}}_{a=0}^{\pi}
+\]
+
+\subsubsection{\textbackslash{lim}, \textbackslash{sum}, \textbackslash{cap}, \textbackslash{cup}, \textbackslash{op}, \textbackslash{Op}}
+    \begin{align*}
+        \Op{lim}_{x \to \infty} f(x) \\
+        \sum_{n=1}^{\infty} a_n \\
+        A \cap B \\
+        C \cup D \\
+        \op{Tr}(M) \\
+        \Op{argmax}_{x} f(x)
+    \end{align*}
+
+\subsubsection{\textbackslash{vec}, \textbackslash{ab}}
+    \begin{align*}
+        \Nabla{V} &, \abs{a}
+    \end{align*}
+
+\section{Theorems and Definitions}
+
+\subsection{Theorems}
+
+\begin{theorem}
+    This is a theorem.
+\end{theorem}
+
+\begin{definition}
+    This is a definition.
+\end{definition}
+
+\begin{lemma}
+    This is a lemma.
+\end{lemma}
+
+\begin{corollary}
+    This is a korollar.
+\end{corollary}
+
+\subsection{Remarks and Notation}
+
+\begin{notation}
+    This is a notation.
+\end{notation}
+
+\begin{remark}
+    This is a remark.
+\end{remark}
+
+We can cite sources: \cite[Additional info]{ftb}
+\section{Code Examples}
+\subsection{Python Code with \texttt{minted}}
+It is possible to do inline syntax highliting 
+\begin{minted}{latex}
+\mintinline{python}|def foo()|
+\end{minted}
+or Entire Codeblocks (the lines and frame can both be disabled)
+\begin{minted}[frame=single, linenos]{python}
+def fibonacci(n):
+    if n <= 0:
+        return 0
+    return fibonacci(n) + fibonacci(n-1)
+\end{minted}
+\subsection{text with \texttt{minted}}
+\begin{minted}[frame=single, linenos]{text}
+It is possible to write unformatted text
+    like this
+    \/§%@ \end{example}
+\end{minted}
+
+\subsection{Pseudocode with \texttt{algorithmic}}
+
+\begin{algorithm}[H]
+\caption{Euclid}
+\begin{algorithmic}[1] % the [1] makes the lines numbered
+    \Procedure{Euclid}{$a, b$}\Comment{The greatest common divisor of $a$ and $b$}
+        \While{$b \neq 0$}
+            \State $r \gets a \bmod b$
+            \State $a \gets b$
+            \State $b \gets r$
+        \EndWhile
+        \State \textbf{return} $a$\Comment{The gcd is $a$}
+    \EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\section{List Environments}
+
+\subsection{Itemize Environment}
+
+\begin{itemize}
+    \item Item 1
+    \item Item 2
+    \item Item 3
+\end{itemize}
+
+\subsection{Enumerate Environment}
+
+\begin{enumerate}
+    \item First item
+    \item Second item
+    \item Third item
+\end{enumerate}
+
+\subsection{Customized Enumerate Environment with \texttt{enumitem}}
+
+\begin{enumerate}[(I)]
+    \item Customized First item
+    \item Customized Second item
+\end{enumerate}
+\begin{enumerate}[a)]
+    \item Customized First item
+    \item Customized Second item
+\end{enumerate}
+
+\section{Tabular Environment}
+
+\subsection{Basic table with multicolumns and multirows}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{rrrr}
+    \multicolumn{4}{l}{Really Long header}\\
+    \toprule
+    Top & Center & Bottom & Both  \\ 
+    \midrule
+    \multirow[t]{2}{*}{a}&
+    \multirow[c]{2}{*}{b}&
+    \multirow[b]{2}{*}{c}&
+    d\\
+    &&&e \\
+    \bottomrule
+    \end{tabular}
+    \caption{Caption}
+    \label{tab:my_label}
+\end{table}
+
+\subsection{Multitable example}
+\begin{table}[H]
+\centering
+\begin{subtable}[T]{0.4\textwidth}
+\centering
+\begin{tabular}{rrr}
+\toprule
+ang [\si{\deg}] & $m_{lift}$ [\si{g}] & $m_{res}$ [\si{g}]\\
+\midrule
+20 & 4 & 11 \\
+15 & 11 & 17 \\
+10 & 22 & 22 \\
+5 & 30 & 27 \\
+0 & 39 & 29 \\
+-5 & 47 & 31 \\
+-10 & 55 & 32 \\
+-15 & 65 & 32 \\
+-20 & 74 & 32 \\
+\midrule
+$v_{\infty} = 0$ & 70 & 50\\
+\bottomrule
+\end{tabular}
+\caption{Raw data for Measurements of $F_{lift}, F_{res}$}
+\end{subtable}
+\quad
+\begin{subtable}[T]{0.4\textwidth}
+\centering
+\begin{tabular}{rrr}
+\toprule
+$N$ & $x$ [mm]& $p_{rel}$ [mm\ce{H2O}]\\
+\midrule
+0 & 5 & 11.4 \\
+1 & 7 & -0.5 \\
+2 & 17 & -6.4 \\
+3 & 23 & -5.5 \\
+4 & 40 & 0.3 \\
+5 & 65 & 2.4 \\
+6 & 88 & 2.4 \\
+7 & 119 & 0.0 \\
+8 & 89 & 0.0 \\
+9 & 68 & -0.7 \\
+10 & 46 & -4.5 \\
+11 & 28 & -14.4 \\
+12 & 16 & -12.6 \\
+13 & 7 & -4.5 \\
+\bottomrule
+\end{tabular}
+\caption{Measurements of the relative pressure}
+\end{subtable}
+\caption{Raw data}
+\end{table}
+
+\section{SIunitx Example}\label{sec:siunitx}
+
+\subsection{Basic Usage}
+
+\begin{itemize}
+    \item Length: \SI{2.5(0.050)e-3}{\meter}
+    \item Mass: \SI{150}{\gram}
+    \item Time: \SI{3.2e-2}{\second}
+    \item Temperature: \SI{25}{\degreeCelsius}
+\end{itemize}
+
+\subsection{Ranges and Lists}
+
+\begin{itemize}
+    \item Range: \SIrange{10}{20}{\degreeCelsius}
+    \item List: \SIlist{1;3;5}{\meter\per\second}
+\end{itemize}
+
+\subsection{Scientific Notation}
+
+\begin{itemize}
+    \item numbers: \num{3.45e5}
+    \item values: \SI{3.45e5}{\meter\per\second\squared}
+\end{itemize}
+
+\subsection{Angles}
+
+\begin{itemize}
+    \item Degrees: \SI{45}{\degree}
+    \item Radians: $\SI{2\pi}{\radian}$
+\end{itemize}
