@@ -1,6 +1,9 @@
 import numpy as np
 from tqdm.notebook import tqdm
-import metropolis
+import algorithms.metropolis as metropolis
+from numpy.random import Generator
+from typing import Callable, Optional
+from algorithms.metropolis import MetropolisSim
 
 def mean_field(): 
     pass
@@ -8,20 +11,19 @@ def mean_field():
 def susceptibility(): 
     pass
 
-def sample_observable(initial_phi: np.ndarray, num_samples: int, mass2: float, lamb: float, width: float, rng: np.random.Generator): 
-    def mean_field_obs(phi: np.ndarray): 
-        return np.abs(np.mean(phi))
+def sample_observable(initial_phi: np.ndarray, num_samples: int, mass2: float, lamb: float, width: float, rng: Generator, observable: Optional[Callable] = None, progress: bool = True): 
+    if observable is None:
+        observable = lambda phi: np.abs(np.mean(phi))
+
+    sim = MetropolisSim(initial_phi, mass2, lamb, width, rng)
     
-    phi = initial_phi.copy()
     measurements = []
-    acceptance = []
 
-    for _ in range(num_samples): 
-        phi, accepted = metropolis.metropolis_step(phi, mass2=mass2, lamb=lamb, width=width, rng=rng)
-        measurements.append(mean_field_obs(phi))
-        acceptance.append(accepted)
+    for _ in range(num_samples):
+        sim.update()
+        measurements.append(observable(sim.phi))
 
-    return measurements, acceptance
+    return np.array(measurements, dtype=np.float32), sim.accepted_history
 
 def bin_sizes_finder(sample_size: int): 
     max_search = int(np.sqrt(sample_size)) + 2
