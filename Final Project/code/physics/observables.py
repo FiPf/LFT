@@ -2,12 +2,11 @@ import numpy as np
 from tqdm.notebook import tqdm
 import metropolis
 
-def phi4_action(phi: np.ndarray, mass2: float, lamb: float) -> np.ndarray:
-    action = np.sum((2 + 0.5 * mass2) * (phi ** 2) + (lamb / 24) * (phi ** 4))
-    for mu in range(2):
-        action -= np.sum(phi * np.roll(phi, shift=-1, axis=mu))
+def mean_field(): 
+    pass
 
-    return action
+def susceptibility(): 
+    pass
 
 def sample_observable(initial_phi: np.ndarray, num_samples: int, mass2: float, lamb: float, width: float, rng: np.random.Generator): 
     def mean_field_obs(phi: np.ndarray): 

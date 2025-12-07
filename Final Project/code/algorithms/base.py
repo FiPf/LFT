@@ -3,13 +3,14 @@ from typing import Callable
 from tqdm import trange
 
 class Base_sim(ABC): 
-    @abstractmethod
 
     def __init__(self):
         self.steps = 0
 
+    @abstractmethod
     def update(self): 
         self.steps += 1
+        raise NotImplementedError
 
     def get_steps(self): 
         return self.steps
