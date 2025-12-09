@@ -4,12 +4,6 @@ from algorithms.base import Base_sim
 from numpy.random import Generator, default_rng
 from typing import Optional, Callable
 
-def propose_phi(phi: np.ndarray,
-                width: float,
-                rng: np.random.Generator) -> np.ndarray:
-    delta = 2. * rng.random(size=phi.shape) - 1.  # 2D array with random numbers between -1 and 1.
-    return phi + width * delta
-
 class MetropolisSim(Base_sim): 
     def __init__(self, initial_phi: np.array, mass2: float, lamb: float, width: float, rng: Generator):
         super().__init__()
@@ -20,8 +14,14 @@ class MetropolisSim(Base_sim):
         self.rng = rng
         self.accepted_history = []
 
+    def propose_phi(phi: np.ndarray,
+                width: float,
+                rng: np.random.Generator) -> np.ndarray:
+        delta = 2. * rng.random(size=phi.shape) - 1.  # 2D array with random numbers between -1 and 1.
+        return phi + width * delta
+
     def update(self) -> None:
-        proposed_phi = propose_phi(self.phi, self.width, self.rng)
+        proposed_phi = self.propose_phi(self.phi, self.width, self.rng)
 
         current_action = actions.phi4_action(self.phi, mass2=self.mass2, lamb=self.lamb)
         proposed_action = actions.phi4_action(proposed_phi, mass2=self.mass2, lamb=self.lamb)
