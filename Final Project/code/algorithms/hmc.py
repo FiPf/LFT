@@ -1,6 +1,6 @@
 import numpy as np
 import physics
-from base import Base_sim
+from algorithms.base import Base_sim
 from numpy.random import Generator, default_rng
 from typing import Optional, Callable
 import physics.actions as actions

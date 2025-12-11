@@ -14,7 +14,7 @@ class MetropolisSim(Base_sim):
         self.rng = rng
         self.accepted_history = []
 
-    def propose_phi(phi: np.ndarray,
+    def propose_phi(self, phi: np.ndarray,
                 width: float,
                 rng: np.random.Generator) -> np.ndarray:
         delta = 2. * rng.random(size=phi.shape) - 1.  # 2D array with random numbers between -1 and 1.
