@@ -4,7 +4,7 @@ from algorithms.base import Base_sim
 from numpy.random import Generator, default_rng
 from typing import Optional, Callable
 import physics.actions as actions
-import integrators
+import algorithms.integrators as integrators
 
 class HMCSim(Base_sim):
     def __init__(self, initial_phi: np.array, mass2: float, lamb: float, width: float, rng: Generator, integrator: Callable):
@@ -12,22 +12,25 @@ class HMCSim(Base_sim):
         self.phi = initial_phi.copy()
         self.mass2 = float(mass2)
         self.lamb = float(lamb)
-        self.width = float(width)
+        self.eps = float(width)
         self.rng = rng
         self.accepted_history = []
         self.integrator = integrator
+        self.steps = 100
+        self.grad_action = actions.gradient_phi4_action
+        self.grad_kwargs = dict(mass2=self.mass2, lamb=self.lamb)
 
     def update(self) -> None:
-        pi0 = self.rng.normal(loc=0.0, scale=1.0, size=self.lamb)
+        pi0 = self.rng.normal(size=self.phi.shape)
         proposed_phi = self.phi.copy()
         proposed_pi = pi0.copy()
 
         for i in range(self.steps): 
-            proposed_phi, proposed_pi = self.integrator(proposed_phi, proposed_pi, self.eps)
+            proposed_phi, proposed_pi = self.integrator(proposed_phi, proposed_pi, self.eps, grad_action=self.grad_action, grad_kwargs=self.grad_kwargs)
         
         H_old = actions.hamiltonian(self.phi, pi0, mass2=self.mass2, lamb=self.lamb)
-        H_new = actions.hamiltonian(proposed_phi, pi0, mass2=self.mass2, lamb=self.lamb)
-        p_accept = np.min(1, np.exp(H_old - H_new))
+        H_new = actions.hamiltonian(proposed_phi, proposed_pi, mass2=self.mass2, lamb=self.lamb)
+        p_accept = min(1, np.exp(H_old - H_new))
         if self.rng.random() <= p_accept: 
             self.phi = proposed_phi
             self.accepted_history.append(1)
