@@ -14,4 +14,13 @@
 \contentsline {chapter}{\numberline {4}Integrators for HMC}{12}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Leapfrog Integration}{12}{section.4.1}%
 \contentsline {section}{\numberline {4.2}The Omelyan2 Integrator}{13}{section.4.2}%
-\contentsline {chapter}{\numberline {5}Results}{15}{chapter.5}%
+\contentsline {chapter}{\numberline {5}Statistical Analysis}{15}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Estimating Errors}{15}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Autocorrelation and Integrated Autocorrelation Time}{16}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}The Binning Method}{17}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Other Methods for Estimating the Autocorrelation}{17}{subsection.5.2.2}%
+\contentsline {chapter}{\numberline {6}Topological Charge for the Scalar $\phi ^4$ Theroy in 2D}{18}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Kinks and Topology}{18}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Periodic Boundary Conditions (PBC)}{18}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Aperiodic Boundary Conditions (APBC)}{19}{section.6.3}%
+\contentsline {chapter}{\numberline {7}Results}{20}{chapter.7}%

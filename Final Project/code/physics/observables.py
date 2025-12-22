@@ -4,6 +4,7 @@ import algorithms.metropolis as metropolis
 from numpy.random import Generator
 from typing import Callable, Optional
 from algorithms.metropolis import MetropolisSim
+from algorithms.hmc import HMCSim
 
 def mean_field(): 
     pass
@@ -11,41 +12,49 @@ def mean_field():
 def susceptibility(): 
     pass
 
-def sample_observable(initial_phi: np.ndarray, num_samples: int, mass2: float, lamb: float, width: float, rng: Generator, observable: Optional[Callable] = None, progress: bool = True): 
+def sample_observable(initial_phi: np.ndarray, num_samples: int, mass2: float, lamb: float, width: float, rng: Generator, observable: Optional[Callable] = None, algorithm: str = None, progress: bool = True, **kwargs): 
     if observable is None:
         observable = lambda phi: np.abs(np.mean(phi))
 
-    sim = MetropolisSim(initial_phi, mass2, lamb, width, rng)
-    
+    if algorithm is None: 
+        raise ValueError("algorithm must be 'Metropolis' or 'HMC'")
+    if algorithm == "Metropolis": 
+        sim = MetropolisSim(initial_phi, mass2, lamb, width, rng)
+    elif algorithm == "HMC": 
+        sim = HMCSim(initial_phi, mass2, lamb, width, rng, **kwargs) 
+
+    else:
+        raise ValueError(f"Unknown algorithm '{algorithm}'")
+
     measurements = []
 
-    for _ in range(num_samples):
+    iterator = range(num_samples)
+    if progress:
+        iterator = tqdm(iterator, desc=f"Sampling ({algorithm})")
+
+    for _ in iterator:
         sim.update()
         measurements.append(observable(sim.phi))
 
-    return np.array(measurements, dtype=np.float32), sim.accepted_history
+    accepted = getattr(sim, "accepted_history", None)
 
-def bin_sizes_finder(sample_size: int): 
-    max_search = int(np.sqrt(sample_size)) + 2
-    bin_sizes = []
-    for i in range(1, max_search):
-        if sample_size % i == 0:
-            bin_sizes.append(i)
-            bin_sizes.append(sample_size // i)
-    bin_sizes.sort()
-    return bin_sizes
+    return np.asarray(measurements, dtype=np.float32), accepted
 
-def apply_binning(measurements: np.ndarray, min_num_measurement_for_bin: int = 200):
-    bin_sizes = bin_sizes_finder(len(measurements))
+def phi_diff(phi: np.array, spatial_axis: int = 0) -> float:
+    phi_0 = np.mean(np.take(phi, indices = 0, axis = spatial_axis))
+    phi_L = np.mean(np.take(phi, indices=-1, axis=spatial_axis))
+    return 0.5*(phi_L - phi_0)
 
-    binned_errors = []
-    for i, size in enumerate(tqdm(bin_sizes, desc="Applying binning")):
-        Markov_chain = len(measurements) // size
-        if Markov_chain < min_num_measurement_for_bin: 
-            bin_sizes = bin_sizes[:i]
-            break
-        binned_obs = measurements.reshape(Markov_chain, size)
-        binned_obs = np.mean(binned_obs, axis = 1)
-        binned_errors.append(np.std(binned_obs)/np.sqrt(Markov_chain))
+def topological_charge_QR(phi_PBC: np.ndarray, phi_APBC: np.ndarray, spatial_axis: int = 0) -> float: 
+    # https://arxiv.org/pdf/hep-lat/0506003
 
-    return bin_sizes, binned_errors  
+    phi_mean = np.mean([np.mean(phi) for phi in phi_PBC])
+    if np.abs(phi_mean) < 1e-12:
+        return 0.0 #by definition in symmetric phase
+
+    phi_diff_mean = np.mean([
+        phi_diff(phi, spatial_axis=spatial_axis)
+        for phi in phi_APBC
+    ])
+
+    return phi_diff_mean / phi_mean

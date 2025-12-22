@@ -43,6 +43,149 @@
       \field{note}{Accessed: 2025-07-11}
       \field{title}{Methods of Monte Carlo Simulation}
     \endentry
+    \entry{wiki:autocorrelation}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=e2ceeea38f8620383cfbd3e99c5c0cd8}{%
+           family={contributors},
+           familyi={c\bibinitperiod},
+           given={Wikipedia},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \strng{fullhash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \strng{fullhashraw}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \strng{bibnamehash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \strng{authorbibnamehash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \strng{authornamehash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \strng{authorfullhash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \strng{authorfullhashraw}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \field{extraname}{1}
+      \field{sortinit}{c}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://en.wikipedia.org/wiki/Autocorrelation}}
+      \field{note}{Accessed December 2025}
+      \field{title}{Autocorrelation}
+      \field{year}{2025}
+    \endentry
+    \entry{wiki:mcmc}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=e2ceeea38f8620383cfbd3e99c5c0cd8}{%
+           family={contributors},
+           familyi={c\bibinitperiod},
+           given={Wikipedia},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \strng{fullhash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \strng{fullhashraw}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \strng{bibnamehash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \strng{authorbibnamehash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \strng{authornamehash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \strng{authorfullhash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \strng{authorfullhashraw}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \field{extraname}{2}
+      \field{sortinit}{c}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed September 2025}
+      \field{title}{Markov chain Monte Carlo}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo
+      \endverb
+    \endentry
+    \entry{wiki:stderr}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=e2ceeea38f8620383cfbd3e99c5c0cd8}{%
+           family={contributors},
+           familyi={c\bibinitperiod},
+           given={Wikipedia},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \strng{fullhash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \strng{fullhashraw}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \strng{bibnamehash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \strng{authorbibnamehash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \strng{authornamehash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \strng{authorfullhash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \strng{authorfullhashraw}{e2ceeea38f8620383cfbd3e99c5c0cd8}
+      \field{extraname}{3}
+      \field{sortinit}{c}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed September 2025}
+      \field{title}{Standard error}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/Standard_error
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/Standard_error
+      \endverb
+    \endentry
+    \entry{De_2005}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=3814df4c7f64323fa51935b80257c3bb}{%
+           family={De},
+           familyi={D\bibinitperiod},
+           given={Asit\bibnamedelima K.},
+           giveni={A\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=4af01c75174b63e53fd672b7e5bf3ff4}{%
+           family={Harindranath},
+           familyi={H\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=ef2ff2a604ba2f61b72deddb7d51cf8c}{%
+           family={Maiti},
+           familyi={M\bibinitperiod},
+           given={Jyotirmoy},
+           giveni={J\bibinitperiod}}}%
+        {{hash=bb4b426107dc9fc764bc96479196df79}{%
+           family={Sinha},
+           familyi={S\bibinitperiod},
+           given={Tilak},
+           giveni={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society (APS)}%
+      }
+      \strng{namehash}{c3bdca7a72afdb6b0a652f3a41b45ee9}
+      \strng{fullhash}{e1294dbf90fbe00a9b07d612dab84a07}
+      \strng{fullhashraw}{e1294dbf90fbe00a9b07d612dab84a07}
+      \strng{bibnamehash}{c3bdca7a72afdb6b0a652f3a41b45ee9}
+      \strng{authorbibnamehash}{c3bdca7a72afdb6b0a652f3a41b45ee9}
+      \strng{authornamehash}{c3bdca7a72afdb6b0a652f3a41b45ee9}
+      \strng{authorfullhash}{e1294dbf90fbe00a9b07d612dab84a07}
+      \strng{authorfullhashraw}{e1294dbf90fbe00a9b07d612dab84a07}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1550-2368}
+      \field{journaltitle}{Physical Review D}
+      \field{month}{11}
+      \field{number}{9}
+      \field{title}{Topological charge in $1+1$ dimensional lattice phi4 theory}
+      \field{volume}{72}
+      \field{year}{2005}
+      \verb{doi}
+      \verb 10.1103/physrevd.72.094504
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1103/PhysRevD.72.094504
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1103/PhysRevD.72.094504
+      \endverb
+    \endentry
     \entry{Duane1987HMC}{article}{}{}
       \name{author}{4}{}{%
         {{hash=bdebd6ef9e8e1b043aff76bf2f764e33}{%
@@ -88,6 +231,33 @@
       \verb{doi}
       \verb 10.1016/0370-2693(87)91197-X
       \endverb
+    \endentry
+    \entry{favaro:ml_lecture}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=b1d1b13c4b9716d6be01da64169529ff}{%
+           family={Favaro},
+           familyi={F\bibinitperiod},
+           given={Paolo},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {University of Bern}%
+      }
+      \strng{namehash}{b1d1b13c4b9716d6be01da64169529ff}
+      \strng{fullhash}{b1d1b13c4b9716d6be01da64169529ff}
+      \strng{fullhashraw}{b1d1b13c4b9716d6be01da64169529ff}
+      \strng{bibnamehash}{b1d1b13c4b9716d6be01da64169529ff}
+      \strng{authorbibnamehash}{b1d1b13c4b9716d6be01da64169529ff}
+      \strng{authornamehash}{b1d1b13c4b9716d6be01da64169529ff}
+      \strng{authorfullhash}{b1d1b13c4b9716d6be01da64169529ff}
+      \strng{authorfullhashraw}{b1d1b13c4b9716d6be01da64169529ff}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Bachelors Course in Computer Science}
+      \field{title}{Machine Learning}
+      \field{year}{2023}
     \endentry
     \entry{GattingerLang}{book}{}{}
       \name{author}{2}{}{%

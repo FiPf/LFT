@@ -1,0 +1,65 @@
+This chapter summarizes some experiments about the topological charge in a scalar 
+$\phi^4$ thery in two dimensions. All of this chaper is based on this paper: \cite{De_2005}. \\\\
+Consider the discretized action of the scalar $\phi^4$ theory in Equation \ref{eq: discrete_action}. 
+\section{Kinks and Topology}
+In the broken phase of the two-dimensional scalar $\phi^4$ theory, the potential possesses two degenerate minima at $\phi = \pm v$. As a consequence, the theory admits non-trivial classical field configurations known as kinks. A kink is a static solution of the field equations that interpolates between the two vacua, satisfying
+\[
+\phi(x \to -\infty) = -v, \qquad \phi(x \to +\infty) = +v ,
+\]
+while an antikink interpolates in the opposite direction.
+These configurations are distinguished from the vacuum by their topology. In particular, kink configurations cannot be continuously deformed into a constant vacuum configuration without forcing the field to leave the vacuum manifold, which would require infinite energy in the continuum limit. As a result, the space of field configurations decomposes into topologically distinct sectors.
+The topological properties of the theory are characterized by a conserved topological charge, which is proportional to the difference of the field values at spatial infinity. Vacuum configurations correspond to a trivial topological sector with vanishing charge, while kinks and antikinks carry non-zero topological charge. The existence of these non-trivial sectors depends crucially on the choice of boundary conditions, which determine whether configurations interpolating between different vacua are allowed.
+\section{Periodic Boundary Conditions (PBC)}
+With periodic boundary conditions (PBC), the fields satisfy 
+\begin{equation}
+    \phi(x + L\hat{\mu}) = \phi(x), 
+\end{equation}
+for all directions $\hat{\mu}$. In this case, the lattice is topologically trivial, configurations that 
+interpolate between distinct classical vacua are not allowed, because peridiocity enforces $\phi(0) = \phi(L)$. \\
+In the broken phase of the $\phi^4$ theory, the potential has two degenerate minima $\phi = \pm \sqrt{\frac{-6m^2}{\lambda}} := v$. 
+Even though in infinite volume, spontaneous symmetry breaking occurs, on a finite lattice with PBC, the Monte Carlo averge is $\braket{\phi} = 0$, 
+because of tunneling between the vacua. As a result $\braket{\phi}$ is not a suitable order parameter to distinguish
+between the symmetric and broken phase. \\
+Nevertheless, simulations with PBC are essential for determining renormalized quantities of the theory. For instance, the mass $m$ and the field
+renormalization constant $Z$ can be extracted from the two-point correlation function, while the renormalized vacuum expectation value $\langle \phi_R \rangle$
+is obtained from
+\begin{equation}
+    \braket{\phi_R} = \frac{1}{\sqrt{Z}}\braket{\abs{\phi}}.
+\end{equation}
+In the broken phase, the renomalized coupling can then be defined as 
+\begin{equation}
+    \lambda_R = 3 m_R^2 \braket{\phi_R}^2. \label{eq: lambda_R}
+\end{equation}
+These quantities enter the definition of the renormalized topological charge discussed below.
+\section{Aperiodic Boundary Conditions (APBC)}
+We impose Aperiodic Boundary Conditions (APBC) in one direction, 
+\begin{equation}
+    \phi(x + L) = \phi(x), 
+\end{equation}
+while PBC are kept for the second direction. Hence, the field interpolates between two classical vacua
+across the lattice, therefore the configurations have a kink or antikink. As in \cite{De_2005}, we define the 
+following order parameter: 
+\begin{equation}
+    \phi_\text{diff} = \frac{1}{2}\left( \phi_{L-1} - \phi_0 \right), 
+\end{equation}
+where $\phi_0$ is the expectation value of the field at site $0$, computed by averaging over all configurations
+generated with APBC (similary for $\phi_{L_1}$). In the symmetric phase,
+$\phi_{\text{diff}}$ vanishes, while in the broken phase it takes a nonzero value, reflecting the presence of a kink.
+\\\\
+We can define a bare topological charge on the lattice (see \cite{De_2005}) as follows: 
+\begin{equation}
+    Q_0 = \sqrt{\frac{\lambda_0}{3 m_0^2}}\phi_{\text{diff}}, 
+\end{equation}
+where $\lambda_0$ and $m_0$ are the bare lattice coupling and bare mass. $Q_0$ is not quantized and deviates from $\pm 1$ in the broken phase. 
+\\
+To get the quantization back, a renomalized topological charge is introduced (\cite{De_2005}): 
+\begin{equation}
+    Q_R = \sqrt{\frac{\lambda_R}{3m_R^2}}\phi_{R, \text{diff}}, \qquad \phi_{R, \text{diff}} = \frac{1}{\sqrt{Z}}\phi_{\text{diff}}. 
+\end{equation}
+Using Equation \ref{eq: lambda_R}, we obtain a simpler expression: 
+\begin{equation}
+    Q_R = \frac{\phi_{\text{diff}}}{\braket{\phi}}. 
+\end{equation}
+In the broken phase, $Q_R$ approaches $\pm 1$ within statistical errors,
+corresponding to kink and antikink sectors, while in the symmetric phase it
+remains close to zero. 

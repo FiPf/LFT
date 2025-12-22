@@ -16,7 +16,7 @@
 %can take a lot of compile time, set the compiler to LuaLaTex
 %\usepackage[compat=1.1.0]{tikz-feynman}
 %\usepackage{tikz}
-
+\usepackage{todonotes}
 %-- Computer science stuff
 \usepackage{algorithm, algpseudocode, minted}
 
@@ -66,6 +66,7 @@
 
 % -- The main body
 \chapter{Introduction}
+\input{introduction.tex}
 \chapter{Scalar \texorpdfstring{$\phi^4$}{phi4} Theory}
 \input{phi4theory.tex}
 \chapter{Algorithms}
@@ -73,6 +74,10 @@
 \input{hmc}
 \chapter{Integrators for HMC}\label{sec: integrators}
 \input{integrators.tex}
+\chapter{Statistical Analysis}
+\input{stats.tex}
+\chapter{Topological Charge for the Scalar \texorpdfstring{$\phi^4$}{phi4} Theroy in 2D}
+\input{charge.tex}
 \chapter{Results}
 
 \printbibliography

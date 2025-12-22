@@ -1,0 +1,106 @@
+In LFT, every calculated observable needs a statistical analysis to estimnate uts uncertainty, quantities without error
+estimations are meaningless. 
+\section{Estimating Errors}
+The variance of a random variable $X$ is defined as
+\begin{equation}
+    \op{Var}(X) = E[(X - E[X])^2].
+\end{equation}
+In our case, we use as the random variable the expectation value of some observable, which we aim to calculate, $X = \braket{\mathcal{O}}$. Hence we aim to calculate
+\begin{equation}
+    E[(\braket{\mathcal{O}} - E[\mathcal{O}])^2] = E \left[ \left( \frac{1}{N} \sum_{i=1}^N ( \mathcal{O}_i - E[\mathcal{O}])\right)^2 \right], 
+\end{equation}
+where we expand the square as follows: 
+\begin{equation}
+    \frac{1}{N^2} \sum_{i, j = 1}^N E[(\mathcal{O}_i - E[\mathcal{O}](\mathcal{O}_i - E[\mathcal{O}]))]. 
+\end{equation}
+The expectation value in the sum is precisely the covariance
+\begin{equation}
+    C_{ij}[\mathcal{O}] := E[\mathcal{O}_i \mathcal{O}_j] - E[\mathcal{O}]^2. 
+\end{equation}
+So the variance of the sample mean can be written as
+\begin{equation}
+    E[(\braket{\mathcal{O}} - E[\mathcal{O}])^2] = \frac{1}{N^2} \sum_{i, j = 1}^N C_{ij}[\mathcal{O}]. 
+\end{equation}
+The next step is to separate the diagonal from the off-diagonal terms. The diagonal terms $i = j$ give
+\begin{equation}
+    \sum_{i = 1}^N C_{ii}[\mathcal{O}] = N \op{Var}[\mathcal{O}]. 
+\end{equation}
+The off-diagonal terms encode the correlations between the different measurements. Thus, in total we obtain
+\begin{equation}
+    \frac{1}{N^2}\sum_{i, j=1}^N C_{ij}[\mathcal{O}] = \frac{\op{Var}[\mathcal{O}]}{N} + \frac{1}{N^2}\sum_{i \neq j} C_{ij}[\mathcal{O}]. 
+\end{equation}
+For a stationary Markov process, the correlations only depend on the time separation
+\begin{equation}
+    t = \abs{i -j}, \qquad C_{ij}[\mathcal{O}] = C_{1, 1 + t}[\mathcal{O}]. 
+\end{equation}
+For a fixed $t$, there are $N - t$ pairs $(i, j)$ with $j = i + t$. Since $C_{ij} = C_{ji}$, we have a factor of $2$, giving
+\begin{equation}
+    \sum_{i \neq j} C_{ij}[\mathcal{O}] = 2 \sum_{t = 1}^{N-1} (N- t) C_{1, t-1}[\mathcal{O}]. 
+\end{equation}
+Putting all the parts together, we obtain the following formula: 
+\begin{equation}
+    \text{E}\left[ \left( \langle \mathcal{O} \rangle - \text{E}[ \mathcal{O} ] \right)^{2} \right] = \frac{\text{Var}[ \mathcal{O} ]}{N} + \frac{2}{N^{2}} \sum_{t = 1}^{N - 1} (N - t) \, C_{1, t + 1}[ \mathcal{O} ]. 
+\end{equation}
+The first term encodes the result for independent samples, where the error is proportional to $\frac{1}{\sqrt{N}}$. The second term encodes the autocorrelation contribution, which increases the statistical error. \\\\
+Unfortunately, we can only estimate the statistical error through the expression
+\begin{equation}
+    \sigma := \frac{\sigma_{\mathcal{O}}}{\sqrt{N - 1}} = \sqrt{\frac{\langle \mathcal{O}^{2} \rangle - \langle \mathcal{O} \rangle^{2}}{N - 1}}.
+\end{equation}
+The validity of this estimator comes from the fact that its expectation value matches the statistical error:
+\begin{equation}
+    \begin{aligned}
+        \text{E}\left[ \langle O^{2} \rangle - \langle O \rangle^{2} \right]
+        & =
+        (N - 1) \frac{\text{Var}[O]}{N} - \frac{2}{N^{2}} \sum_{t = 1}^{N - 1} (N - t) \, C_{1, t + 1}[O] \\
+        &
+        \overset{\text{ind.}}{=} (N - 1) \frac{\text{Var}[O]}{N} \\
+        &
+        \implies \text{E}\left[ \frac{\langle O^{2} \rangle - \langle O \rangle^{2}}{N - 1} \right] = \frac{\text{Var}[O]}{N}.
+    \end{aligned}
+\end{equation}
+\cite{wiki:mcmc,wiki:stderr,favaro:ml_lecture}
+\section{Autocorrelation and Integrated Autocorrelation Time}
+In typical Monte Carlo methods in LFT, the configurations are always correlated, since we only make small steps while exploring the space of possible states. In our case, we have $\phi_{i+1} \in [\phi_i - w, \phi_i + w]$, where $w$ is the width. Elements later in the chain, for example $\phi_{i + 100}$ should me more independent from $\phi_i$. We will try to find the number of samples that can be considered independent, which is the idea behind autocorrelation. We rewrite the formula from above as follows: 
+\begin{equation}
+    \begin{aligned}
+        \text{E}\left[ \left( \langle \mathcal{O} \rangle - \text{E}[\mathcal{O}] \right)^{2} \right]
+        & =
+        \frac{\text{Var}[\mathcal{O}]}{N} + \frac{2}{N^{2}} \sum_{t = 1}^{N - 1} (N - t) \, C_{1, t + 1}[\mathcal{O}]
+        \\
+        & =
+        2 \left( \frac{1}{2} + \sum_{t = 1}^{N - 1} \left( 1 - \frac{t}{N}\right) \, \frac{C_{1, t + 1}[\mathcal{O}]}{\text{Var}[\mathcal{O}]} \right) \frac{\text{Var}[\mathcal{O}]}{N}
+        \\
+        & \approx
+        2 \tau_{\text{int}} \frac{\text{Var}[\mathcal{O}]}{N},
+    \end{aligned}
+\end{equation}
+where
+\begin{equation}
+    \tau_{\text{int}} = \frac{1}{2} + \sum_{t = 1}^{N - 1} \frac{C_{1, t + 1}[\mathcal{O}]}{\text{Var}[\mathcal{O}]}. 
+\end{equation}
+Here, $\tau_{\text{int}}$ denotes the integrated autocorrelation time, which is a measure of how many steps there must be between samples to consider them as independent. This depends on the observable and needs to be recalculated for all observables. \cite{wiki:autocorrelation}
+\subsection{The Binning Method}
+A simple method for estimating the autocorrelation is the binning method, which leaves the mean unchanged but modifies the error estimate to account for the dependence of the configurations. 
+\begin{enumerate}
+    \item Start with a thermalized chain of $N$ samples of some observable ${\mathcal{O}_1, \dots, \mathcal{O}_N}$. 
+    \item For a sequence of bin sizes $b_1, \dots, b_N$, do: 
+    \begin{enumerate}
+        \item Divide the chain in non-overlapping bins of size $b_i$. 
+        \item Compute the average within each bin, producing a chain ${\mathcal{O}_1', \dots, \mathcal{O}_N'}$. 
+        \item Treat the binned values as independent and compute the naive error $\sigma$. 
+    \end{enumerate}
+    \item Repeating for all bin sizes gives errors $\sigma_1, \dots, \sigma_N$. 
+    \item Plot the errors as a function of the bin size. For sufficiently large chains, the errors typically plateau as the bin size exceeds the autocorrelation length.
+    \item The limiting value of this plateau provides a reliable estimate of the statistical error. 
+\end{enumerate}
+\cite{GattingerLang}
+\subsection{Other Methods for Estimating the Autocorrelation}
+There are other methods to estimate the autocorrelation, which are more accurate than the binning method. For example: 
+\begin{itemize}
+    \item Direct calculation of the autocorrelation function
+    \item Jackknife method
+    \item Bootstrapping
+    \item Spectral Method (FFT)
+    \item Overlapping batches mean
+\end{itemize}
+\cite{GattingerLang}

@@ -2391,6 +2391,16 @@
     <bcf:citekey order="15" intorder="2">Omelyan2002Symplectic</bcf:citekey>
     <bcf:citekey order="16" intorder="1">Takaishi2005Symplectic</bcf:citekey>
     <bcf:citekey order="16" intorder="2">Omelyan2002Symplectic</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">wiki:mcmc</bcf:citekey>
+    <bcf:citekey order="17" intorder="2">wiki:stderr</bcf:citekey>
+    <bcf:citekey order="17" intorder="3">favaro:ml_lecture</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">wiki:autocorrelation</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">GattingerLang</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">GattingerLang</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">De_2005</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">De_2005</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">De_2005</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">De_2005</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
