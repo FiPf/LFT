@@ -11,14 +11,20 @@ use pyo3::{pyclass, pymethods, pyfunction};
 #[pyclass]
 pub struct MetropolisSim {
     base: SimulationBase,
+    #[pyo3(get, set)]
     pub phi: Vec<f64>,
+    #[pyo3(get, set)]
     pub L: usize,
+    #[pyo3(get, set)]
     pub mass2: f64,
     #[pyo3(get, set)]
     pub lambda_: f64,
+    #[pyo3(get, set)]
     pub eps: f64,
     rng: ChaCha20Rng,
+    #[pyo3(get, set)]
     pub accepted_history: Vec<u8>,
+    #[pyo3(get, set)]
     pub bc: BoundaryCondition,
 }
 

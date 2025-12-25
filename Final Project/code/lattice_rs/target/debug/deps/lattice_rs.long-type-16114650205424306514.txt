@@ -1,0 +1,1 @@
+for<'a, 'b, 'c> fn(&'a mut [f64], &'b mut [f64], f64, for<'a, 'b, 'c> fn(&'a [f64], &'b mut [f64], &'c GradParams), &'c GradParams, f64) {omelyan2}

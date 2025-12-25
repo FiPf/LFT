@@ -7,7 +7,7 @@ pub trait Integrator {
         pi: &mut [f64],
         eps: f64,
         mass2: f64,
-        lamb: f64,
+        lambda: f64,
         bc: BoundaryCondition,
     );
 }
@@ -21,7 +21,7 @@ pub type GradAction = fn(phi: &[f64], out: &mut [f64], params: &GradParams);
 #[derive(Clone, Copy)]
 pub struct GradParams {
     pub mass2: f64,
-    pub lamb: f64,
+    pub lambda: f64,
 }
 
 //omelyan2
