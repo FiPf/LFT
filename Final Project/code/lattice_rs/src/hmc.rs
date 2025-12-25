@@ -51,9 +51,9 @@ impl HMCSim {
 
         let integrator_choice = match integrator {
             "leapfrog" => IntegratorChoice::Leapfrog,
-            "omelyan" => IntegratorChoice::Omelyan,
+            "omelyan2" => IntegratorChoice::Omelyan,
             _ => return Err(pyo3::exceptions::PyValueError::new_err(
-                "Integrator must be 'leapfrog' or 'omelyan'",
+                "Integrator must be 'leapfrog' or 'omelyan2'",
             )),
         };
 

@@ -26,39 +26,45 @@ pub struct GradParams {
 
 //omelyan2
 pub fn omelyan2(
-    phi: &mut [f64], //instead of np.arrays, we use &mut [f64]
+    phi: &mut [f64],
     pi: &mut [f64],
     eps: f64,
     grad_action: GradAction,
     params: &GradParams,
-    lambda: f64, //lambda instead of lamb since rust already has this keyword
+    lambda: f64,
 ) {
     let n = phi.len();
+    let mut grad = vec![0.0; n];
 
-    let mut grad = vec![0.0; n]; // Temporary buffer for gradients
-
+    // Step 1
+    grad_action(phi, &mut grad, params);
     for i in 0..n {
-        pi[i] -= lambda * eps * phi[i];
+        pi[i] -= lambda * eps * grad[i];
     }
 
+    // Step 2
     for i in 0..n {
         phi[i] += 0.5 * eps * pi[i];
     }
 
+    // Step 3
     grad_action(phi, &mut grad, params);
     for i in 0..n {
         pi[i] -= (1.0 - 2.0 * lambda) * eps * grad[i];
     }
 
+    // Step 4
     for i in 0..n {
         phi[i] += 0.5 * eps * pi[i];
     }
 
+    // Step 5
     grad_action(phi, &mut grad, params);
     for i in 0..n {
         pi[i] -= lambda * eps * grad[i];
     }
 }
+
 
 
 //leapfrog
@@ -72,17 +78,22 @@ pub fn leapfrog(
     let n = phi.len();
     let mut grad = vec![0.0; n];
 
+    // Half-step momentum update
     grad_action(phi, &mut grad, params);
     for i in 0..n {
-        pi[i] -= 0.5 * eps * grad[i];
+        pi[i] -= 0.5 * eps * grad[i]; // subtract gradient
     }
 
+    // Full-step position update
     for i in 0..n {
         phi[i] += eps * pi[i];
     }
 
+    // Half-step momentum update
     grad_action(phi, &mut grad, params);
     for i in 0..n {
-        pi[i] -= 0.5 * eps * grad[i];
+        pi[i] -= 0.5 * eps * grad[i]; // subtract gradient
     }
 }
+
+
