@@ -6,11 +6,12 @@ from typing import Callable, Optional
 from algorithms.metropolis import MetropolisSim
 from algorithms.hmc import HMCSim
 
-def mean_field(): 
-    pass
+def susceptibility(measurements, L):
+    V = L**2
+    return V * (np.mean(measurements**2) - np.mean(measurements)**2)
 
-def susceptibility(): 
-    pass
+def magnetization(measurements):
+    return np.abs(np.mean(measurements))
 
 def sample_observable(initial_phi: np.ndarray, num_samples: int, mass2: float, lamb: float, width: float, rng: Generator, observable: Optional[Callable] = None, algorithm: str = None, progress: bool = True, **kwargs): 
     if observable is None:
