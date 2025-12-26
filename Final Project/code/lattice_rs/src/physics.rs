@@ -55,10 +55,9 @@ pub fn phi4_action(
     action
 }
 
-#[pyfunction]
 pub fn gradient_phi4_action(
-    phi: Vec<f64>,          // take ownership
-    mut grad: Vec<f64>,     // take ownership for mutation
+    phi: &[f64],
+    grad: &mut [f64],
     L: usize,
     mass2: f64,
     lambda: f64,
@@ -66,24 +65,33 @@ pub fn gradient_phi4_action(
 ) {
     for i in 0..L {
         for j in 0..L {
-            let idx0 = i * L + j;
-            let phi_ij = phi[idx0];
+            let idx = i * L + j;
+            let phi_ij = phi[idx];
 
             let i_fwd = roll(i as isize + 1, L);
             let j_fwd = roll(j as isize + 1, L);
+            let i_bwd = roll(i as isize - 1, L);
+            let j_bwd = roll(j as isize - 1, L);
 
             let mut phi_fwd_i = phi[i_fwd * L + j];
             let mut phi_fwd_j = phi[i * L + j_fwd];
+            let mut phi_bwd_i = phi[i_bwd * L + j];
+            let mut phi_bwd_j = phi[i * L + j_bwd];
 
-            if bc == BoundaryCondition::APBC && i == L - 1 {
-                phi_fwd_i *= -1.0;
+            if bc == BoundaryCondition::APBC {
+                if i == L - 1 { phi_fwd_i *= -1.0; }
+                if i == 0 { phi_bwd_i *= -1.0; }
             }
 
-            grad[idx0] = (2.0 + 0.5 * mass2) * phi_ij + (lambda / 6.0) * phi_ij.powi(3)
-                         - phi_fwd_i - phi_fwd_j;
+            grad[idx] = (2.0 + 0.5 * mass2) * 2.0* phi_ij
+                        + (lambda / 6.0) * phi_ij.powi(3)
+                        - phi_fwd_i - phi_bwd_i
+                        - phi_fwd_j - phi_bwd_j;
         }
     }
 }
+
+
 
 #[inline(always)]
 pub fn kinetic_energy(pi: &[f64]) -> f64 {

@@ -1,10 +1,23 @@
+// src/hmc.rs
 use pyo3::prelude::*;
-use rand_chacha::ChaCha20Rng;
+use rand_pcg::Pcg64;
 use rand::SeedableRng;
 use rand::Rng;
+use rand_distr::{Normal, Distribution};
 
-use crate::integrators::{leapfrog, omelyan2, GradParams, GradAction};
-use crate::physics::{hamiltonian, BoundaryCondition};
+use crate::integrators::{leapfrog, omelyan2, GradParams};
+use crate::physics::{hamiltonian, gradient_phi4_action, BoundaryCondition};
+
+/// Wrapper to match GradAction type
+fn grad_action_wrapper(phi: &[f64], grad: &mut [f64], params: &GradParams) {
+    gradient_phi4_action(phi, grad, params.L, params.mass2, params.lambda, params.bc);
+}
+
+#[derive(Clone, Copy)]
+enum IntegratorChoice {
+    Leapfrog,
+    Omelyan,
+}
 
 #[pyclass]
 pub struct HMCSim {
@@ -21,16 +34,10 @@ pub struct HMCSim {
     #[pyo3(get, set)]
     pub steps: usize,
 
-    rng: ChaCha20Rng,
+    rng: Pcg64,
     #[pyo3(get, set)]
     pub accepted_history: Vec<u8>,
     integrator_choice: IntegratorChoice,
-}
-
-#[derive(Clone, Copy)]
-enum IntegratorChoice {
-    Leapfrog,
-    Omelyan,
 }
 
 #[pymethods]
@@ -46,8 +53,7 @@ impl HMCSim {
         steps: usize,
         integrator: &str,
     ) -> PyResult<Self> {
-        let mut trng = rand::thread_rng();
-        let rng = ChaCha20Rng::from_rng(&mut trng);
+        let rng = Pcg64::seed_from_u64(42);
 
         let integrator_choice = match integrator {
             "leapfrog" => IntegratorChoice::Leapfrog,
@@ -70,82 +76,49 @@ impl HMCSim {
         })
     }
 
-    fn update(&mut self) {
-        // Fix: Use random() instead of gen() to avoid deprecation warning
-        let mut pi: Vec<f64> = self.phi.iter().map(|_| self.rng.random::<f64>()).collect();
+    /// Perform a single HMC update
+    /// Optional `pi_override` allows using predefined momenta (for testing)
+    #[pyo3(signature = (pi_override = None))]
+    fn update(&mut self, pi_override: Option<Vec<f64>>) {
+        let n = self.phi.len();
+        let mut pi: Vec<f64> = if let Some(p) = pi_override {
+            p
+        } else {
+            let normal = Normal::new(0.0, 1.0).unwrap();
+            self.phi.iter().map(|_| normal.sample(&mut self.rng)).collect()
+        };
+
         let mut phi_new = self.phi.clone();
         let mut pi_new = pi.clone();
 
         let params = GradParams {
+            L: self.L,
             mass2: self.mass2,
             lambda: self.lambda_,
+            bc: BoundaryCondition::PBC,
         };
 
-        // Define grad_action functions with correct signatures
-        let grad_action = |phi: &[f64], pi: &mut [f64], params: &GradParams| {
-            // You'll need to implement the gradient calculation here
-            // This is a placeholder - you need to replace it with your actual gradient
-            for (i, p) in pi.iter_mut().enumerate() {
-                // Example: simple gradient calculation
-                // This should be your actual gradient of the action
-                let grad = params.mass2 * phi[i] + params.lambda * phi[i].powi(3);
-                *p -= grad;
-            }
-        };
-
+        // Integrator step(s) in-place
         for _ in 0..self.steps {
             match self.integrator_choice {
                 IntegratorChoice::Leapfrog => {
-                    // Fix: Pass grad_action function reference, not the integrator itself
-                    leapfrog(
-                        &mut phi_new, 
-                        &mut pi_new, 
-                        self.eps, 
-                        grad_action, 
-                        &params
-                    );
+                    leapfrog(&mut phi_new, &mut pi_new, self.eps, grad_action_wrapper, &params);
                 }
                 IntegratorChoice::Omelyan => {
-                    // Fix: Pass grad_action function reference
-                    omelyan2(
-                        &mut phi_new, 
-                        &mut pi_new, 
-                        self.eps, 
-                        grad_action, 
-                        &params, 
-                        self.lambda_
-                    );
+                    omelyan2(&mut phi_new, &mut pi_new, self.eps, grad_action_wrapper, &params);
                 }
             }
         }
 
-        let h_old = hamiltonian(
-            self.phi.clone(),
-            pi,
-            self.L,
-            self.mass2,
-            self.lambda_,
-            BoundaryCondition::PBC,
-        );
-
-        let h_new = hamiltonian(
-            phi_new.clone(),
-            pi_new,
-            self.L,
-            self.mass2,
-            self.lambda_,
-            BoundaryCondition::PBC,
-        );
+        let h_old = hamiltonian(self.phi.clone(), pi.clone(), self.L, self.mass2, self.lambda_, params.bc);
+        let h_new = hamiltonian(phi_new.clone(), pi_new.clone(), self.L, self.mass2, self.lambda_, params.bc);
 
         let p_accept = (h_old - h_new).exp().min(1.0);
-
-        if self.rng.random::<f64>() < p_accept {
+        if self.rng.r#gen::<f64>() <= p_accept {
             self.phi = phi_new;
             self.accepted_history.push(1);
         } else {
             self.accepted_history.push(0);
         }
     }
-
-   
 }

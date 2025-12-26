@@ -1,6 +1,5 @@
 import numpy as np
 from tqdm.notebook import tqdm
-import algorithms.metropolis
 import physics.actions as actions
 from typing import Callable
 from enum import Enum

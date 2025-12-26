@@ -12,7 +12,7 @@ class MetropolisSim(Base_sim):
         self.mass2 = float(mass2)
         self.lamb = float(lamb)
         self.width = float(width)
-        self.rng = rng
+        self.rng = np.random.Generator(np.random.PCG64(42))
         self.accepted_history = []
         self.bc = bc
 

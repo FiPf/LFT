@@ -5,7 +5,7 @@ import physics.actions as actions
 def omelyan2(phi: np.array, pi: np.array, eps: float, grad_action: Callable = None, grad_kwargs: Any = None, lamb=0.1931833): 
     if grad_action is None: 
         grad_action = actions.gradient_phi4_action
-    pi1 = pi - lamb * eps * (phi)
+    pi1 = pi - lamb * eps * grad_action(phi, **grad_kwargs)
     phi1 = phi + 0.5 * eps * pi1
     pi2 = pi1 - (1 - 2*lamb) * eps * grad_action(phi1, **grad_kwargs)
     phi2 = phi1 + 0.5 * eps * pi2
