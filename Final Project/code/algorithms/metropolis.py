@@ -6,7 +6,22 @@ from typing import Optional, Callable
 from physics.actions import BoundaryCondition
 
 class MetropolisSim(Base_sim): 
+    """class to run the simulation with the Metropolis algorithm
+
+    Args:
+        Base_sim (abstract base class): MetropolisSim inherits from an abstract base class, which forces a common structure to other algorithms. 
+    """
     def __init__(self, initial_phi: np.array, mass2: float, lamb: float, width: float, rng: Generator, bc: BoundaryCondition = BoundaryCondition.PBC):
+        """initialize a Metropolis simulation
+
+        Args:
+            initial_phi (np.array): initial configuration
+            mass2 (float): mass parameter, can be any real number (also negative)
+            lamb (float): coupling strength of phi^4 theory, must be positive
+            width (float): parameter to tune the acceptance rate, used to sample the configuration space
+            rng (Generator): random number generator
+            bc (BoundaryCondition, optional): What kind of boundary conditions to use (period = PBC, aperiodic = APBC). Defaults to BoundaryCondition.PBC.
+        """
         super().__init__()
         self.phi = initial_phi.copy()
         self.mass2 = float(mass2)
@@ -19,10 +34,22 @@ class MetropolisSim(Base_sim):
     def propose_phi(self, phi: np.ndarray,
                 width: float,
                 rng: np.random.Generator) -> np.ndarray:
+        """helper function to generate a new field configuration
+
+        Args:
+            phi (np.ndarray): initial field configurations
+            width (float): parameter to tune the acceptance rate, used to sample the configuration space
+            rng (np.random.Generator): random number generator
+
+        Returns:
+            np.ndarray: new field configurration proposal
+        """
         delta = 2. * rng.random(size=phi.shape) - 1.  # 2D array with random numbers between -1 and 1.
         return phi + width * delta
 
     def update(self) -> None:
+        """perfoems a single Metropolis algorithm steps
+        """
         proposed_phi = self.propose_phi(self.phi, self.width, self.rng)
 
         current_action = actions.phi4_action(self.phi, mass2=self.mass2, lamb=self.lamb, bc=self.bc)
@@ -38,6 +65,21 @@ class MetropolisSim(Base_sim):
             self.accepted_history.append(0)
 
 def run_metropolis(phi0: np.array, mass2: float, lamb: float, width: float, n_steps: int, rng: Optional[Generator] = None, logger: Optional[Callable] = None, progress: bool = False, bc: BoundaryCondition = BoundaryCondition.PBC) -> MetropolisSim:
+    """function to run the Metropolis simulation, a MetropolisSim object is initialized and the simulation is run with the desired parameters. 
+
+    Args:
+        phi0 (np.array): initial configuration
+        mass2 (float): mass parameter, can be any real number (also negative)
+        lamb (float): coupling strength of phi^4 theory, must be positive
+        width (float): parameter to tune the acceptance rate, used to sample the configuration space
+        n_steps (int): number of steps to run the simulation
+        rng (Optional[Generator], optional): random number generator. Defaults to None.
+        logger (Optional[Callable], optional): Logger function to use. Defaults to None.
+        progress (bool, optional): Whether to display a progress bar or not. Defaults to False.
+
+    Returns:
+        MetropolisSim: A MetropolisSim object, the accepted history is returned
+    """
     rng = rng or default_rng()
     sim = MetropolisSim(phi0, mass2=mass2, lamb=lamb, width=width, rng=rng)
     sim.run_sim(n_steps, logger=logger, progress_bar=True)
