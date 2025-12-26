@@ -18,7 +18,7 @@ pub struct MetropolisSim {
     #[pyo3(get, set)]
     pub mass2: f64,
     #[pyo3(get, set)]
-    pub lambda_: f64,
+    pub lambda_: f64, //this has an underscore in the end, since lambda is a keyword im Python and this causes lots of trouble
     #[pyo3(get, set)]
     pub eps: f64,
     rng: ChaCha20Rng,
@@ -31,7 +31,7 @@ pub struct MetropolisSim {
 #[pymethods]
 impl MetropolisSim {
     #[new]
-    #[pyo3(signature = (phi0, L, mass2, lambda_, eps, bc = BoundaryCondition::PBC))]
+    #[pyo3(signature = (phi0, L, mass2, lambda_, eps, bc = BoundaryCondition::PBC))]//define PyO3 signature, attention to lambda
     fn new(phi0: Vec<f64>, L: usize, mass2: f64, lambda_: f64, eps: f64, bc: BoundaryCondition) -> Self {
         let mut thread_rng = rand::thread_rng();
         let rng = ChaCha20Rng::from_rng(&mut thread_rng);
@@ -45,14 +45,14 @@ impl MetropolisSim {
             eps,
             rng,
             accepted_history: Vec::new(),
-            bc,
+            bc, //we have that for Metropolis, very nice for topology
         }
     }
 
     fn propose_phi(&mut self) -> Vec<f64> {
         self.phi
             .iter()
-            .map(|&x| x + self.eps * self.rng.gen_range(-1.0..1.0))
+            .map(|&x| x + self.eps * self.rng.gen_range(-1.0..1.0)) //complicated
             .collect()
     }
 
@@ -80,6 +80,7 @@ impl MetropolisSim {
     }
 }
 
+//helper function outside to run the simulation with Metropolis
 #[pyfunction]
 pub fn run_metropolis(
     phi0: Vec<f64>,

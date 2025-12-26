@@ -3,7 +3,7 @@ pub trait BaseSim {
     fn get_steps(&self) -> usize; 
     fn run_sim<F>(&mut self, steps: usize, mut logger: Option<F>)
     where
-        F: FnMut(&Self), // `logger` closure takes a reference to Self and can mutate its own state.
+        F: FnMut(&Self), // logger closure takes a reference to Self and can mutate its own state, however I did not implement a logger so far
         Self: Sized,     // The trait can only be implemented for sized types (lattice!)
     {
         for _ in 0..steps {

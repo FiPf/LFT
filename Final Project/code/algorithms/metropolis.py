@@ -31,7 +31,7 @@ class MetropolisSim(Base_sim):
 
         r = self.rng.random()
 
-        if r <= p_acceptance:  # Accept.
+        if r <= p_acceptance:  
             self.phi = proposed_phi
             self.accepted_history.append(1)
         else: 

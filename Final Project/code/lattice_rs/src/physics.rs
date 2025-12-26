@@ -2,7 +2,7 @@ use pyo3::prelude::*;
 use pyo3::{pyclass, pymethods, pyfunction}; 
 
 
-//periodic or aperiodic boundary conditions
+//periodic or aperiodic boundary conditions, useful for topological charge stuff https://arxiv.org/pdf/hep-lat/0506003
 #[derive(Clone, Copy)]
 #[derive(PartialEq)]
 #[pyclass]
@@ -19,7 +19,7 @@ fn roll(i: isize, l: usize) -> usize {
 
 #[pyfunction]
 pub fn phi4_action(
-    mut phi: Vec<f64>, // take ownership instead of &mut
+    mut phi: Vec<f64>,
     L: usize,
     mass2: f64,
     lambda: f64,
@@ -39,14 +39,14 @@ pub fn phi4_action(
             let i_fwd = roll(i as isize + 1, L);
             let mut phi_fwd = phi[i_fwd * L + j];
 
-            // APBC sign change at boundary
+            // APBC sign changes at the boundary, only implemented for Metropolis, could be extendend
             if bc == BoundaryCondition::APBC && i == L - 1 {
                 phi_fwd *= -1.0;
             }
 
             action -= phi_ij * phi_fwd;
 
-            // mu = 1 (space direction)
+            // mu = 1 (spacial direction)
             let j_fwd = roll(j as isize + 1, L);
             action -= phi_ij * phi[i * L + j_fwd];
         }
@@ -68,7 +68,7 @@ pub fn gradient_phi4_action(
             let idx = i * L + j;
             let phi_ij = phi[idx];
 
-            let i_fwd = roll(i as isize + 1, L);
+            let i_fwd = roll(i as isize + 1, L); //this is a nightmare
             let j_fwd = roll(j as isize + 1, L);
             let i_bwd = roll(i as isize - 1, L);
             let j_bwd = roll(j as isize - 1, L);
@@ -83,7 +83,7 @@ pub fn gradient_phi4_action(
                 if i == 0 { phi_bwd_i *= -1.0; }
             }
 
-            grad[idx] = (2.0 + 0.5 * mass2) * 2.0* phi_ij
+            grad[idx] = (2.0 + 0.5 * mass2) * 2.0* phi_ij //factor two is important
                         + (lambda / 6.0) * phi_ij.powi(3)
                         - phi_fwd_i - phi_bwd_i
                         - phi_fwd_j - phi_bwd_j;
@@ -91,8 +91,7 @@ pub fn gradient_phi4_action(
     }
 }
 
-
-
+//used for hamiltonian, not outside
 #[inline(always)]
 pub fn kinetic_energy(pi: &[f64]) -> f64 {
     pi.iter().map(|x| x * x).sum::<f64>() * 0.5

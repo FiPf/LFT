@@ -7,11 +7,8 @@ pub struct GradParams {
     pub bc: BoundaryCondition,
 }
 
-pub type GradAction = fn(phi: &[f64], grad: &mut [f64], params: &GradParams);
+pub type GradAction = fn(phi: &[f64], grad: &mut [f64], params: &GradParams); //create our own type
 
-// Omelyan2 integrator (in-place, matches Python)
-/// Omelyan2 integrator (in-place, same style as leapfrog)
-// In integrators.rs - Modified to work in-place
 pub fn omelyan2(
     phi: &mut [f64],
     pi: &mut [f64],
@@ -21,9 +18,8 @@ pub fn omelyan2(
 ) {
     let n = phi.len();
     let mut grad = vec![0.0; n];
-    let lambda = 0.1931833;
+    let lambda = 0.1931833; //hardcoded (different from Python, but works so far)
 
-    // Step 1
     grad_action(phi, &mut grad, params);
     for i in 0..n {
         pi[i] -= lambda * eps * grad[i];
@@ -32,7 +28,6 @@ pub fn omelyan2(
         phi[i] += 0.5 * eps * pi[i];
     }
 
-    // Step 2
     grad_action(phi, &mut grad, params);
     for i in 0..n {
         pi[i] -= (1.0 - 2.0 * lambda) * eps * grad[i];
@@ -41,7 +36,6 @@ pub fn omelyan2(
         phi[i] += 0.5 * eps * pi[i];
     }
 
-    // Step 3
     grad_action(phi, &mut grad, params);
     for i in 0..n {
         pi[i] -= lambda * eps * grad[i];
@@ -49,8 +43,6 @@ pub fn omelyan2(
 }
 
 
-
-// Leapfrog integrator (already OK)
 pub fn leapfrog(
     phi: &mut [f64],
     pi: &mut [f64],
