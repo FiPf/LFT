@@ -333,6 +333,34 @@
       \verb 10.1016/S0010-4655(02)00754-3
       \endverb
     \endentry
+    \entry{pyo3}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=00101c24f3ab541faf7a2b132335df60}{%
+           family={{PyO3 Project Contributors}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{00101c24f3ab541faf7a2b132335df60}
+      \strng{fullhash}{00101c24f3ab541faf7a2b132335df60}
+      \strng{fullhashraw}{00101c24f3ab541faf7a2b132335df60}
+      \strng{bibnamehash}{00101c24f3ab541faf7a2b132335df60}
+      \strng{authorbibnamehash}{00101c24f3ab541faf7a2b132335df60}
+      \strng{authornamehash}{00101c24f3ab541faf7a2b132335df60}
+      \strng{authorfullhash}{00101c24f3ab541faf7a2b132335df60}
+      \strng{authorfullhashraw}{00101c24f3ab541faf7a2b132335df60}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2025-03-08}
+      \field{title}{PyO3: Rust bindings for the Python interpreter}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://pyo3.rs/
+      \endverb
+      \verb{url}
+      \verb https://pyo3.rs/
+      \endverb
+    \endentry
     \entry{SchwartzQFT}{book}{}{}
       \name{author}{1}{}{%
         {{hash=1e7b6dde56467cb787f369fadc91b2df}{%
@@ -402,6 +430,36 @@
       \endverb
       \verb{eprint}
       \verb hep-lat/0505020
+      \endverb
+    \endentry
+    \entry{rust_cookbook}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=f0d5fb5b87cc52e92b8ca896555849a5}{%
+           family={{The Rust Project Developers}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Rust Community}%
+      }
+      \strng{namehash}{f0d5fb5b87cc52e92b8ca896555849a5}
+      \strng{fullhash}{f0d5fb5b87cc52e92b8ca896555849a5}
+      \strng{fullhashraw}{f0d5fb5b87cc52e92b8ca896555849a5}
+      \strng{bibnamehash}{f0d5fb5b87cc52e92b8ca896555849a5}
+      \strng{authorbibnamehash}{f0d5fb5b87cc52e92b8ca896555849a5}
+      \strng{authornamehash}{f0d5fb5b87cc52e92b8ca896555849a5}
+      \strng{authorfullhash}{f0d5fb5b87cc52e92b8ca896555849a5}
+      \strng{authorfullhashraw}{f0d5fb5b87cc52e92b8ca896555849a5}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Rust Cookbook}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://rust-lang-nursery.github.io/rust-cookbook/
+      \endverb
+      \verb{url}
+      \verb https://rust-lang-nursery.github.io/rust-cookbook/
       \endverb
     \endentry
     \entry{WieseThermodynamics}{misc}{}{}

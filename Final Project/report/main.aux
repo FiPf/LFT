@@ -111,11 +111,61 @@
 \abx@aux@segm{0}{0}{De_2005}
 \newlabel{eq: lambda_R}{{6.2.3}{19}{Periodic Boundary Conditions (PBC)}{equation.6.2.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {6.3}Aperiodic Boundary Conditions (APBC)}{19}{section.6.3}\protected@file@percent }
+\abx@aux@cite{0}{rust_cookbook}
+\abx@aux@segm{0}{0}{rust_cookbook}
 \@writefile{toc}{\contentsline {chapter}{\numberline {7}Results}{20}{chapter.7}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {7.1}Details about the Implementation}{20}{section.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.1}Description of the Python Code}{20}{subsection.7.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1.2}Description of the Rust Code}{20}{subsection.7.1.2}\protected@file@percent }
+\abx@aux@cite{0}{pyo3}
+\abx@aux@segm{0}{0}{pyo3}
+\@writefile{toc}{\contentsline {section}{\numberline {7.2}Tuning the Algorithms to the Correct Acceptance Rate}{21}{section.7.2}\protected@file@percent }
+\newlabel{fig:const_width}{{7.2.1a}{21}{The dependence of the acceptance rate on the lattice size $L$. The following widths were used: Metropolis w = 0.14 / HMC + Leapfrog w = 0.2 / HMC + Omelyan2 w = 0.44}{figure.caption.3}{}}
+\newlabel{sub@fig:const_width}{{a}{21}{The dependence of the acceptance rate on the lattice size $L$. The following widths were used: Metropolis w = 0.14 / HMC + Leapfrog w = 0.2 / HMC + Omelyan2 w = 0.44}{figure.caption.3}{}}
+\newlabel{fig:adapted_width}{{7.2.1b}{21}{The widths were adpated as a function of $L$ to achieve an acceptance rate of 50\% for Metropolis and 90\% for HMC. The following width functions were used: Metropolis w = 1.1/L / HMC + Leapfrog w = 1.5/L / HMC + Omelyan2 w = 0.44 (const)}{figure.caption.3}{}}
+\newlabel{sub@fig:adapted_width}{{b}{21}{The widths were adpated as a function of $L$ to achieve an acceptance rate of 50\% for Metropolis and 90\% for HMC. The following width functions were used: Metropolis w = 1.1/L / HMC + Leapfrog w = 1.5/L / HMC + Omelyan2 w = 0.44 (const)}{figure.caption.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.2.1}{\ignorespaces Tuning the Acceptance Rates for Different Algorithms}}{21}{figure.caption.3}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:tuning_the_acceptance_rates}{{7.2.1}{21}{Tuning the Acceptance Rates for Different Algorithms}{figure.caption.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.3}Monte Carlo Chain Visualization}{21}{section.7.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7.3.1}{\ignorespaces Monte Carlo Chain of the Mean Field, Simulation using Different Algorithms}}{22}{figure.caption.4}\protected@file@percent }
+\newlabel{fig:MC chain}{{7.3.1}{22}{Monte Carlo Chain of the Mean Field, Simulation using Different Algorithms}{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7.4}Computational Performance of the Algorithms}{22}{section.7.4}\protected@file@percent }
+\newlabel{fig:subfig1}{{7.4.1a}{23}{Broken phase with negative mass}{figure.caption.5}{}}
+\newlabel{sub@fig:subfig1}{{a}{23}{Broken phase with negative mass}{figure.caption.5}{}}
+\newlabel{fig:subfig2}{{7.4.1b}{23}{Symmetric phase with positive mass}{figure.caption.5}{}}
+\newlabel{sub@fig:subfig2}{{b}{23}{Symmetric phase with positive mass}{figure.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.4.1}{\ignorespaces Python runtimes}}{23}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:Pythonruntimes}{{7.4.1}{23}{Python runtimes}{figure.caption.5}{}}
+\newlabel{fig:subfig1}{{7.4.2a}{23}{Broken phase with negative mass}{figure.caption.6}{}}
+\newlabel{sub@fig:subfig1}{{a}{23}{Broken phase with negative mass}{figure.caption.6}{}}
+\newlabel{fig:subfig2}{{7.4.2b}{23}{Symmetric phase with positive mass}{figure.caption.6}{}}
+\newlabel{sub@fig:subfig2}{{b}{23}{Symmetric phase with positive mass}{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.4.2}{\ignorespaces Rust runtimes}}{23}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:Rustruntimes}{{7.4.2}{23}{Rust runtimes}{figure.caption.6}{}}
+\abx@aux@cite{0}{GattingerLang}
+\abx@aux@segm{0}{0}{GattingerLang}
+\@writefile{toc}{\contentsline {section}{\numberline {7.5}Measururing Errors and Autocorrelations}{24}{section.7.5}\protected@file@percent }
+\newlabel{sec: errs}{{7.5}{24}{Measururing Errors and Autocorrelations}{section.7.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.5.1}Errors}{24}{subsection.7.5.1}\protected@file@percent }
+\newlabel{fig:subfig1}{{7.5.1a}{24}{Broken phase with negative mass}{figure.caption.8}{}}
+\newlabel{sub@fig:subfig1}{{a}{24}{Broken phase with negative mass}{figure.caption.8}{}}
+\newlabel{fig:subfig2}{{7.5.1b}{24}{Symmetric phase with positive mass}{figure.caption.8}{}}
+\newlabel{sub@fig:subfig2}{{b}{24}{Symmetric phase with positive mass}{figure.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.5.1}{\ignorespaces Statistical Errors as a function of lattice size $L$ for the broken and symmetric phase, algorithms in Python}}{24}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:python_errors}{{7.5.1}{24}{Statistical Errors as a function of lattice size $L$ for the broken and symmetric phase, algorithms in Python}{figure.caption.8}{}}
+\newlabel{fig:subfig1}{{7.5.2a}{25}{Broken phase with negative mass}{figure.caption.9}{}}
+\newlabel{sub@fig:subfig1}{{a}{25}{Broken phase with negative mass}{figure.caption.9}{}}
+\newlabel{fig:subfig2}{{7.5.2b}{25}{Symmetric phase with positive mass}{figure.caption.9}{}}
+\newlabel{sub@fig:subfig2}{{b}{25}{Symmetric phase with positive mass}{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7.5.2}{\ignorespaces Statistical Errors as a function of lattice size $L$ for the broken and symmetric phase, algorithms in Rust}}{25}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:rust_errors}{{7.5.2}{25}{Statistical Errors as a function of lattice size $L$ for the broken and symmetric phase, algorithms in Rust}{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.5.2}Autocorrelations}{25}{subsection.7.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.6}Results with the Topological Charge}{25}{section.7.6}\protected@file@percent }
 \xdef \mintedoldcachechecksum{\detokenize{\minted@cachechecksum }}
-\abx@aux@read@bbl@mdfivesum{25351EE3E2572404FB67A3389D52348B}
+\abx@aux@read@bbl@mdfivesum{B3AFAC8645E63E24DC59620DA91133FA}
 \abx@aux@defaultrefcontext{0}{Monte_carlo}{nty/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{wiki:autocorrelation}{nty/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{wiki:mcmc}{nty/global//global/global/global}
@@ -125,8 +175,10 @@
 \abx@aux@defaultrefcontext{0}{favaro:ml_lecture}{nty/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{GattingerLang}{nty/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{Omelyan2002Symplectic}{nty/global//global/global/global}
+\abx@aux@defaultrefcontext{0}{pyo3}{nty/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{SchwartzQFT}{nty/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{Takaishi2005Symplectic}{nty/global//global/global/global}
+\abx@aux@defaultrefcontext{0}{rust_cookbook}{nty/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{WieseThermodynamics}{nty/global//global/global/global}
 \abx@aux@defaultrefcontext{0}{FivePointStencilWiki}{nty/global//global/global/global}
-\gdef \@abspage@last{21}
+\gdef \@abspage@last{26}

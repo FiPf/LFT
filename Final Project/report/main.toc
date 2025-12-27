@@ -24,3 +24,13 @@
 \contentsline {section}{\numberline {6.2}Periodic Boundary Conditions (PBC)}{18}{section.6.2}%
 \contentsline {section}{\numberline {6.3}Aperiodic Boundary Conditions (APBC)}{19}{section.6.3}%
 \contentsline {chapter}{\numberline {7}Results}{20}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Details about the Implementation}{20}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Description of the Python Code}{20}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}Description of the Rust Code}{20}{subsection.7.1.2}%
+\contentsline {section}{\numberline {7.2}Tuning the Algorithms to the Correct Acceptance Rate}{21}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Monte Carlo Chain Visualization}{21}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Computational Performance of the Algorithms}{22}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Measururing Errors and Autocorrelations}{24}{section.7.5}%
+\contentsline {subsection}{\numberline {7.5.1}Errors}{24}{subsection.7.5.1}%
+\contentsline {subsection}{\numberline {7.5.2}Autocorrelations}{25}{subsection.7.5.2}%
+\contentsline {section}{\numberline {7.6}Results with the Topological Charge}{25}{section.7.6}%

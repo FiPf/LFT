@@ -1,0 +1,152 @@
+This section presents the implementation of the theory into Python and Rust code and the results of various analyses. 
+\section{Details about the Implementation}
+The code can be found under the following link:
+\begin{center}
+    \url{https://github.com/FiPf/LFT/tree/main/Final%20Project}
+\end{center}
+All of the code is in the subfolder "Final Project", please ignore all the other subfolders.
+\subsection{Description of the Python Code}
+The Python code is split into various subfolders, which serve as packages: 
+\begin{itemize}
+    \item algorithms: This package contains an abstract base class too run simulations with an unspecified algorithm. There are two classes (for Metropolis and HMC), which inherit from this abstract base class and are used to run Metropolis and HMC simulations. Finally, there is a file containing the two integrator choices for the HMC algorithm (leapfrog or omelyan2 integrator). 
+    \item physics: This file contains all functions regarding the physics of this project. The first file contains the action of the $\phi^4$-theory, it's derivative, a function to calculate the hamiltonian of the system and an enum with the boundary condition choices (either periodic or aperiodic).
+    \item stats: This package contains a file with all the statistical analysis functions used for this project. The file intended for logging is currently empty, but the code could be extendend to contain loggers. 
+    \item The main file is a Jupyter Notebook, where all of the results are displayed. It accesses the other files through the packages described above. 
+\end{itemize}
+\subsection{Description of the Rust Code}
+As shown in Section \ref{sec: data_runtime}, the HMC algorithm was extremely slow in Python, despite being mostly vectorized. It is possible that the object oriented structure of the code contributes to the slowness. Since rewriting the code in a faster way would be a considerable effort and only lead to a small improvement, I decided to instead translate the slowest parts into Rust. \\
+Rust is much faster than Python, because Rust is a compiled ahead-of-time to machine code, while Python is an interpreted language (bytecode executed by the CPython virtual machine). This alone can lead to a speedup of a factor $10-100x$. Rust also has other useful features that make coding typesafe and less chaotic than in Python. \cite{rust_cookbook}\\
+The following parts of the code were translated from Python to Rust: 
+\begin{itemize}
+    \item The HMC algorithms, together with the two integrators. 
+    \item The Metropolis algorithm. 
+    \item Some of the physics functions, for example the action and it's gradient, as they were used for HMC.
+\end{itemize}
+The structure was kept similar to the Python version. I used PyO3 to be able to import the Rust functions as a package and then use inside my Jupyter Notebook, together with Python code for analysis and plotting. \cite{pyo3}\\\\
+Note that translating alone can lead to a great speedup. Since I am still learning Rust, this was a pure translation exercise. I did not use any special features of Rust or payed attention to writing efficient code. 
+\section{Tuning the Algorithms to the Correct Acceptance Rate}
+In the Metropolis algorithm, the proposal step size is tuned to achieve an acceptance rate of approximately 50\%. This value represents a compromise between making sufficiently large moves in configuration space and maintaining a reasonable probability of acceptance. If the acceptance rate is too high, the proposed updates are very small and the Markov chain explores the configuration space inefficiently. If it is too low, most proposals are rejected and the simulation again becomes inefficient. \\\\
+In contrast, the HMC algorithm is based on approximate Hamiltonian dynamics, where rejections arise solely from numerical integration errors. Since each HMC proposal involves a full molecular dynamics trajectory, rejected updates are computationally expensive. For this reason, HMC is optimally operated at much higher acceptance rates, typically around 90\%. Higher acceptance ensures accurate energy conservation and efficient exploration of phase space, especially when using higher-order integrators such as the omelyan2 scheme. \\\\
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/acc_rate_constant_width.png}
+        \caption{The dependence of the acceptance rate on the lattice size $L$. The following widths were used: Metropolis w = 0.14 / HMC + Leapfrog w = 0.2 / HMC + Omelyan2 w = 0.44}
+        \label{fig:const_width}
+    \end{subfigure}
+    \hfill 
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/acc_rate_adapted.png}
+        \caption{The widths were adpated as a function of $L$ to achieve an acceptance rate of 50\% for Metropolis and 90\% for HMC. The following width functions were used: Metropolis w = 1.1/L / HMC + Leapfrog w = 1.5/L / HMC + Omelyan2 w = 0.44 (const). }
+        \label{fig:adapted_width}
+    \end{subfigure}
+    \caption{Tuning the Acceptance Rates for Different Algorithms}
+    \label{fig:tuning_the_acceptance_rates}
+\end{figure}
+The same tuning parameters were used with the Rust implementation. This was a simple test to see whether the Rust version produces the same results as the Python version consitently. 
+\section{Monte Carlo Chain Visualization}
+In Figure \ref{fig:MC chain}, the Monte Carlo chain of the simulation with different algorithms is shown. The observable displayed is the mean field. This plots are not very useful.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{images/chain.png}
+    \caption{Monte Carlo Chain of the Mean Field, Simulation using Different Algorithms}
+    \label{fig:MC chain}
+\end{figure}
+The Metropolis algorithm has the longest thermalization phase. 
+\section{Computational Performance of the Algorithms}
+In this section, the computational performance of the different simulation algorithms is compared. The runtimes are shown as a function of lattice size. In addition, the impact of the programming language is investigated comparing Python and Rust versions of the same algorithm. Since lattice simulations are limited by the computational cost, choosing the right algorithm and programming langugage is crucial. \\\\
+The Metropolis and HMC algorithms differ also in their structure and where most of the computational cost is used. While Metropolis updates are local and inexpensive per step, they suffer from long autocorrelation times. HMC, on the other hand, performs global updates using molecular dynamics trajectories, which are computationally more expensive per iteration but typically yield much faster decorrelation. The statistical independence between configurations is investigated in Section \ref{sec: errs}. \\\\
+Furthermore, Python and Rust differ fundamentally in other aspects. Python offers ease of implementation and flexibility but incurs significant overhead due to interpretation and dynamic typing. In contrast, Rust compiles to optimized native code and allows exact control over memory and numerical operations, making it well suited and fast for computationally intensive simulations. In this final project, the computationally intensive algorithms were implemented in Rust and then imported to Python using PyO3. This allows to still use the great Python libraries such as numpy and matplotlib for the analysis and plotting. \\\\
+The following Figure \ref{fig:Pythonruntimes} shows the runtimes for the different algorithms in the broken and in the symmetric phase of $\phi^4$-theory using the algorithms implemented in Python. 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/runtimes_Python_broken.png}
+        \caption{Broken phase with negative mass}
+        \label{fig:subfig1}
+    \end{subfigure}
+    \hfill 
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/runtimes_Python_symmetric.png}
+        \caption{Symmetric phase with positive mass}
+        \label{fig:subfig2}
+    \end{subfigure}
+    \caption{Python runtimes}
+    \label{fig:Pythonruntimes}
+\end{figure}
+The following Figure \ref{fig:Rustruntimes} shows the runtimes for the different algorithms in the broken and in the symmetric phase of $\phi^4$-theory using the algorithms implemented in Rust. 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/runtimes_Rust_broken.png}
+        \caption{Broken phase with negative mass}
+        \label{fig:subfig1}
+    \end{subfigure}
+    \hfill 
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/runtimes_Rust_symmetric.png}
+        \caption{Symmetric phase with positive mass}
+        \label{fig:subfig2}
+    \end{subfigure}
+    \caption{Rust runtimes}
+    \label{fig:Rustruntimes}
+\end{figure}
+\subsubsection*{Comments on the results}
+\begin{itemize}
+    \item Very clearly visible is the speedup achieved through translating the Python code into Rust, the Rust runtimes are a factor of $6-8x$ faster. This was achieved by translating to a more suitable programming language, no efficiency improvements in the algorithms were implemented.
+    \item The Metropolis algorithm is the fastest overall, in both Python and Rust, In the Python implementation, the runtime of Metropolis is nearly constant, while in Rust, we observe a slight increase with increasing lattice size $L$. 
+    \item The HMC algorithm is significantly slower than the Metropolis algorithm, where the leapfrog integrator is faster than the omelyan2 integrator used in HMC. 
+    \item In the Python version, the runtime of HMC for both integrators are more or less constant with the lattice size $L$ for unclear reasons. For the Rust versions of the HMC algorithms, we observe a linear increase of runtime with $L$. This can be explained by the fact that HMC has a larger configuration to update and the equations of motion are more expensive to sold. 
+    \item In addition, it can be observed that the runtime in the symmetric phase is higher than in the broken phaseof the $\phi^4$-theory. This can be understood in terms of critical slowing down and the structure of field configurations in the two regimes. \\\\
+    In the symmetric phase, the system is close to the critical point where the correlation length becomes large. Field updates become more strongly correlated over large distances, the state space is explored more slowly. In contrast, in the broken phase the field fluctuates around one of the two degenerate minima of the potential. The presence of a non-zero vacuum expectation value effectively introduces a mass scale that suppresses long-range correlations. This leads to faster decorrelation of configurations and improved sampling efficiency, reducing the computational cost per independent configuration. \cite{GattingerLang}
+\end{itemize}
+\section{Measururing Errors and Autocorrelations}\label{sec: errs}
+\subsection{Errors}
+Accurate error estimations are essential to quantify the reliability of computed observables and to compare benefits of different algorithms. This subsection describes how the statistical errors in Metropolis and HMC using both the leapfrog and omelyan2 integrator evaluated as a function of lattice size $L$. \\\\
+The following Figure \ref{fig:python_errors} shows the statistical errors of both phases resulting from the Python implemented algorithms.
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/error_Python_broken.png}
+        \caption{Broken phase with negative mass}
+        \label{fig:subfig1}
+    \end{subfigure}
+    \hfill 
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/error_Python_symmetric.png}
+        \caption{Symmetric phase with positive mass}
+        \label{fig:subfig2}
+    \end{subfigure}
+    \caption{Statistical Errors as a function of lattice size $L$ for the broken and symmetric phase, algorithms in Python}
+    \label{fig:python_errors}
+\end{figure}
+The following Figure \ref{fig:rust_errors} shows the statistical errors of both phases resulting from the Rust implemented algorithms.
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/error_Rust_broken.png}
+        \caption{Broken phase with negative mass}
+        \label{fig:subfig1}
+    \end{subfigure}
+    \hfill 
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/error_Rust_symmetric.png}
+        \caption{Symmetric phase with positive mass}
+        \label{fig:subfig2}
+    \end{subfigure}
+    \caption{Statistical Errors as a function of lattice size $L$ for the broken and symmetric phase, algorithms in Rust}
+    \label{fig:rust_errors}
+\end{figure}
+\subsection{Autocorrelations}
+Autocorrelations measure the memory of a Markov chain and quantify the dependence of successive configurations. High autocorrelation reduces the effective number of independent samples, increasing statistical errors. We discuss the computation of integrated autocorrelation times and their impact on the precision of measured observables.
+\section{Results with the Topological Charge}
