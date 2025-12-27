@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 1766831811.06667 "main.bcf" "main.bbl" "main" 1766845770.14366 0
-  "bibliography.bib" 1766820982 4423 40a4ad7a0f47054c9621986d80d4c24a ""
-  "main.bcf" 1766845769 110692 b811a96c654b297effc22a7f12acc06e "pdflatex"
+["biber main"] 1766863701.98117 "main.bcf" "main.bbl" "main" 1766863776.73448 0
+  "bibliography.bib" 1766852665 4707 1f557ac774af0a425c10fbaa7388cb53 ""
+  "main.bcf" 1766863776 110844 794e5a0f3fbdba43be11be970eed284f "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1766845765.92835 "c:/Users/fionu/OneDrive/Dokumente/Daten Fiona/Studium/Physik/Lattice QCD/Code/Final Project/report/main.tex" "main.pdf" "main" 1766845770.1446 0
+["pdflatex"] 1766863771.97013 "c:/Users/fionu/OneDrive/Dokumente/Daten Fiona/Studium/Physik/Lattice QCD/Code/Final Project/report/main.tex" "main.pdf" "main" 1766863776.73541 0
   "C:/Users/fionu/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1766821393 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/fionu/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk" 1761295767 11548 03d08bd27f4695652a2f3378988576f0 ""
   "C:/Users/fionu/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1761295471 13321623 e6fb7797b3730930c6f9b66d3b80eb8b ""
@@ -248,6 +248,10 @@
   "hmc.tex" 1765117637 8589 0330c6324243740c34d3acff12be731a ""
   "images/acc_rate_adapted.png" 1766821788 44586 47fd9c907cb7f2b44c3533e8d8a4e285 ""
   "images/acc_rate_constant_width.png" 1766821772 26453 aa1b0e4f84332cbb1c91cf2180d124a6 ""
+  "images/autocorr_Python_broken.png" 1766835991 39329 ce921b63f9c32f1a41773c15d3bcc9fc ""
+  "images/autocorr_Python_symmetric.png" 1766836031 41088 ce1cdef498849ef725ab6f20f6b800ce ""
+  "images/autocorr_Rust_broken.png" 1766845740 44556 3cd6b9a0b108dc2817d7b7c267b7e788 ""
+  "images/autocorr_Rust_symmetric.png" 1766845778 42348 3e13d034f9547a59855b38be0ee91785 ""
   "images/chain.png" 1766825385 171777 2e4cd43fa50be7752162d9830183c410 ""
   "images/error_Python_broken.png" 1766835976 38734 26c8444649595a9eb3a2dd4da34c37d1 ""
   "images/error_Python_symmetric.png" 1766836009 39479 d84b83d42597b1356fc98841c83c995d ""
@@ -259,16 +263,16 @@
   "images/runtimes_Rust_symmetric.png" 1766845512 36025 b90bad69ef01e3330b09e0f80d03be0c ""
   "integrators.tex" 1765121915 6663 77ec9dee727fdd76dbfa51d97fd111e5 ""
   "introduction.tex" 1766404017 267 f1ed4d2f94af6b91fcc629af58f13eec ""
-  "main.aux" 1766845769 14541 5b7eea5480f989b487b8c7cfd2baab81 "pdflatex"
-  "main.bbl" 1766831814 21667 995a6ff7a69e0a200127446d5954d025 "biber main"
-  "main.out" 1766845769 7051 59c05a5e7ff8ec47dd9c92f87d18d9dc "pdflatex"
-  "main.run.xml" 1766845769 2307 fa280d158a7733084a6a66e2106e4193 "pdflatex"
+  "main.aux" 1766863776 16970 c30f2daedbd3357b0926ce5e57ae27f5 "pdflatex"
+  "main.bbl" 1766863704 22786 efc8f28dcb671fb32b7f3eab85b4d196 "biber main"
+  "main.out" 1766863776 7041 1397eabb01dc42b85a3b96964a3df3e1 "pdflatex"
+  "main.run.xml" 1766863776 2307 fa280d158a7733084a6a66e2106e4193 "pdflatex"
   "main.tex" 1766819179 2060 ebac9d446a7b24382010b6deaf6b2aa8 ""
-  "main.toc" 1766845769 3206 7374b6f7bbaab98b7d856d9e9c675c40 "pdflatex"
+  "main.toc" 1766863776 3204 d79fd906498a43325d020afbedcfd442 "pdflatex"
   "metropolis.tex" 1765111558 8611 757f3204124d3d5b46ddb174ef32831d ""
   "mydefs.sty" 1764964340 1801 2d699b63c2aabf6430180f47c7af1298 ""
   "phi4theory.tex" 1766309028 6891 e02fe9865a4a122cd4a622169c5cbff2 ""
-  "results.tex" 1766845536 13765 6857ffc7843889080eaa9a1722a6d8d7 ""
+  "results.tex" 1766863771 17895 09ce5f373c425b0ce62bbb4c491cfe38 ""
   "stats.tex" 1766396966 6798 997a2efb4703f00dac4d49e36a98810d ""
   (generated)
   "main.aux"

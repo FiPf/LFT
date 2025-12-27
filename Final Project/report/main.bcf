@@ -2401,9 +2401,11 @@
     <bcf:citekey order="22" intorder="1">De_2005</bcf:citekey>
     <bcf:citekey order="23" intorder="1">De_2005</bcf:citekey>
     <bcf:citekey order="24" intorder="1">De_2005</bcf:citekey>
-    <bcf:citekey order="25" intorder="1">rust_cookbook</bcf:citekey>
-    <bcf:citekey order="26" intorder="1">pyo3</bcf:citekey>
-    <bcf:citekey order="27" intorder="1">GattingerLang</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">wikipedia_highly_composite_number</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">rust_cookbook</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">pyo3</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">GattingerLang</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">De_2005</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

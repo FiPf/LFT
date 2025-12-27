@@ -1,4 +1,4 @@
-This section presents the implementation of the theory into Python and Rust code and the results of various analyses. 
+This section presents the implementation of the theory into Python and Rust code and the results of various analyses. If not stated otherwise, all the results were produced by taking $45'360$ samples (this is a highly composite number, see \cite{wikipedia_highly_composite_number}).
 \section{Details about the Implementation}
 The code can be found under the following link:
 \begin{center}
@@ -55,7 +55,7 @@ In Figure \ref{fig:MC chain}, the Monte Carlo chain of the simulation with diffe
     \label{fig:MC chain}
 \end{figure}
 The Metropolis algorithm has the longest thermalization phase. 
-\section{Computational Performance of the Algorithms}
+\section{Computational Performance of the Algorithms}\label{sec: data_runtime}
 In this section, the computational performance of the different simulation algorithms is compared. The runtimes are shown as a function of lattice size. In addition, the impact of the programming language is investigated comparing Python and Rust versions of the same algorithm. Since lattice simulations are limited by the computational cost, choosing the right algorithm and programming langugage is crucial. \\\\
 The Metropolis and HMC algorithms differ also in their structure and where most of the computational cost is used. While Metropolis updates are local and inexpensive per step, they suffer from long autocorrelation times. HMC, on the other hand, performs global updates using molecular dynamics trajectories, which are computationally more expensive per iteration but typically yield much faster decorrelation. The statistical independence between configurations is investigated in Section \ref{sec: errs}. \\\\
 Furthermore, Python and Rust differ fundamentally in other aspects. Python offers ease of implementation and flexibility but incurs significant overhead due to interpretation and dynamic typing. In contrast, Rust compiles to optimized native code and allows exact control over memory and numerical operations, making it well suited and fast for computationally intensive simulations. In this final project, the computationally intensive algorithms were implemented in Rust and then imported to Python using PyO3. This allows to still use the great Python libraries such as numpy and matplotlib for the analysis and plotting. \\\\
@@ -66,14 +66,14 @@ The following Figure \ref{fig:Pythonruntimes} shows the runtimes for the differe
         \centering
         \includegraphics[width=\linewidth]{images/runtimes_Python_broken.png}
         \caption{Broken phase with negative mass}
-        \label{fig:subfig1}
+        \label{fig:broken_python_rt}
     \end{subfigure}
     \hfill 
     \begin{subfigure}[b]{0.48\linewidth}
         \centering
         \includegraphics[width=\linewidth]{images/runtimes_Python_symmetric.png}
         \caption{Symmetric phase with positive mass}
-        \label{fig:subfig2}
+        \label{fig:symmetric_python_rt}
     \end{subfigure}
     \caption{Python runtimes}
     \label{fig:Pythonruntimes}
@@ -85,28 +85,28 @@ The following Figure \ref{fig:Rustruntimes} shows the runtimes for the different
         \centering
         \includegraphics[width=\linewidth]{images/runtimes_Rust_broken.png}
         \caption{Broken phase with negative mass}
-        \label{fig:subfig1}
+        \label{fig:broken_rust_rt}
     \end{subfigure}
     \hfill 
     \begin{subfigure}[b]{0.48\linewidth}
         \centering
         \includegraphics[width=\linewidth]{images/runtimes_Rust_symmetric.png}
         \caption{Symmetric phase with positive mass}
-        \label{fig:subfig2}
+        \label{fig:symmetric_rust_rt}
     \end{subfigure}
     \caption{Rust runtimes}
     \label{fig:Rustruntimes}
 \end{figure}
-\subsubsection*{Comments on the results}
+\subsubsection*{Comments on the Results}
 \begin{itemize}
-    \item Very clearly visible is the speedup achieved through translating the Python code into Rust, the Rust runtimes are a factor of $6-8x$ faster. This was achieved by translating to a more suitable programming language, no efficiency improvements in the algorithms were implemented.
+    \item Very clearly visible is the speedup achieved through translating the Python code into Rust, the Rust runtimes are a factor of $4-6x$ faster. This was achieved by translating to a more suitable programming language, no efficiency improvements in the algorithms were implemented.
     \item The Metropolis algorithm is the fastest overall, in both Python and Rust, In the Python implementation, the runtime of Metropolis is nearly constant, while in Rust, we observe a slight increase with increasing lattice size $L$. 
     \item The HMC algorithm is significantly slower than the Metropolis algorithm, where the leapfrog integrator is faster than the omelyan2 integrator used in HMC. 
     \item In the Python version, the runtime of HMC for both integrators are more or less constant with the lattice size $L$ for unclear reasons. For the Rust versions of the HMC algorithms, we observe a linear increase of runtime with $L$. This can be explained by the fact that HMC has a larger configuration to update and the equations of motion are more expensive to sold. 
     \item In addition, it can be observed that the runtime in the symmetric phase is higher than in the broken phaseof the $\phi^4$-theory. This can be understood in terms of critical slowing down and the structure of field configurations in the two regimes. \\\\
     In the symmetric phase, the system is close to the critical point where the correlation length becomes large. Field updates become more strongly correlated over large distances, the state space is explored more slowly. In contrast, in the broken phase the field fluctuates around one of the two degenerate minima of the potential. The presence of a non-zero vacuum expectation value effectively introduces a mass scale that suppresses long-range correlations. This leads to faster decorrelation of configurations and improved sampling efficiency, reducing the computational cost per independent configuration. \cite{GattingerLang}
 \end{itemize}
-\section{Measururing Errors and Autocorrelations}\label{sec: errs}
+\section{Measuring Errors and Autocorrelations}\label{sec: errs}
 \subsection{Errors}
 Accurate error estimations are essential to quantify the reliability of computed observables and to compare benefits of different algorithms. This subsection describes how the statistical errors in Metropolis and HMC using both the leapfrog and omelyan2 integrator evaluated as a function of lattice size $L$. \\\\
 The following Figure \ref{fig:python_errors} shows the statistical errors of both phases resulting from the Python implemented algorithms.
@@ -116,14 +116,14 @@ The following Figure \ref{fig:python_errors} shows the statistical errors of bot
         \centering
         \includegraphics[width=\linewidth]{images/error_Python_broken.png}
         \caption{Broken phase with negative mass}
-        \label{fig:subfig1}
+        \label{fig:broken_python_errors}
     \end{subfigure}
     \hfill 
     \begin{subfigure}[b]{0.48\linewidth}
         \centering
         \includegraphics[width=\linewidth]{images/error_Python_symmetric.png}
         \caption{Symmetric phase with positive mass}
-        \label{fig:subfig2}
+        \label{fig:symmetric_python_errors}
     \end{subfigure}
     \caption{Statistical Errors as a function of lattice size $L$ for the broken and symmetric phase, algorithms in Python}
     \label{fig:python_errors}
@@ -135,18 +135,66 @@ The following Figure \ref{fig:rust_errors} shows the statistical errors of both 
         \centering
         \includegraphics[width=\linewidth]{images/error_Rust_broken.png}
         \caption{Broken phase with negative mass}
-        \label{fig:subfig1}
+        \label{fig:broken_rust_errors}
     \end{subfigure}
     \hfill 
     \begin{subfigure}[b]{0.48\linewidth}
         \centering
         \includegraphics[width=\linewidth]{images/error_Rust_symmetric.png}
         \caption{Symmetric phase with positive mass}
-        \label{fig:subfig2}
+        \label{fig:symmetric_rust_errors}
     \end{subfigure}
     \caption{Statistical Errors as a function of lattice size $L$ for the broken and symmetric phase, algorithms in Rust}
     \label{fig:rust_errors}
 \end{figure}
+\subsubsection*{Comments on the Results}
+\begin{itemize}
+    \item In both the symmetric and broken phases with both Python and Rust, the Metropolis produces significantly larger statistical errors than the HMC algorithm. The HMC algorithm has similar statistical errors for the two different integrators leapfrog and omelyan2. 
+    \item For both versions of HMC, the Python and Rust implementations have similar statistical errors. The statistical error of the Metropolis algorithm is approximately twice as large as in the Rust version, for unknown reasons.
+    \item In the broken phase the statistical error is significantly larger than in the symmetric phase. This is a consequence of the presence of two degenerate vacua, between which the Monte Carlo simulation can tunnel. These tunneling events lead to long autocorrelation times and large fluctuations of observables, thereby increasing the statistical uncertainty. In contrast, the symmetric phase contains a single stable vacuum and exhibits faster decorrelation and smaller variance.
+    \item In all simulations, the statistical error decreasess with increasing lattice size $L$. Most likely, this behaviour can be attributed to how the average is computed. The measured observables are spatial averages over the lattice, their variance decreases as $1/V = 1/L^2$. Although autocorrelation times increase with lattice size, especially in the broken phase, the reduction of statistical fluctuations due to averaging over more degrees of freedom dominates in the parameter range considered here.
+\end{itemize}
 \subsection{Autocorrelations}
-Autocorrelations measure the memory of a Markov chain and quantify the dependence of successive configurations. High autocorrelation reduces the effective number of independent samples, increasing statistical errors. We discuss the computation of integrated autocorrelation times and their impact on the precision of measured observables.
+Autocorrelations measure the memory of a Markov chain and quantify the dependence of successive configurations. High autocorrelation reduces the effective number of independent samples, increasing statistical errors. We discuss the computation of integrated autocorrelation times and their impact on the precision of measured observables.\\\\
+The following Figure \ref{fig:autocorr_python} shows the integrated autocorrelation time as a function of lattice size $L$ for the different algorithms implemented in Python. 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/autocorr_Python_broken.png}
+        \caption{Broken phase with negative mass}
+        \label{fig:broken_python_autocorr}
+    \end{subfigure}
+    \hfill 
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/autocorr_Python_symmetric.png}
+        \caption{Symmetric phase with positive mass}
+        \label{fig:symmetric_python_autocorr}
+    \end{subfigure}
+    \caption{Autocorrelations as a function of lattice size $L$ for the broken and symmetric phase, algorithms in Python}
+    \label{fig:autocorr_python}
+\end{figure}
+The following Figure \ref{fig:autocorr_rust} shows the integrated autocorrelation time as a function of lattice size $L$ for the different algorithms implemented in Rust. 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/autocorr_Rust_broken.png}
+        \caption{Broken phase with negative mass}
+        \label{fig:broken_rust_autocorr}
+    \end{subfigure}
+    \hfill 
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{images/autocorr_Rust_symmetric.png}
+        \caption{Symmetric phase with positive mass}
+        \label{fig:symmetric_rust_autocorr}
+    \end{subfigure}
+    \caption{Autocorrelations as a function of lattice size $L$ for the broken and symmetric phase, algorithms in Python}
+    \label{fig:autocorr_rust}
+\end{figure}
+\subsubsection*{Comments on the Results}\todo{TODO}
 \section{Results with the Topological Charge}
+This section is based on \cite{De_2005}. The Metropolis algorithm (Rust version) was used, since it has been extendend to include the option of aperiodic boundary conditions. \\
+To study the behaviour of the topological charge as a function of the lattice size, simulations were performed using the Metropolis algorithm for both periodic (PBC) and anti-periodic (APBC) boundary conditions.

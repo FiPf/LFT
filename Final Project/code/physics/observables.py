@@ -87,7 +87,7 @@ def phi_diff(phi: np.array, spatial_axis: int = 0) -> float:
         spatial_axis (int, optional): Which of the field axes is the spatial axis. Defaults to 0.
 
     Returns:
-        float: ield difference around the boundary
+        float: field difference around the boundary
     """
     phi_0 = np.mean(np.take(phi, indices = 0, axis = spatial_axis))
     phi_L = np.mean(np.take(phi, indices=-1, axis=spatial_axis))
@@ -106,7 +106,7 @@ def topological_charge_QR(phi_PBC: np.ndarray, phi_APBC: np.ndarray, spatial_axi
     """
     # https://arxiv.org/pdf/hep-lat/0506003
 
-    phi_mean = np.mean([np.mean(phi) for phi in phi_PBC])
+    phi_mean = np.mean([np.mean(np.abs(phi)) for phi in phi_PBC])
     if np.abs(phi_mean) < 1e-12:
         return 0.0 #by definition in symmetric phase
 

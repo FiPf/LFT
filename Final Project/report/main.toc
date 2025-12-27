@@ -30,7 +30,7 @@
 \contentsline {section}{\numberline {7.2}Tuning the Algorithms to the Correct Acceptance Rate}{21}{section.7.2}%
 \contentsline {section}{\numberline {7.3}Monte Carlo Chain Visualization}{21}{section.7.3}%
 \contentsline {section}{\numberline {7.4}Computational Performance of the Algorithms}{22}{section.7.4}%
-\contentsline {section}{\numberline {7.5}Measururing Errors and Autocorrelations}{24}{section.7.5}%
+\contentsline {section}{\numberline {7.5}Measuring Errors and Autocorrelations}{24}{section.7.5}%
 \contentsline {subsection}{\numberline {7.5.1}Errors}{24}{subsection.7.5.1}%
 \contentsline {subsection}{\numberline {7.5.2}Autocorrelations}{25}{subsection.7.5.2}%
-\contentsline {section}{\numberline {7.6}Results with the Topological Charge}{25}{section.7.6}%
+\contentsline {section}{\numberline {7.6}Results with the Topological Charge}{26}{section.7.6}%
