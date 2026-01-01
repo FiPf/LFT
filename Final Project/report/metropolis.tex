@@ -1,5 +1,5 @@
 \section{General Introduction to Monte Carlo Methods}
-Our goal is to evaluate the expectation value of an observable $O[U]$ in the qunatizes Euclidian gauge field theory on a lattice. This is written as a path integral (functional)
+Our goal is to evaluate the expectation value of an observable $O[U]$ in the quantized Euclidian gauge field theory on a lattice. This is written as a path integral
 \begin{equation}
     \braket{O} = \frac{1}{Z} \int \mathcal{D}[U] \; \exp \left( -S[U] \right) O[U], \label{eq: path_integral}
 \end{equation}
@@ -7,7 +7,7 @@ where the partition function is defined as
 \begin{equation}
     Z = \int \mathcal{D}[U] \exp \left( -S[U] \right). \label{eq: partition_function}
 \end{equation}
-In the general case, these integrals cannot be solved analytically and depending on the application, these can be high-dimensional \cite{GattingerLang}. \\
+Here, $S[U]$ denotes the Euclidian action and $\mathcal{D}[U]$ represents the functional integration over all field configurations. In the general case, these integrals cannot be solved analytically and depending on the application, these can be high-dimensional \cite{GattingerLang}. \\\\
 Using probability theory, we can approximate the integral of a function $f(x)$ by averaging the functional values $f(x_n)$ at values $x_n$, which are randomly chosen according to a uniform distribution 
 \begin{equation}
     \rho_u(x_n) = \frac{1}{b-a}. 
@@ -22,7 +22,7 @@ The exact mean is replaced by the sample mean, the calculation is restricted to 
 \]
 converges almost surely to the exact expectation value as $N \to \infty$, and the Central Limit Theorem implies an error scaling of $\mathcal{O}\!\left( \frac{1}{\sqrt{N}} \right)$. This means to increase the accuracy by a factor of two, one has to use four times as many samples \cite{GattingerLang}. 
 \subsection{Example of a Simple Monte Carlo Integral}
-Suppose we want to estimate the integral
+To illustrate the basic idea of Monte Carlo integration, we consider a simple one-dimensional example. Suppose we want to estimate the integral
 \begin{equation}
 \int_0^1 \exp(-x^2) \, dx.
 \end{equation}
@@ -42,14 +42,14 @@ A Monte Carlo estimator using $N$ independent samples $X_1, X_2, \dots, X_N$ fro
 \begin{equation}
 I_N = \frac{1}{N} \sum_{i=1}^N \exp(-X_i^2).
 \end{equation}
-This estimator converges to the true value as $N \to \infty$, 
+By the law of large numbers, this estimator converges to the true value as $N \to \infty$, 
 \[
 I_N \xrightarrow[]{N \to \infty} \int_0^1 \exp(-x^2) \, dx.
 \]
-This simple example illustrates how Monte Carlo methods approximate integrals by replacing them with sample averages \cite{Monte_carlo}.
+Moreover, by the central limit theorem, the statistical error scales as $\mathcal{O}\left( \frac{1}{\sqrt{N}}\right)$, which is independent of the dimensionality of the integral. The not scaling with dimension is an important reason for the use of Monte Carlo methods in lattice field theory. This simple example illustrates how Monte Carlo methods approximate integrals by replacing them with sample averages \cite{Monte_carlo}.
 \subsection{Importance Sampling}
 In our path integral in Equation \ref{eq: path_integral}, we need to account for the Boltzmann factor $\exp(-S)$. This is a weighting factor, depending on the action $S$, of the different field configurations. 
-The space of all configurations is not uniformely explored, but according to the weights determined by the action $S$. The main idea of importance sampling is to approximate a large sum with a comparatively small amount of configurations, sampled according to this weight factor. \\
+The space of all configurations is not uniformely explored, but according to the weights determined by the action $S$. The main idea of importance sampling is to approximate a large sum with a comparatively small amount of configurations, sampled according to this weight factor. \\\\
 For a general probability distribution $\rho(x)$, the expectation value of a function $f(x)$ is
 \begin{equation}
     \braket{f}_\rho = \frac{\int_a^b dx \; \rho(x) f(x)}{\int_a^b dx \; f(x)}. 
@@ -90,7 +90,7 @@ Using the normalization property, we find in addition that
 The equilibrium distribution $P(U)$ is a fixed point of the Markov process, once the equilibrium is reached, the system stays there forever. \\
 In order to give correct result, the Markov chain must be aperiodic, i.e. be able to reach all configurations in the configuration space. This is the case iff the transition matrix $T(U|U')$ is positive-semidefinite. This property is called strong ergodicity \cite{GattingerLang}. 
 \section{The Metropolis Algorithm}
-The Metropolis Algorithm is used to obtain a new configuration $U_{n+1}$ from the current configuration $U_n$. We use $P[U] \propto \exp \left( S[U]\right)$. The steps are as follows: 
+The Metropolis Algorithm is used to obtain a new configuration $U_{n+1}$ from the current configuration $U_n$. We use $P[U] \propto \exp \left( -S[U]\right)$. The steps are as follows: 
 \begin{enumerate}
     \item Choose a candidate configuration $U'$ according to some a priori selection probability $T_0(U'|U)$, where $U = U_n$. 
     \item Accept the candidate configuration $U'$ as the new configuration $U_{n+1}$ with the following probability: 
@@ -115,4 +115,4 @@ In practice, the acceptance rate is strongly dependent on the proposed change. V
 \\\\
 A warm-up period (thermalization) is required to eliminate dependence on the initial configuration. After that, configurations are still correlated, and one must estimate autocorrelation times when computing errors.
 \\\\
-It can be shown that the Metropolis algorithm fulfills ergodicity, meaning that any configuration is reachable from any other configuration with positive probability in a finite number of steps. Because the transition kernel satisfies detailed balance with respect to $\exp (-S[U])$, this probability distribution is the stationary distribution of the Markov chain. Together with ergodicity, this ensures convergence of the algorithm to the desired ensemble. 
+It can be shown that the Metropolis algorithm fulfills ergodicity, meaning that any configuration is reachable from any other configuration with positive probability in a finite number of steps. Because the transition kernel satisfies detailed balance with respect to $\exp (-S[U])$, this probability distribution is the stationary distribution of the Markov chain. Together with ergodicity, this ensures convergence of the algorithm to the desired ensemble. \cite{GattingerLang}

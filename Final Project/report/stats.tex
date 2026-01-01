@@ -1,17 +1,17 @@
-In LFT, every calculated observable needs a statistical analysis to estimnate uts uncertainty, quantities without error
+In Lattice Field Theory (LFT), every calculated observable needs a statistical analysis to estimate its uncertainty, quantities without error
 estimations are meaningless. 
 \section{Estimating Errors}
 The variance of a random variable $X$ is defined as
 \begin{equation}
     \op{Var}(X) = E[(X - E[X])^2].
 \end{equation}
-In our case, we use as the random variable the expectation value of some observable, which we aim to calculate, $X = \braket{\mathcal{O}}$. Hence we aim to calculate
+In our case, we use as the random variable the estimator of the expectation value, $X = \frac{1}{N}\sum_{i=1}^N \mathcal{O}_i \approx \braket{\mathcal{O}}$. Hence we aim to calculate
 \begin{equation}
     E[(\braket{\mathcal{O}} - E[\mathcal{O}])^2] = E \left[ \left( \frac{1}{N} \sum_{i=1}^N ( \mathcal{O}_i - E[\mathcal{O}])\right)^2 \right], 
 \end{equation}
 where we expand the square as follows: 
 \begin{equation}
-    \frac{1}{N^2} \sum_{i, j = 1}^N E[(\mathcal{O}_i - E[\mathcal{O}](\mathcal{O}_i - E[\mathcal{O}]))]. 
+    \frac{1}{N^2} \sum_{i, j = 1}^N E[(\mathcal{O}_i - E[\mathcal{O}])(\mathcal{O}_i - E[\mathcal{O}])]. 
 \end{equation}
 The expectation value in the sum is precisely the covariance
 \begin{equation}
@@ -35,17 +35,18 @@ For a stationary Markov process, the correlations only depend on the time separa
 \end{equation}
 For a fixed $t$, there are $N - t$ pairs $(i, j)$ with $j = i + t$. Since $C_{ij} = C_{ji}$, we have a factor of $2$, giving
 \begin{equation}
-    \sum_{i \neq j} C_{ij}[\mathcal{O}] = 2 \sum_{t = 1}^{N-1} (N- t) C_{1, t-1}[\mathcal{O}]. 
+    \sum_{i \neq j} C_{ij}[\mathcal{O}] = 2 \sum_{t = 1}^{N-1} (N- t) C_{1, t+1}[\mathcal{O}]. 
 \end{equation}
 Putting all the parts together, we obtain the following formula: 
 \begin{equation}
     \text{E}\left[ \left( \langle \mathcal{O} \rangle - \text{E}[ \mathcal{O} ] \right)^{2} \right] = \frac{\text{Var}[ \mathcal{O} ]}{N} + \frac{2}{N^{2}} \sum_{t = 1}^{N - 1} (N - t) \, C_{1, t + 1}[ \mathcal{O} ]. 
 \end{equation}
 The first term encodes the result for independent samples, where the error is proportional to $\frac{1}{\sqrt{N}}$. The second term encodes the autocorrelation contribution, which increases the statistical error. \\\\
-Unfortunately, we can only estimate the statistical error through the expression
+In practice, we often estimate the error using the naive estimator
 \begin{equation}
-    \sigma := \frac{\sigma_{\mathcal{O}}}{\sqrt{N - 1}} = \sqrt{\frac{\langle \mathcal{O}^{2} \rangle - \langle \mathcal{O} \rangle^{2}}{N - 1}}.
+    \sigma := \frac{\sigma_{\mathcal{O}}}{\sqrt{N - 1}} = \sqrt{\frac{\langle \mathcal{O}^{2} \rangle - \langle \mathcal{O} \rangle^{2}}{N - 1}},
 \end{equation}
+which is unbiased only if the samples are uncorrelated. \\
 The validity of this estimator comes from the fact that its expectation value matches the statistical error:
 \begin{equation}
     \begin{aligned}
@@ -60,7 +61,7 @@ The validity of this estimator comes from the fact that its expectation value ma
 \end{equation}
 \cite{wiki:mcmc,wiki:stderr,favaro:ml_lecture}
 \section{Autocorrelation and Integrated Autocorrelation Time}
-In typical Monte Carlo methods in LFT, the configurations are always correlated, since we only make small steps while exploring the space of possible states. In our case, we have $\phi_{i+1} \in [\phi_i - w, \phi_i + w]$, where $w$ is the width. Elements later in the chain, for example $\phi_{i + 100}$ should me more independent from $\phi_i$. We will try to find the number of samples that can be considered independent, which is the idea behind autocorrelation. We rewrite the formula from above as follows: 
+In typical Monte Carlo methods in LFT, the configurations are always correlated, since we only make small steps while exploring the space of possible states. In our case, we have $\phi_{i+1} \in [\phi_i - w, \phi_i + w]$, where $w$ is the width. Elements later in the chain, for example $\phi_{i + 100}$ should be more independent from $\phi_i$. We will try to find the number of samples that can be considered independent, which is the idea behind autocorrelation. We rewrite the formula from above as follows: 
 \begin{equation}
     \begin{aligned}
         \text{E}\left[ \left( \langle \mathcal{O} \rangle - \text{E}[\mathcal{O}] \right)^{2} \right]
@@ -78,7 +79,14 @@ where
 \begin{equation}
     \tau_{\text{int}} = \frac{1}{2} + \sum_{t = 1}^{N - 1} \frac{C_{1, t + 1}[\mathcal{O}]}{\text{Var}[\mathcal{O}]}. 
 \end{equation}
-Here, $\tau_{\text{int}}$ denotes the integrated autocorrelation time, which is a measure of how many steps there must be between samples to consider them as independent. This depends on the observable and needs to be recalculated for all observables. \cite{wiki:autocorrelation}
+For large $N$, the factor $1 - \frac{t}{N}$ can be neglected. Here, $\tau_{\text{int}}$ denotes the integrated autocorrelation time, which is a measure of how many steps there must be between samples to consider them as independent. This shows that autocorrelations effectively reduce the number of independent measurements by a factor $2\tau_{\mathrm{int}}$. This depends on the observable and needs to be recalculated for all observables. \cite{wiki:autocorrelation}
+\subsection{Autocorrelation Time}
+The autocorrelation function typically decays exponentially,
+\begin{equation}
+    C(t) \sim e^{-t/\tau_{\mathrm{exp}}},
+\end{equation}
+where $\tau_{\mathrm{exp}}$ is the exponential autocorrelation time governing the slowest mode of the Markov chain. The integrated autocorrelation time $\tau_{\mathrm{int}}$ determines the statistical error and is the relevant quantity for error estimation.\\\\
+In practice, the sum defining $\tau_{\mathrm{int}}$ cannot be extended to infinity due to increasing noise at large $t$. Therefore, it is evaluated only up to a finite window, chosen such that $t \lesssim c\,\tau_{\mathrm{int}}$, a procedure known as windowing.
 \subsection{The Binning Method}
 A simple method for estimating the autocorrelation is the binning method, which leaves the mean unchanged but modifies the error estimate to account for the dependence of the configurations. 
 \begin{enumerate}
@@ -93,7 +101,7 @@ A simple method for estimating the autocorrelation is the binning method, which 
     \item Plot the errors as a function of the bin size. For sufficiently large chains, the errors typically plateau as the bin size exceeds the autocorrelation length.
     \item The limiting value of this plateau provides a reliable estimate of the statistical error. 
 \end{enumerate}
-\cite{GattingerLang}
+This is beyond the scope of this project. \cite{GattingerLang}
 \subsection{Other Methods for Estimating the Autocorrelation}
 There are other methods to estimate the autocorrelation, which are more accurate than the binning method. For example: 
 \begin{itemize}

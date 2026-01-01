@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.24)  27 DEC 2025 20:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.24)  1 JAN 2026 21:02
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1137,49 +1137,106 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 [1
 
-{C:/Users/fionu/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (main.toc)
+{C:/Users/fionu/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (main.toc
+
+[2
+
+])
 \tf@toc=\write7
 \openout7 = `main.toc'.
 
 
 
-[2
-
-]
+[3]
 Chapter 1.
-(introduction.tex
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input line 1.
-)
+(introduction.tex)
+Underfull \hbox (badness 10000) in paragraph at lines 1--70
 
-[3
+ []
 
-]
-Chapter 2.
-(phi4theory.tex
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--70
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--70
+
+ []
+
+
 
 [4
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 34--40
+Chapter 2.
+(phi4theory.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1--6
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 34--40
+Underfull \hbox (badness 10000) in paragraph at lines 1--6
 
  []
 
-)
 
-[5]
-Chapter 3.
-(metropolis.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1--6
 
-[6
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--6
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--18
+
+ []
+
+
+
+[5
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 22--27
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--41
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--41
+
+ []
+
+
+
+[6])
 
 [7]
+Chapter 3.
+(metropolis.tex
+Underfull \hbox (badness 10000) in paragraph at lines 9--12
+
+ []
+
+
+
+[8
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 51--54
+
+ []
+
+
+
+[9]
 Underfull \hbox (badness 10000) in paragraph at lines 107--110
 
  []
@@ -1196,7 +1253,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 112--1
 
 
 
-[8]
+[10]
 Underfull \hbox (badness 10000) in paragraph at lines 2--10
 
  []
@@ -1213,7 +1270,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--31
 
 
 
-[9]
+[11]
 Underfull \hbox (badness 10000) in paragraph at lines 34--38
 
  []
@@ -1230,7 +1287,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 56--61
 
 
 
-[10])
+[12])
 Underfull \hbox (badness 10000) in paragraph at lines 86--75
 
  []
@@ -1242,41 +1299,41 @@ Underfull \hbox (badness 10000) in paragraph at lines 86--75
 
 
 
-[11]
+[13]
 Chapter 4.
 (integrators.tex
-Underfull \hbox (badness 10000) in paragraph at lines 26--30
+Underfull \hbox (badness 10000) in paragraph at lines 24--28
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 32--36
+Underfull \hbox (badness 10000) in paragraph at lines 30--34
 
  []
 
 
 
-[12
+[14
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 51--54
+Underfull \hbox (badness 10000) in paragraph at lines 49--52
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 67--71
+Underfull \hbox (badness 10000) in paragraph at lines 64--68
 
  []
 
 
 
-[13])
+[15])
 
-[14]
+[16]
 Chapter 5.
 (stats.tex
 
-[15
+[17
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 43--46
@@ -1285,9 +1342,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 43--46
 
 
 
-[16])
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 87--90
 
-[17]
+ []
+
+)
+
+[19]
 Chapter 6.
 (charge.tex
 Underfull \hbox (badness 10000) in paragraph at lines 1--4
@@ -1296,7 +1358,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1--4
 
 
 
-[18
+[20
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 44--50
@@ -1305,23 +1367,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 44--50
 
 )
 
-[19]
+[21]
 Chapter 7.
 (results.tex
 
-[20
+[22
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 25--27
 
  []
 
-<images/acc_rate_constant_width.png, id=441, 390.258pt x 282.5757pt>
+<images/acc_rate_constant_width.png, id=487, 390.258pt x 282.5757pt>
 File: images/acc_rate_constant_width.png Graphic file (type png)
 <use images/acc_rate_constant_width.png>
 Package pdftex.def Info: images/acc_rate_constant_width.png  used on input line 34.
 (pdftex.def)             Requested size: 226.57297pt x 164.05786pt.
-<images/acc_rate_adapted.png, id=443, 424.9476pt x 282.5757pt>
+<images/acc_rate_adapted.png, id=489, 424.9476pt x 282.5757pt>
 File: images/acc_rate_adapted.png Graphic file (type png)
 <use images/acc_rate_adapted.png>
 Package pdftex.def Info: images/acc_rate_adapted.png  used on input line 41.
@@ -1341,20 +1403,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 28--47
 
  []
 
-<images/chain.png, id=445, 626.5809pt x 413.3844pt>
+<images/chain.png, id=491, 626.5809pt x 413.3844pt>
 File: images/chain.png Graphic file (type png)
 <use images/chain.png>
 Package pdftex.def Info: images/chain.png  used on input line 53.
 (pdftex.def)             Requested size: 472.03123pt x 311.42523pt.
 
 
-[21 <./images/acc_rate_constant_width.png> <./images/acc_rate_adapted.png>]
-<images/runtimes_Python_broken.png, id=459, 426.393pt x 322.3242pt>
+[23 <./images/acc_rate_constant_width.png> <./images/acc_rate_adapted.png>]
+<images/runtimes_Python_broken.png, id=506, 426.393pt x 322.3242pt>
 File: images/runtimes_Python_broken.png Graphic file (type png)
 <use images/runtimes_Python_broken.png>
 Package pdftex.def Info: images/runtimes_Python_broken.png  used on input line 67.
 (pdftex.def)             Requested size: 226.57297pt x 171.27365pt.
-<images/runtimes_Python_symmetric.png, id=460, 426.393pt x 322.3242pt>
+<images/runtimes_Python_symmetric.png, id=507, 426.393pt x 322.3242pt>
 File: images/runtimes_Python_symmetric.png Graphic file (type png)
 <use images/runtimes_Python_symmetric.png>
 Package pdftex.def Info: images/runtimes_Python_symmetric.png  used on input line 74.
@@ -1376,93 +1438,187 @@ Underfull \hbox (badness 10000) in paragraph at lines 59--80
 
 
 
-[22 <./images/chain.png>]
-<images/runtimes_Rust_broken.png, id=468, 425.6703pt x 359.9046pt>
+[24 <./images/chain.png>]
+<images/runtimes_Rust_broken.png, id=515, 425.6703pt x 359.9046pt>
 File: images/runtimes_Rust_broken.png Graphic file (type png)
 <use images/runtimes_Rust_broken.png>
 Package pdftex.def Info: images/runtimes_Rust_broken.png  used on input line 86.
 (pdftex.def)             Requested size: 226.57297pt x 191.57228pt.
-<images/runtimes_Rust_symmetric.png, id=469, 425.6703pt x 359.9046pt>
+<images/runtimes_Rust_symmetric.png, id=516, 425.6703pt x 359.9046pt>
 File: images/runtimes_Rust_symmetric.png Graphic file (type png)
 <use images/runtimes_Rust_symmetric.png>
 Package pdftex.def Info: images/runtimes_Rust_symmetric.png  used on input line 93.
 (pdftex.def)             Requested size: 226.57297pt x 191.57228pt.
 
 
-[23 <./images/runtimes_Python_broken.png> <./images/runtimes_Python_symmetric.png> <./images/runtimes_Rust_broken.png> <./images/runtimes_Rust_symmetric.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 106--108
-
- []
-
-<images/error_Python_broken.png, id=482, 403.2666pt x 299.1978pt>
+[25 <./images/runtimes_Python_broken.png> <./images/runtimes_Python_symmetric.png> <./images/runtimes_Rust_broken.png> <./images/runtimes_Rust_symmetric.png>]
+<images/error_Python_broken.png, id=530, 403.2666pt x 299.1978pt>
 File: images/error_Python_broken.png Graphic file (type png)
 <use images/error_Python_broken.png>
-Package pdftex.def Info: images/error_Python_broken.png  used on input line 117.
+Package pdftex.def Info: images/error_Python_broken.png  used on input line 116.
 (pdftex.def)             Requested size: 226.57297pt x 168.10658pt.
-<images/error_Python_symmetric.png, id=483, 403.2666pt x 299.1978pt>
+<images/error_Python_symmetric.png, id=531, 403.2666pt x 299.1978pt>
 File: images/error_Python_symmetric.png Graphic file (type png)
 <use images/error_Python_symmetric.png>
-Package pdftex.def Info: images/error_Python_symmetric.png  used on input line 124.
+Package pdftex.def Info: images/error_Python_symmetric.png  used on input line 123.
 (pdftex.def)             Requested size: 226.57297pt x 168.10658pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--130
+Underfull \hbox (badness 10000) in paragraph at lines 110--129
 
  []
 
-<images/error_Rust_broken.png, id=485, 426.393pt x 281.853pt>
+<images/error_Rust_broken.png, id=533, 426.393pt x 281.853pt>
 File: images/error_Rust_broken.png Graphic file (type png)
 <use images/error_Rust_broken.png>
-Package pdftex.def Info: images/error_Rust_broken.png  used on input line 136.
+Package pdftex.def Info: images/error_Rust_broken.png  used on input line 135.
 (pdftex.def)             Requested size: 226.57297pt x 149.76843pt.
-<images/error_Rust_symmetric.png, id=486, 426.393pt x 281.853pt>
+<images/error_Rust_symmetric.png, id=534, 426.393pt x 281.853pt>
 File: images/error_Rust_symmetric.png Graphic file (type png)
 <use images/error_Rust_symmetric.png>
-Package pdftex.def Info: images/error_Rust_symmetric.png  used on input line 143.
+Package pdftex.def Info: images/error_Rust_symmetric.png  used on input line 142.
 (pdftex.def)             Requested size: 226.57297pt x 149.76843pt.
 
 
-[24 <./images/error_Python_broken.png> <./images/error_Python_symmetric.png>]
-<images/autocorr_Python_broken.png, id=496, 399.6531pt x 299.1978pt>
+[26 <./images/error_Python_broken.png> <./images/error_Python_symmetric.png>]
+<images/autocorr_Python_broken.png, id=544, 399.6531pt x 299.1978pt>
 File: images/autocorr_Python_broken.png Graphic file (type png)
 <use images/autocorr_Python_broken.png>
-Package pdftex.def Info: images/autocorr_Python_broken.png  used on input line 164.
+Package pdftex.def Info: images/autocorr_Python_broken.png  used on input line 163.
 (pdftex.def)             Requested size: 226.57297pt x 169.62686pt.
-<images/autocorr_Python_symmetric.png, id=497, 399.6531pt x 299.1978pt>
+<images/autocorr_Python_symmetric.png, id=545, 399.6531pt x 299.1978pt>
 File: images/autocorr_Python_symmetric.png Graphic file (type png)
 <use images/autocorr_Python_symmetric.png>
-Package pdftex.def Info: images/autocorr_Python_symmetric.png  used on input line 171.
+Package pdftex.def Info: images/autocorr_Python_symmetric.png  used on input line 170.
 (pdftex.def)             Requested size: 226.57297pt x 169.62686pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--177
+Underfull \hbox (badness 10000) in paragraph at lines 157--176
 
  []
 
 
 
-[25 <./images/error_Rust_broken.png> <./images/error_Rust_symmetric.png>]
-<images/autocorr_Rust_broken.png, id=508, 426.393pt x 281.853pt>
+[27 <./images/error_Rust_broken.png> <./images/error_Rust_symmetric.png>]
+<images/autocorr_Rust_broken.png, id=555, 426.393pt x 281.853pt>
 File: images/autocorr_Rust_broken.png Graphic file (type png)
 <use images/autocorr_Rust_broken.png>
-Package pdftex.def Info: images/autocorr_Rust_broken.png  used on input line 183.
+Package pdftex.def Info: images/autocorr_Rust_broken.png  used on input line 182.
 (pdftex.def)             Requested size: 226.57297pt x 149.76843pt.
-<images/autocorr_Rust_symmetric.png, id=509, 426.393pt x 281.853pt>
+<images/autocorr_Rust_symmetric.png, id=556, 426.393pt x 281.853pt>
 File: images/autocorr_Rust_symmetric.png Graphic file (type png)
 <use images/autocorr_Rust_symmetric.png>
-Package pdftex.def Info: images/autocorr_Rust_symmetric.png  used on input line 190.
+Package pdftex.def Info: images/autocorr_Rust_symmetric.png  used on input line 189.
 (pdftex.def)             Requested size: 226.57297pt x 149.76843pt.
-)
 
-[26 <./images/autocorr_Python_broken.png> <./images/autocorr_Python_symmetric.png> <./images/autocorr_Rust_broken.png> <./images/autocorr_Rust_symmetric.png>]
-Overfull \hbox (11.07721pt too wide) in paragraph at lines 84--84
+
+[28 <./images/autocorr_Python_broken.png> <./images/autocorr_Python_symmetric.png> <./images/autocorr_Rust_broken.png> <./images/autocorr_Rust_symmetric.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 207--227
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 207--227
+
+ []
+
+<images/symmetric_hists.png, id=571, 859.2903pt x 353.4003pt>
+File: images/symmetric_hists.png Graphic file (type png)
+<use images/symmetric_hists.png>
+Package pdftex.def Info: images/symmetric_hists.png  used on input line 231.
+(pdftex.def)             Requested size: 472.03123pt x 194.13348pt.
+<images/broken_hist.png, id=572, 859.2903pt x 353.4003pt>
+File: images/broken_hist.png Graphic file (type png)
+<use images/broken_hist.png>
+Package pdftex.def Info: images/broken_hist.png  used on input line 237.
+(pdftex.def)             Requested size: 472.03123pt x 194.13348pt.
+
+
+[29]
+<images/symmetric_stepsize.png, id=581, 570.933pt x 354.123pt>
+File: images/symmetric_stepsize.png Graphic file (type png)
+<use images/symmetric_stepsize.png>
+Package pdftex.def Info: images/symmetric_stepsize.png  used on input line 253.
+(pdftex.def)             Requested size: 226.57297pt x 140.53355pt.
+<images/broken_stepsize.png, id=582, 570.933pt x 354.123pt>
+File: images/broken_stepsize.png Graphic file (type png)
+<use images/broken_stepsize.png>
+Package pdftex.def Info: images/broken_stepsize.png  used on input line 260.
+(pdftex.def)             Requested size: 226.57297pt x 140.53355pt.
+
+
+[30 <./images/symmetric_hists.png> <./images/broken_hist.png>]
+<images/top_charge_broken.png, id=595, 402.5439pt x 282.5757pt>
+File: images/top_charge_broken.png Graphic file (type png)
+<use images/top_charge_broken.png>
+Package pdftex.def Info: images/top_charge_broken.png  used on input line 281.
+(pdftex.def)             Requested size: 226.57297pt x 159.05191pt.
+<images/top_charge_symmetric.png, id=596, 408.3255pt x 282.5757pt>
+File: images/top_charge_symmetric.png Graphic file (type png)
+<use images/top_charge_symmetric.png>
+Package pdftex.def Info: images/top_charge_symmetric.png  used on input line 288.
+(pdftex.def)             Requested size: 226.57297pt x 156.79686pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 274--294
+
+ []
+
+
+
+[31 <./images/symmetric_stepsize.png> <./images/broken_stepsize.png>])
+
+[32 <./images/top_charge_broken.png> <./images/top_charge_symmetric.png>]
+Chapter 8.
+(conclusions.tex
+Underfull \hbox (badness 10000) in paragraph at lines 1--16
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--16
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--16
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--16
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--16
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--16
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1--16
+
+ []
+
+
+
+[33
+
+])
+
+[34]
+Overfull \hbox (11.07721pt too wide) in paragraph at lines 86--86
 []\OT1/cmr/m/n/10 Wikipedia Con-trib-u-tors. \OT1/cmr/m/it/10 Five-point sten-cil --- Wikipedia, The Free En-cy-clo-pe-dia\OT1/cmr/m/n/10 . [][]$\OT1/cmtt/m/n/10 https : / / en . wikipedia .
  []
 
 
 
-[27
+[35
 
 ]
-runsystem(latexminted cleantemp  --timestamp 20251227202932 FAD58DE7366495DB4650CFEFAC2FCD61)...disabled (restricted).
+runsystem(latexminted cleantemp  --timestamp 20260101210225 FAD58DE7366495DB4650CFEFAC2FCD61)...disabled (restricted).
 
  (main.aux)
  ***********
@@ -1470,23 +1626,23 @@ LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-09-02>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 1397EABB01DC42B85A3B96964A3DF3E1;7041.
+(rerunfilecheck)             Checksum: DDA41BBE5B6390DA1A30FEB19460E447;8196.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 42642 strings out of 468081
- 901619 string characters out of 5425788
- 1810963 words of memory out of 5000000
- 70532 multiletter control sequences out of 15000+600000
+ 42625 strings out of 468081
+ 901379 string characters out of 5425788
+ 1811221 words of memory out of 5000000
+ 70491 multiletter control sequences out of 15000+600000
  645169 words of font info for 107 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,11n,117p,824b,1879s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\fionu\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (27 pages, 939864 bytes).
+ 99i,12n,117p,1123b,2928s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\fionu\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/fionu/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (35 pages, 1278240 bytes).
 PDF statistics:
- 689 PDF objects out of 1000 (max. 8388607)
- 188 named destinations out of 1000 (max. 500000)
- 368 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 805 PDF objects out of 1000 (max. 8388607)
+ 209 named destinations out of 1000 (max. 500000)
+ 446 words of extra memory for PDF output out of 10000 (max. 10000000)
 

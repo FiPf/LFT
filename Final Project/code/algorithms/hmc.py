@@ -37,13 +37,15 @@ class HMCSim(Base_sim):
         self.bc = bc
         self.grad_action = actions.gradient_phi4_action
         self.grad_kwargs = dict(mass2=self.mass2, lamb=self.lamb, bc = self.bc)
+        self.hamiltonian_diffs = []
 
-    def update(self) -> None:
+    def update(self) -> list:
         """performs a single HMC algorithm step
         """
         pi0 = self.rng.normal(size=self.phi.shape)
         proposed_phi = self.phi.copy()
         proposed_pi = pi0.copy()
+        diff_list = []
 
         for _ in range(self.steps): 
             proposed_phi, proposed_pi = self.integrator(proposed_phi, proposed_pi, self.eps, grad_action=self.grad_action, grad_kwargs=self.grad_kwargs)
@@ -51,13 +53,17 @@ class HMCSim(Base_sim):
         H_old = actions.hamiltonian(self.phi, pi0, mass2=self.mass2, lamb=self.lamb, bc = self.bc)
         H_new = actions.hamiltonian(proposed_phi, proposed_pi, mass2=self.mass2, lamb=self.lamb, bc = self.bc)
         p_accept = min(1, np.exp(H_old - H_new))
+        diff_list.append(H_old - H_new)
         if self.rng.random() <= p_accept: 
             self.phi = proposed_phi
             self.accepted_history.append(1)
         else: 
             self.accepted_history.append(0)
 
-def run_hmc(phi0: np.array, mass2: float, lamb: float, width: float, n_steps: int, rng: Optional[Generator] = None, logger: Optional[Callable] = None, progress: bool = False, integrator: Callable = integrators.leapfrog) -> HMCSim:
+        delta_H = H_old - H_new
+        self.hamiltonian_diffs.append(delta_H)
+
+def run_hmc(phi0: np.array, mass2: float, lamb: float, width: float, n_steps: int, rng: Optional[Generator] = None, logger: Optional[Callable] = None, progress: bool = False, integrator: Callable = integrators.leapfrog, return_diff: bool = False) -> HMCSim:
     """function to run the HMC simulation, a HMCSim object is initialized and the simulation is run with the desired parameters. 
 
     Args:
@@ -70,6 +76,7 @@ def run_hmc(phi0: np.array, mass2: float, lamb: float, width: float, n_steps: in
         logger (Optional[Callable], optional): Logger function to use. Defaults to None.
         progress (bool, optional): Whether to display a progress bar or not. Defaults to False.
         integrator (Callable, optional): Which integrator to use. Defaults to integrators.leapfrog.
+        return_diff (bool, optional): Whether to return the hamiltonian difference or not, used to check for energy conservation.
 
     Returns:
         HMCSim: A HMCSim object, the accepted history is returned
@@ -77,4 +84,7 @@ def run_hmc(phi0: np.array, mass2: float, lamb: float, width: float, n_steps: in
     rng = rng or default_rng()
     sim = HMCSim(phi0, mass2=mass2, lamb=lamb, width=width, rng=rng, integrator=integrator)
     sim.run_sim(n_steps, logger=logger, progress_bar=True)
-    return sim.accepted_history
+    if return_diff:
+        return np.array(sim.hamiltonian_diffs)
+    else:
+        return sim.accepted_history

@@ -1,38 +1,39 @@
-Scalar $\phi^4$ theory is the simplest relativistic system in which we can see spontaneous symmetry breaking of discrete symmetries ($\mathbb{Z}_2$ reflection symmetry, $\phi(x) \rightarrow -\phi(x)$). 
-The difference between explicit and spontaneous breaking of a symmetry is that with spontaneous symmetry breaking, the Lagrangian is invariant under the symmetry, but the gorund state is not. In explicit symmetry breaking, the 
-symmetry was never there to begin with. In spontaneous symmetry breaking, a phase transition occurs. For discrete symmetries, spontaneous symmetry breaking looks very similar to explicit symmetry breaking. Breaking of a continous global symmetry (for example a global $U(1)$ phase symmetry) would lead to massless particles (Goldstone theorem) and for gauged symmetries, this could explain the Higgs mechanism. 
-However, this is beyond the scope of this project. This section is provided for completeness and is heavily based on the tutorial of the LFT course and the following book: \cite{SchwartzQFT}.
+Scalar $\phi^4$ theory is the simplest quantum field theory in which we can see spontaneous symmetry breaking of the discrete $\mathbb{Z}_2$ reflection symmetry, $\phi(x) \rightarrow -\phi(x)$. \\\\
+The difference between explicit and spontaneous breaking of a symmetry is that with spontaneous symmetry breaking, the Lagrangian is invariant under the symmetry, but the gorund state is not. As a consequence, in spontaneous symmetry breaking, a phase transition occurs. In explicit symmetry breaking, the symmetry was already violated at the level of the Lagrangian. \\\\
+For discrete symmetries such as the $\mathbb{Z}_2$ symmetry of $\phi^4$ theory, spontaneous symmetry breaking looks very similar to explicit symmetry breaking. Breaking of a continous global symmetry (for example a global $U(1)$ phase symmetry) would lead to massless particles (Goldstone theorem) and for gauged symmetries, this could explain the Higgs mechanism. However, this is beyond the scope of this project. \cite{SchwartzQFT}\\\\
+Strictly speaking, spontaneous symmetry breaking occurs only in the infinite-volume limit. On a finite lattice, tunneling between degenerate vacua restores the symmetry, although for sufficiently large volumes the system behaves effectively as if the symmetry were broken. Furthermore, due to lattice renormalization effects, the critical value of the bare mass differs from its continuum value and must be determined numerically. Near this critical point the correlation length diverges, leading to critical slowing down in Monte Carlo simulations. \cite{SchwartzQFT,GattingerLang}\\\\
+This section is provided for completeness and is heavily based on the tutorial of the LFT course and the following book: \cite{SchwartzQFT}.
 \section{The \texorpdfstring{$\phi^4$}{phi4} Theory Action}
 We work in two-dimensional Euclidian space. Then, the $\phi^4$- theory action is described by the following Lagrangian:
 \begin{equation}
     S[\phi] = \int d^2x \left[ \frac{1}{2}(\partial_\mu \phi) (\partial^\mu \phi) + \frac{1}{2} m^2 \phi^2 + \frac{1}{4!}\lambda \phi^4 \right], 
 \end{equation} 
-where $m^2$ and $\lambda$ are the parameters of the theory. We could regard these parameters as being temperature dependent, then this model could describe a system such as a ferromagnet near its critical temperature.\\
-We assume periodic boundary conditions in all dimensions, hence by integrating by parts, we obtain
+where $m^2$ and $\lambda$ are the mass and self-interaction parameters of the theory. We could regard these parameters as being temperature dependent, then this model could describe a system such as a ferromagnet near its critical temperature.\\
+Throughout this project, we mostly assume periodic boundary conditions in all dimensions, hence by integrating by parts, we obtain
 \begin{equation}
     S[\phi] = \int \mathrm{d}^{2}x \;  \left[ -\frac{1}{2} \phi \left( \partial_{\mu} \partial^{\mu} \phi \right) + \frac{1}{2} m^{2} \phi^{2} + \frac{1}{4!} \lambda \phi^{4} \right].
 \end{equation}
-The total derivative term vanished because of the periodic boundary conditions. This rewriting shows explicitly that the kinetic energy term becomes a nearest neighbour coupling when discretizing the action. 
+The total derivative term vanished because of the periodic boundary conditions. This rewriting shows explicitly that the kinetic energy term becomes a nearest neighbour coupling when discretizing the action. \\\\
+In Section \ref{sec:topology}, also anti-periodic boundary conditions will be considered. While periodic boundary conditions preserve tranlational invariance, aperiodic boundary conditions enforece a sign change of the field around the boundary, which introduces a non-trivial topology. This distinction plays an important role in the study of topological properties and allows for the definition of a relative topological charge by comparing configurations generated with different boundary conditions.
 \section{Different Masses \texorpdfstring{$m^2$}{m2}}
 The action has the following scalar potential: 
 \begin{equation}
     V(\phi) = \frac{1}{2}m^2\phi^2 + \frac{1}{4!}\lambda \phi^4. 
 \end{equation}
 The parameter $\lambda$ has the same dimension as a squared mass.
-We assume that $\lambda > 0$, such that the potential is bounded from below. This is required to define a proper distribution, as it ensures that the Boltzmann weight is normalizable. 
+We assume that $\lambda > 0$ is positive, such that the potential is bounded from below. This is required to define a proper distribution, as it ensures that the Boltzmann weight $e^{-S[\phi]}$ is normalizable. \\\\
 This potential can model a system near a phase transition, such as a ferromagnet near the critical temperature $T_c$. The mass parameter $m^2$ plays a role analogous to the inverse correlation length, its sign determines the phase of the system. 
 We can imagine the mass to be temperature dependent: 
 \begin{equation}
     m^2(T) = c(T - T_c), 
 \end{equation}
-where $c$ is some constant \cite{SchwartzQFT}. 
+where $c$ is some positive constant \cite{SchwartzQFT}. \\
 We distinguish for the following two cases for the mass parameter: 
 \begin{itemize}
-    \item If $m^2 \geq 0$ ($T \geq T_c$), the potential has a minimum at $\phi = 0$, which corresponds to a minimum of the action. There is a single vacuum state for which $\braket{\phi} = 0$. 
-    \item If $m^2 < 0$ ($ T < T_c$), $\phi = 0$ is a local maximum and there are two global minima at $\phi = \pm \sqrt{\frac{-6m^2}{\lambda}}$. There are now two vacuum states and $\braket{\phi} = \pm \sqrt{-\frac{6m^2}{\lambda}}$. 
+    \item If $m^2 \geq 0$ ($T \geq T_c$), the potential has a minimum at $\phi = 0$, which corresponds to a minimum of the action. There is a single vacuum state for which $\braket{\phi} = 0$. The $\mathbb{Z}_2$ symmetry of the theory is preserved. 
+    \item If $m^2 < 0$ ($ T < T_c$), $\phi = 0$ is a local maximum and there are two degenerate minima at $\phi = \pm \sqrt{\frac{-6m^2}{\lambda}}$. There are now two vacuum states and $\braket{\phi} = \pm \sqrt{-\frac{6m^2}{\lambda}}$. This is the case of spontaneous symmetry breaking. 
 \end{itemize}
-Since the vacuum expectation value $\langle \phi \rangle = 0$ is invariant under $\phi \to -\phi$, but the two vacua $\langle \phi \rangle = \pm \sqrt{-6 m^{2} / \lambda}$ are not, this is a case of spontaneous symmetry breaking. That means there occurs a phase transition at some critical mass value $m_c^2 < 0$. At this critical point, 
-the correlation length diverges. This is the point where Monte-Carlo simulations become critical-slowing-down limited. 
+Since the vacuum expectation value $\langle \phi \rangle = 0$ is invariant under $\phi \to -\phi$, but the two vacua $\langle \phi \rangle = \pm \sqrt{-6 m^{2} / \lambda}$ are not, this is a case of spontaneous symmetry breaking. That means there occurs a phase transition at some critical mass value $m_c^2 < 0$. At this critical point, the correlation length diverges. This is the point where Monte-Carlo simulations become critical-slowing-down limited. 
 \\\\
 In this picture, spontaneous symmetry breaking is associated with a continuous phase transition where the effective mass crosses zero. The order parameter $\braket{\phi}$ changes from zero in the symmetric phase to a nonzero value in the broken phase, analogous to the magnetization of a ferromagnet emerging below the Curie temperature.
 \\\\
@@ -63,4 +64,4 @@ or, after some algebra,
 \begin{equation}
     \boxed{S[\phi] = \sum_{\vec{n}} \left( \left[ 2 + \frac{1}{2} m^{2}\right] \phi^{2}(\vec{n}) + \frac{1}{4!} \lambda \phi^{4}(\vec{n}) -\sum_{\mu} \left[ \phi(\vec{n} + \hat{\mu}) \phi(\vec{n})\right] \right)} \label{eq: discrete_action}
 \end{equation}
-where we have redefined $(am)^{2} \to m^{2}$ and $(a^{2} \lambda) \to \lambda$. The discretized action has a changed mass, $m_{\text{eff}}^2 = 2 + \frac{1}{2}m^2$. 
+where we have redefined $(am)^{2} \to m^{2}$ and $(a^{2} \lambda) \to \lambda$. The discretized action has a changed mass, $m_{\text{eff}}^2 = 2 + \frac{1}{2}m^2$. This effective mass term includes contributions from the lattice Laplacian. As a consequence, the critical value of the bare mass differs from its continuum counterpart and must be determined numerically. This shift plays an important role in lattice simulations and is closely related to mass renormalization effects \cite{GattingerLang}. 

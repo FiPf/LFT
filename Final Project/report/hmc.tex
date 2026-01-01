@@ -15,9 +15,9 @@ This method combines deterministic molecular dynamics and accept/reject steps, a
 was originally developed for lattice field theories, it is nowadays applied in various other fields. 
 \\\\
 The goal is again to calculate the expectation of some operator along with its partition function, as defined in the Equations 
-\ref{eq: partition_function} and \ref{eq: partition_function}. The Metropolis algorithm is a rater inefficient way to do this and we search for 
+\ref{eq: path_integral} and \ref{eq: partition_function}. The Metropolis algorithm is a rather inefficient way to do this and we search for 
 a method to choose candidate configurations efficiently. We aim for a high acceptance rate and minimum correlation between successive configurations. 
-For this, we introduce an artificial computer time $\tau$ and a hamiltonian dynamics to describe the developement of the field $\phi(\tau)$. In addition, 
+For this, we introduce an artificial computer time $\tau$ and a hamiltonian dynamics to describe the development of the field $\phi(\tau)$. In addition, 
 we will need the conjugate momenta $\pi(\tau)$. This means, instead of sampling the distribution $p(\phi) = \frac{1}{Z} e^{-S(\phi)}$, we sample 
 $p(\phi, \pi) = \frac{1}{Z'} e^{-H[\phi, \pi]}$. The Hamiltonian $H[\phi, \pi]$ is given as follows: 
 \begin{equation}
@@ -45,7 +45,7 @@ The probability of choosing the configuration $(\phi', \pi')$ is
 \end{equation}
 The acceptance probability for this candidate is 
 \begin{equation}
-    P_A((\phi, \pi) \rightarrow (\phi', \pi')) = \min \left( 1, \exp( \delta H) \right), 
+    P_A((\phi, \pi) \rightarrow (\phi', \pi')) = \min \left( 1, \exp( -\delta H) \right), 
 \end{equation}
 where $\delta H = H(\phi', \pi') - H(\phi, \pi)$. \\\\
 In order for the HMC to correctly sample the target distribution $p(\phi) \propto e^{-S(\phi)}$, the transition probability restricted to the field variables $\phi$ alone must 
@@ -67,7 +67,7 @@ From the following identity (which we already used to show detailed balance for 
     e^{-H(\phi,\pi)}\min(1, e^{-\Delta H}) &= \min\!\left(e^{-H(\phi,\pi)}, e^{-H(\phi',\pi')} \right) \\
     &= e^{-H(\phi',\pi')} \min(1, e^{+\Delta H}),
 \end{align}
-the fact that the Hamiltonian $H(\phi,\pi)$ is also invariant under $\pi \to -\pi$ and $P_s(\phi) P_G(\pi) \propto \exp (H(\phi, \pi))$, we obtain
+the fact that the Hamiltonian $H(\phi,\pi)$ is also invariant under $\pi \to -\pi$ and $P_s(\phi) P_G(\pi) \propto \exp (-H(\phi, \pi))$, we obtain
 \begin{equation}
     P_S(\phi)\, P_G(\pi)\,P_A((\phi,\pi)\to(\phi',\pi')) = P_S(\phi')\, P_G(\pi')\,P_A((\phi',\pi')\to(\phi,\pi)).
 \end{equation}
@@ -85,9 +85,9 @@ and using the reversibility condition from above, this reduces precisely to
     P_S(\phi)\, P_M(\phi \to \phi') = P_S(\phi')\, P_M(\phi' \to \phi),
 \end{equation}
 which is the detailed balance condition for $P_M$.\\\\
-By conservation of energy, we need $H = H'$, meaning $\delta H = 0$ and $P_A = 1$. However, solving differential equations numerically always interoduces errors, hence
+By conservation of energy, we need $H = H'$, meaning $\delta H = 0$ and $P_A = 1$. However, solving differential equations numerically always introduces errors, hence
 in general, $P_A \leq 1$. We have just proved that the HMC produces $\phi$ configurations with the correct distribution for any $\delta H \neq 0$. Also note that the momenta 
-$\pi$ are not used to compute the observables. They can be disregareded in each step \cite{Duane1987HMC}.\\\\
+$\pi$ are not used to compute the observables. They can be disregared in each step \cite{Duane1987HMC}.\\\\
 Note that the accept/reject step plays a crucial role in the HMC. Hamiltonian evolution exchanges energy between the kinetic term $\tfrac{1}{2}\pi^2$ and the potential term 
 $S(\phi)$ while (ideally) keeping their sum $H = \tfrac{1}{2}\pi^2 + S(\phi)$ constant. The accept/reject step corrects the small energy violations $\delta H \neq 0$ resulting 
 from the numerical integration, as it compares the Hamiltonians and accepts the proposed configuration with probability $P_A$. This enforces the correct equilibrium distribution, 
