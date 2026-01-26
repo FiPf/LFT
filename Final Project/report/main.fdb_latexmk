@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 1767286707.97905 "main.bcf" "main.bbl" "main" 1769419963.91535 0
-  "bibliography.bib" 1766852665 4707 1f557ac774af0a425c10fbaa7388cb53 ""
-  "main.bcf" 1769419962 111396 75e034581b065f8e96ab6e251f355d63 "pdflatex"
+["biber main"] 1769420490.04378 "main.bcf" "main.bbl" "main" 1769420521.10292 0
+  "bibliography.bib" 1769420489 4707 e45af7d6d8790663d1ef4b473f013c45 ""
+  "main.bcf" 1769420520 111396 75e034581b065f8e96ab6e251f355d63 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1769419953.78193 "c:/Users/fionu/OneDrive/Dokumente/Daten Fiona/Studium/Physik/Lattice QCD/Code/Final Project/report/main.tex" "main.pdf" "main" 1769419963.91747 0
+["pdflatex"] 1769420515.80404 "c:/Users/fionu/OneDrive/Dokumente/Daten Fiona/Studium/Physik/Lattice QCD/Code/Final Project/report/main.tex" "main.pdf" "main" 1769420521.10378 0
   "C:/Users/fionu/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1766821393 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/fionu/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk" 1761295767 11548 03d08bd27f4695652a2f3378988576f0 ""
   "C:/Users/fionu/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1761295471 13321623 e6fb7797b3730930c6f9b66d3b80eb8b ""
@@ -272,12 +272,12 @@
   "images/top_charge_symmetric.png" 1766848150 35547 196f4a1920b13512a0dd0c125c71e0c1 ""
   "integrators.tex" 1769413685 6957 16ed23dd1897619d4bd9ae1c0ab2bc59 ""
   "introduction.tex" 1769409207 1293 eda21c5f31347e53014956d2229af00b ""
-  "main.aux" 1769419962 21302 dd50cf381d3479d44a4120ca711bddd5 "pdflatex"
-  "main.bbl" 1767286710 22786 efc8f28dcb671fb32b7f3eab85b4d196 "biber main"
-  "main.out" 1769419962 8196 295f2a45b2c39c36e56771d8f1192cc8 "pdflatex"
-  "main.run.xml" 1769419962 2307 fa280d158a7733084a6a66e2106e4193 "pdflatex"
+  "main.aux" 1769420520 21302 e8877fe38f5adb8c7fdd48c0a1ccfae0 "pdflatex"
+  "main.bbl" 1769420510 22758 bd74b793901480c403ac3b88a71c422d "biber main"
+  "main.out" 1769420520 8196 295f2a45b2c39c36e56771d8f1192cc8 "pdflatex"
+  "main.run.xml" 1769420520 2307 fa280d158a7733084a6a66e2106e4193 "pdflatex"
   "main.tex" 1769414204 2126 021cc29a6541b9bf5f5ecb020f778af5 ""
-  "main.toc" 1769419962 3764 670349c556688152d8eeca2f7b262c9b "pdflatex"
+  "main.toc" 1769420520 3764 670349c556688152d8eeca2f7b262c9b "pdflatex"
   "metropolis.tex" 1769410669 9181 a8b6fdf14a3dabeb772d624bdfbba4ee ""
   "mydefs.sty" 1764964340 1801 2d699b63c2aabf6430180f47c7af1298 ""
   "phi4theory.tex" 1769409229 8653 dd122cb9598f96248f93c2a933e483af ""

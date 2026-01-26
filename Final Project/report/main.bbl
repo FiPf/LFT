@@ -43,6 +43,36 @@
       \field{note}{Accessed: 2025-07-11}
       \field{title}{Methods of Monte Carlo Simulation}
     \endentry
+    \entry{wiki:mcmc}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=c2897d4738d8fd643743ca427344b1f3}{%
+           family={Contributors},
+           familyi={C\bibinitperiod},
+           given={Wikipedia},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{c2897d4738d8fd643743ca427344b1f3}
+      \strng{fullhash}{c2897d4738d8fd643743ca427344b1f3}
+      \strng{fullhashraw}{c2897d4738d8fd643743ca427344b1f3}
+      \strng{bibnamehash}{c2897d4738d8fd643743ca427344b1f3}
+      \strng{authorbibnamehash}{c2897d4738d8fd643743ca427344b1f3}
+      \strng{authornamehash}{c2897d4738d8fd643743ca427344b1f3}
+      \strng{authorfullhash}{c2897d4738d8fd643743ca427344b1f3}
+      \strng{authorfullhashraw}{c2897d4738d8fd643743ca427344b1f3}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed September 2025}
+      \field{title}{Markov chain Monte Carlo}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo
+      \endverb
+      \verb{url}
+      \verb https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo
+      \endverb
+    \endentry
     \entry{wiki:autocorrelation}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=e2ceeea38f8620383cfbd3e99c5c0cd8}{%
@@ -69,37 +99,6 @@
       \field{title}{Autocorrelation}
       \field{year}{2025}
     \endentry
-    \entry{wiki:mcmc}{misc}{}{}
-      \name{author}{1}{}{%
-        {{hash=e2ceeea38f8620383cfbd3e99c5c0cd8}{%
-           family={contributors},
-           familyi={c\bibinitperiod},
-           given={Wikipedia},
-           giveni={W\bibinitperiod}}}%
-      }
-      \strng{namehash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
-      \strng{fullhash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
-      \strng{fullhashraw}{e2ceeea38f8620383cfbd3e99c5c0cd8}
-      \strng{bibnamehash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
-      \strng{authorbibnamehash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
-      \strng{authornamehash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
-      \strng{authorfullhash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
-      \strng{authorfullhashraw}{e2ceeea38f8620383cfbd3e99c5c0cd8}
-      \field{extraname}{2}
-      \field{sortinit}{c}
-      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{note}{Accessed September 2025}
-      \field{title}{Markov chain Monte Carlo}
-      \field{year}{2025}
-      \verb{urlraw}
-      \verb https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo
-      \endverb
-      \verb{url}
-      \verb https://en.wikipedia.org/wiki/Markov_chain_Monte_Carlo
-      \endverb
-    \endentry
     \entry{wiki:stderr}{misc}{}{}
       \name{author}{1}{}{%
         {{hash=e2ceeea38f8620383cfbd3e99c5c0cd8}{%
@@ -116,7 +115,7 @@
       \strng{authornamehash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
       \strng{authorfullhash}{e2ceeea38f8620383cfbd3e99c5c0cd8}
       \strng{authorfullhashraw}{e2ceeea38f8620383cfbd3e99c5c0cd8}
-      \field{extraname}{3}
+      \field{extraname}{2}
       \field{sortinit}{c}
       \field{sortinithash}{4d103a86280481745c9c897c925753c0}
       \field{labelnamesource}{author}
