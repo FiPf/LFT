@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 1767286707.97905 "main.bcf" "main.bbl" "main" 1767297751.83752 0
+["biber main"] 1767286707.97905 "main.bcf" "main.bbl" "main" 1769419963.91535 0
   "bibliography.bib" 1766852665 4707 1f557ac774af0a425c10fbaa7388cb53 ""
-  "main.bcf" 1767297751 111396 75e034581b065f8e96ab6e251f355d63 "pdflatex"
+  "main.bcf" 1769419962 111396 75e034581b065f8e96ab6e251f355d63 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1767297744.90055 "c:/Users/fionu/OneDrive/Dokumente/Daten Fiona/Studium/Physik/Lattice QCD/Code/Final Project/report/main.tex" "main.pdf" "main" 1767297751.8405 0
+["pdflatex"] 1769419953.78193 "c:/Users/fionu/OneDrive/Dokumente/Daten Fiona/Studium/Physik/Lattice QCD/Code/Final Project/report/main.tex" "main.pdf" "main" 1769419963.91747 0
   "C:/Users/fionu/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1766821393 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/fionu/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk" 1761295767 11548 03d08bd27f4695652a2f3378988576f0 ""
   "C:/Users/fionu/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1761295471 13321623 e6fb7797b3730930c6f9b66d3b80eb8b ""
@@ -245,8 +245,8 @@
   "C:/Users/fionu/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/fionu/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "C:/Users/fionu/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
-  "c:/Users/fionu/OneDrive/Dokumente/Daten Fiona/Studium/Physik/Lattice QCD/Code/Final Project/report/main.tex" 1767276974 2126 2dbc281766f4cb008a8eaa4ee0357c57 ""
-  "charge.tex" 1767279456 5026 c425d8c2cdbebb3c485a79a2eab6bd3c ""
+  "c:/Users/fionu/OneDrive/Dokumente/Daten Fiona/Studium/Physik/Lattice QCD/Code/Final Project/report/main.tex" 1769414204 2126 021cc29a6541b9bf5f5ecb020f778af5 ""
+  "charge.tex" 1769414485 5030 7bdf221bcecd597eba87816cd9436282 ""
   "conclusions.tex" 1767297194 5292 330023fbbe3872d616a7528f8bdc59da ""
   "hmc.tex" 1767261745 8583 7972afd7a85c9e58b4f4dd6da141e845 ""
   "images/acc_rate_adapted.png" 1766821788 44586 47fd9c907cb7f2b44c3533e8d8a4e285 ""
@@ -270,19 +270,19 @@
   "images/symmetric_stepsize.png" 1767283936 35526 f466dfc775d69a66249b70618ebecabe ""
   "images/top_charge_broken.png" 1766848131 38568 4db36de8d934e8ff86eb266c790d2f6b ""
   "images/top_charge_symmetric.png" 1766848150 35547 196f4a1920b13512a0dd0c125c71e0c1 ""
-  "integrators.tex" 1767277721 6957 0562f7184d93f1f1536e3586481e4cd3 ""
-  "introduction.tex" 1767297743 1259 e9cbfb06a1173d3cdff1a9b0c047c879 ""
-  "main.aux" 1767297751 21302 57a33e7b500615123ebbd152e73f0e18 "pdflatex"
+  "integrators.tex" 1769413685 6957 16ed23dd1897619d4bd9ae1c0ab2bc59 ""
+  "introduction.tex" 1769409207 1293 eda21c5f31347e53014956d2229af00b ""
+  "main.aux" 1769419962 21302 dd50cf381d3479d44a4120ca711bddd5 "pdflatex"
   "main.bbl" 1767286710 22786 efc8f28dcb671fb32b7f3eab85b4d196 "biber main"
-  "main.out" 1767297751 8196 dda41bbe5b6390da1a30feb19460e447 "pdflatex"
-  "main.run.xml" 1767297751 2307 fa280d158a7733084a6a66e2106e4193 "pdflatex"
-  "main.tex" 1767276974 2126 2dbc281766f4cb008a8eaa4ee0357c57 ""
-  "main.toc" 1767297751 3764 354c72393c39ec53c37515915321e22d "pdflatex"
-  "metropolis.tex" 1767261218 9180 75526127b18baf92f7649160ca8b59d5 ""
+  "main.out" 1769419962 8196 295f2a45b2c39c36e56771d8f1192cc8 "pdflatex"
+  "main.run.xml" 1769419962 2307 fa280d158a7733084a6a66e2106e4193 "pdflatex"
+  "main.tex" 1769414204 2126 021cc29a6541b9bf5f5ecb020f778af5 ""
+  "main.toc" 1769419962 3764 670349c556688152d8eeca2f7b262c9b "pdflatex"
+  "metropolis.tex" 1769410669 9181 a8b6fdf14a3dabeb772d624bdfbba4ee ""
   "mydefs.sty" 1764964340 1801 2d699b63c2aabf6430180f47c7af1298 ""
-  "phi4theory.tex" 1767260128 8654 08669f88376f91872d383380f8c7079d ""
-  "results.tex" 1767294928 27266 7019ac35b95e5429bbe2f3d7597d1678 ""
-  "stats.tex" 1767278827 7814 52164b0e5677a4f121dc85d6bc086bb8 ""
+  "phi4theory.tex" 1769409229 8653 dd122cb9598f96248f93c2a933e483af ""
+  "results.tex" 1769419946 27331 5062f19783a7203b22a1d1b1a99944b6 ""
+  "stats.tex" 1769414098 7814 4c140497f86d142626d87047b1979d21 ""
   (generated)
   "main.aux"
   "main.bcf"

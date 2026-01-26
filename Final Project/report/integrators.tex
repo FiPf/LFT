@@ -10,7 +10,7 @@ requirements on the molecular dynamics trajectory:
     \end{equation}
     \item Reversibility of the trajectory, evolving forward in fictitious time $\tau$ and then reversing the momenta exactly retraces the trajectory.
 \end{itemize}
-The leapfrog integration method fulfills these requirements, as will be shown in the following. Leapfrog is a second-order method, compared to the very-well known first-order Euler method. It provieds a higher accuracy while maintaining measure invariance and reversibility.  
+The leapfrog integration method fulfills these requirements, as will be shown in the following. Leapfrog is a second-order method, compared to the very-well known first-order Euler method. It provides a higher accuracy while maintaining measure invariance and reversibility.  
 \\
 In the leapfrog integration method, the field $\phi$ and the conjugate momenta $\pi$ are evolved in $n$ steps of length $\varepsilon$. The conjugate momenta start with a half-step of $\frac{\varepsilon}{2}$, then $(n-1)$ full steps and finally other half-step. A single such step $(n = 1)$ is denoted as follows: 
 \begin{align}
@@ -64,7 +64,7 @@ A single Omelyan step of size $\varepsilon$ can be written as:
 \end{align}
 Here, $\lambda$ is a free parameter, and the standard leapfrog scheme is recovered for $\lambda = \frac{1}{2}$. In practice, a common 
 choice is $\lambda \approx 0.1931833$, which minimizes the error in the Hamiltonian for harmonic systems \cite{Takaishi2005Symplectic,Omelyan2002Symplectic}.\\\\
-The Omelyan 2 integrator improves on the basic leapfrog scheme in the following ways:
+The Omelyans2 integrator improves on the basic leapfrog scheme in the following ways:
 \begin{itemize}
     \item Reduced energy drift: By distributing the momentum updates asymmetrically, the integrator achieves better conservation of the Hamiltonian over long trajectories, which increases the acceptance rate in HMC.  
     \item Preservation of measure and reversibility: Like leapfrog, the Omelyan2 integrator is reversible, ensuring that detailed balance in HMC is maintained.  

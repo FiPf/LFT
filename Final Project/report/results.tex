@@ -11,11 +11,11 @@ The Python code is split into various subfolders, which serve as packages:
     \item \textbf{algorithms:} This package contains an abstract base class to run simulations with an unspecified algorithm. There are two classes (for Metropolis and HMC), which inherit from this abstract base class and are used to run Metropolis and HMC simulations. Finally, there is a file containing the two integrator choices for the HMC algorithm (leapfrog or omelyan2 integrator). 
     \item \textbf{physics:} This file contains all functions regarding the physics of this project. The first file contains the action of the $\phi^4$-theory, its derivative, a function to calculate the hamiltonian of the system and an enum with the boundary condition choices (either periodic or aperiodic).
     \item \textbf{stats:} This package contains a file with all the statistical analysis functions used for this project. The file intended for logging is currently empty, but the code could be extended to contain loggers. 
-    \item \textbf{Main Notebook: }The main file is a Jupyter Notebook, where all of the results are displayed. It accesses the other files through the packages described above. 
+    \item \textbf{Main Notebook: }The main file is a Jupyter Notebook, where all of the results are displayed. It accesses the other files through the packages described above. To get an overview, first have a look at this Jupyter notebook.
 \end{itemize}
 \subsection{Description of the Rust Code}
 As shown in Section \ref{sec: data_runtime}, the HMC algorithm was extremely slow in Python, despite most computations being vectorized. It is possible that the object oriented structure of the code contributes to the slowness. Since rewriting the code in a faster way would be a considerable effort and only lead to a small improvement, I decided to instead translate the slowest parts into Rust. \\
-Rust is much faster than Python, because Rust is a compiled ahead-of-time to machine code, while Python is an interpreted language (bytecode executed by the CPython virtual machine). This alone can lead to a speedup of a factor $10-100x$. Rust also has other useful features that make coding typesafe and less chaotic than in Python. \cite{rust_cookbook}\\
+Rust is much faster than Python, because Rust is a compiled ahead-of-time to machine code, while Python is an interpreted language (bytecode executed by the CPython virtual machine). This alone can lead to a speedup of a factor $10-100x$. Rust also has other useful features that make coding typesafe and less chaotic than in Python. \cite{rust_cookbook}\\\\
 The following parts of the code were translated from Python to Rust: 
 \begin{itemize}
     \item The HMC algorithms, together with the two integrators. 
@@ -47,7 +47,7 @@ In contrast, the HMC algorithm is based on approximate Hamiltonian dynamics, whe
 \end{figure}
 The same tuning parameters were also applied in the Rust implementation. This served as a consistency check to ensure that the Rust version produces results comparable to the Python version.
 \section{Monte Carlo Chain Visualization}\label{sec:chain_visual}
-In Figure \ref{fig:MC chain}, the Monte Carlo chain of the simulation with different algorithms is shown. The observable displayed is the mean field. This plots are not very useful.
+In Figure \ref{fig:MC chain}, the Monte Carlo chain of the simulation with different algorithms is shown. The observable displayed is the mean field. These plots are not very useful.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{images/chain.png}
@@ -124,7 +124,7 @@ The following Figure \ref{fig:python_errors} shows the statistical errors of bot
         \caption{Symmetric phase with positive mass}
         \label{fig:symmetric_python_errors}
     \end{subfigure}
-    \caption{Statistical Errors as a function of lattice size $L$ for the broken and symmetric phase, algorithms in Python.}
+    \caption{Statistical errors as a function of lattice size $L$ for the broken and symmetric phase, algorithms in Python.}
     \label{fig:python_errors}
 \end{figure}
 The following Figure \ref{fig:rust_errors} shows the statistical errors of both phases resulting from the Rust implemented algorithms.
@@ -151,7 +151,7 @@ The following Figure \ref{fig:rust_errors} shows the statistical errors of both 
     \item In both the symmetric and broken phases with both Python and Rust, the Metropolis produces significantly larger statistical errors than the HMC algorithm. The HMC algorithm has similar statistical errors for the two different integrators leapfrog and omelyan2. 
     \item For both versions of HMC, the Python and Rust implementations have similar statistical errors. The statistical error of the Metropolis algorithm is approximately twice as large as in the Rust version, for unknown reasons.
     \item In the broken phase the statistical error is significantly larger than in the symmetric phase. This is a consequence of the presence of two degenerate vacua, between which the Monte Carlo simulation can tunnel. These tunneling events lead to long autocorrelation times and large fluctuations of observables, thereby increasing the statistical uncertainty. In contrast, the symmetric phase contains a single stable vacuum and exhibits faster decorrelation.
-    \item In all simulations, the statistical error decreasess with increasing lattice size $L$. Most likely, this behaviour can be attributed to how the average is computed. The measured observables are spatial averages over the lattice, their variance decreases as $1/V = 1/L^2$. Although autocorrelation times increase with lattice size, especially in the broken phase, the reduction of statistical fluctuations due to averaging over more degrees of freedom dominates in the parameter range considered.
+    \item In all simulations, the statistical error decreases with increasing lattice size $L$. Most likely, this behaviour can be attributed to how the average is computed. The measured observables are spatial averages over the lattice, their variance decreases as $1/V = 1/L^2$. Although autocorrelation times increase with lattice size, especially in the broken phase, the reduction of statistical fluctuations due to averaging over more degrees of freedom dominates in the parameter range considered.
 \end{itemize}
 \subsection{Autocorrelations}
 Autocorrelations measure the memory of a Markov chain and quantify the dependence of successive configurations. High autocorrelation reduces the effective number of independent samples, increasing statistical errors. We discuss the computation of integrated autocorrelation times and their impact on the precision of measured observables.\\\\
